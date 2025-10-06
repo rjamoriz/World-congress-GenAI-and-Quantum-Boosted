@@ -1,0 +1,32 @@
+{
+  "x_req1_host1_0_0": {
+    "x_req1_host1_0_0": -65,
+    "x_req1_host2_0_0": 1000,
+    "x_req1_host1_0_1": 1000
+  },
+  "x_req1_host2_0_0": {
+    "x_req1_host2_0_0": -50,
+    "x_req1_host1_0_0": 1000,
+    "x_req1_host2_0_1": 1000
+  },
+  "x_req1_host1_0_1": {
+    "x_req1_host1_0_1": -45,
+    "x_req1_host1_0_0": 1000,
+    "x_req1_host2_0_1": 1000
+  },
+  "x_req1_host2_0_1": {
+    "x_req1_host2_0_1": -40,
+    "x_req1_host2_0_0": 1000,
+    "x_req1_host1_0_1": 1000
+  },
+  "x_req2_host1_0_0": {
+    "x_req2_host1_0_0": -70,
+    "x_req2_host2_0_0": 1000,
+    "x_req1_host1_0_0": 1000
+  },
+  "x_req2_host2_0_0": {
+    "x_req2_host2_0_0": -55,
+    "x_req2_host1_0_0": 1000,
+    "x_req1_host2_0_0": 1000
+  }
+}

@@ -1,0 +1,17 @@
+# Qiskit Quantum Computing Requirements
+# Install with: pip install -r quantum-requirements.txt
+
+qiskit>=0.45.0
+qiskit-optimization>=0.6.0
+qiskit-algorithms>=0.2.0
+qiskit-aer>=0.13.0
+numpy>=1.21.0
+scipy>=1.7.0
+matplotlib>=3.5.0
+networkx>=2.6.0
+
+# Optional: For IBM Quantum access
+qiskit-ibm-provider>=0.7.0
+
+# Optional: For advanced optimizers
+qiskit-machine-learning>=0.7.0
