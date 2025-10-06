@@ -1,0 +1,3235 @@
+[
+  {
+    "id": "req_0001",
+    "companyName": "Biotech Innovations",
+    "companyTier": "tier_2",
+    "contactName": "Lynda Lubowitz",
+    "contactEmail": "Cali.Emmerich40@gmail.com",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Innovation showcase",
+      "Best practices sharing"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-17"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.11,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-10-02T15:27:27.099Z",
+    "updatedAt": "2025-10-06T09:52:40.372Z"
+  },
+  {
+    "id": "req_0002",
+    "companyName": "Gaming Technologies",
+    "companyTier": "tier_2",
+    "contactName": "Mindy Donnelly",
+    "contactEmail": "Greta_Kub@yahoo.com",
+    "contactPhone": "(520) 909-2088",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Digital transformation roadmap",
+      "Long-term partnership opportunities",
+      "Strategic alignment discussions"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-16"
+    ],
+    "urgency": "high",
+    "status": "qualified",
+    "importanceScore": 71,
+    "qualificationReason": "Sui tametsi tutamen clarus amplitudo.",
+    "fraudScore": 0.06,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-18T01:58:27.111Z",
+    "qualifiedAt": "2025-09-18T02:58:27.111Z",
+    "updatedAt": "2025-10-06T09:52:40.373Z"
+  },
+  {
+    "id": "req_0003",
+    "companyName": "Green Tech Corp",
+    "companyTier": "tier_4",
+    "contactName": "Florence O'Kon",
+    "contactEmail": "Larue31@gmail.com",
+    "contactPhone": "(213) 275-1537",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Integration opportunities"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-19",
+      "2025-11-18"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-19T08:51:00.429Z",
+    "updatedAt": "2025-10-06T09:52:40.374Z"
+  },
+  {
+    "id": "req_0004",
+    "companyName": "Quantum Dynamics Inc",
+    "companyTier": "tier_4",
+    "contactName": "Kelley Gerlach",
+    "contactEmail": "Jessika.Champlin3@gmail.com",
+    "contactPhone": "(360) 805-4957",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Ecosystem collaboration",
+      "Joint venture opportunities",
+      "Channel partnership"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-18",
+      "2025-11-19"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.1,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email",
+      "referredBy": "Orville Harvey"
+    },
+    "submittedAt": "2025-10-01T00:00:04.692Z",
+    "updatedAt": "2025-10-06T09:52:40.374Z"
+  },
+  {
+    "id": "req_0005",
+    "companyName": "Data Intelligence Inc",
+    "companyTier": "tier_3",
+    "contactName": "April Watsica",
+    "contactEmail": "Abelardo_Altenwerth@gmail.com",
+    "contactPhone": "286-964-5126",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Performance optimization",
+      "Security and compliance",
+      "Technical architecture review"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-18",
+      "2025-11-17"
+    ],
+    "urgency": "high",
+    "status": "qualified",
+    "importanceScore": 84,
+    "qualificationReason": "Natus auxilium consequuntur deleo video cariosus corona.",
+    "fraudScore": 0.04,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-26T13:23:56.477Z",
+    "qualifiedAt": "2025-09-26T14:23:56.477Z",
+    "updatedAt": "2025-10-06T09:52:40.375Z"
+  },
+  {
+    "id": "req_0006",
+    "companyName": "E-Commerce Global",
+    "companyTier": "tier_4",
+    "contactName": "Vanessa Witting-Davis",
+    "contactEmail": "Destin_Johnson-Jast@gmail.com",
+    "contactPhone": "1-827-982-0424 x484",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Workflow automation",
+      "Operational efficiency improvements",
+      "Team collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-18",
+      "2025-11-16"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.09,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-26T05:23:30.373Z",
+    "updatedAt": "2025-10-06T09:52:40.375Z"
+  },
+  {
+    "id": "req_0007",
+    "companyName": "TechCorp Industries",
+    "companyTier": "tier_1",
+    "contactName": "Brad Ferry",
+    "contactEmail": "Celia.Trantow@gmail.com",
+    "contactPhone": "252.286.0791",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Product demonstration",
+      "Sales pipeline review",
+      "Pricing discussion"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-16",
+      "2025-11-18"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.09,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-24T21:19:49.555Z",
+    "updatedAt": "2025-10-06T09:52:40.375Z"
+  },
+  {
+    "id": "req_0008",
+    "companyName": "Cloud Systems Group",
+    "companyTier": "unknown",
+    "contactName": "Ervin Kiehn",
+    "contactEmail": "Carmela.Mann95@yahoo.com",
+    "contactPhone": "689-445-0792 x18287",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Innovation collaboration",
+      "Market expansion strategies"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-16"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.25,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email",
+      "referredBy": "Kristina Friesen"
+    },
+    "submittedAt": "2025-09-21T18:21:13.631Z",
+    "updatedAt": "2025-10-06T09:52:40.376Z"
+  },
+  {
+    "id": "req_0009",
+    "companyName": "Strategic Ventures Corp",
+    "companyTier": "tier_3",
+    "contactName": "Rodolfo Stokes",
+    "contactEmail": "Dasia76@gmail.com",
+    "contactPhone": "(431) 873-5011 x2133",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Performance optimization",
+      "Security and compliance",
+      "Infrastructure planning"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-16"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.12,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web",
+      "referredBy": "Aaron Satterfield"
+    },
+    "submittedAt": "2025-09-10T13:24:39.823Z",
+    "updatedAt": "2025-10-06T09:52:40.376Z"
+  },
+  {
+    "id": "req_0010",
+    "companyName": "Strategic Ventures Corp",
+    "companyTier": "unknown",
+    "contactName": "Sabrina Daniel",
+    "contactEmail": "Mabelle29@hotmail.com",
+    "contactPhone": "1-673-765-7389 x4172",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Innovation showcase",
+      "Future vision discussion",
+      "Thought leadership session"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-18"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.18,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-24T21:58:07.188Z",
+    "updatedAt": "2025-10-06T09:52:40.376Z"
+  },
+  {
+    "id": "req_0011",
+    "companyName": "Entertainment Systems",
+    "companyTier": "tier_3",
+    "contactName": "Jermaine Hills",
+    "contactEmail": "Willis59@gmail.com",
+    "contactPhone": "632-466-8126",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Operational efficiency improvements"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-15",
+      "2025-11-17"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.28,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-09T19:03:36.836Z",
+    "updatedAt": "2025-10-06T09:52:40.377Z"
+  },
+  {
+    "id": "req_0012",
+    "companyName": "Green Tech Corp",
+    "companyTier": "unknown",
+    "contactName": "Bobby Parker",
+    "contactEmail": "Jeanie93@gmail.com",
+    "contactPhone": "211-984-7844 x1594",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Strategic alignment discussions",
+      "Innovation collaboration",
+      "Digital transformation roadmap"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "medium",
+    "status": "qualified",
+    "importanceScore": 97,
+    "qualificationReason": "Aspernatur defendo vallum tolero totam curia asperiores.",
+    "fraudScore": 0.06,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web",
+      "referredBy": "Kelley Quigley"
+    },
+    "submittedAt": "2025-09-11T10:11:44.342Z",
+    "qualifiedAt": "2025-09-11T11:11:44.342Z",
+    "updatedAt": "2025-10-06T09:52:40.377Z"
+  },
+  {
+    "id": "req_0013",
+    "companyName": "Research Institute AG",
+    "companyTier": "unknown",
+    "contactName": "Arthur Jones",
+    "contactEmail": "Arden25@gmail.com",
+    "contactPhone": "744.210.8595 x53747",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Feature showcase",
+      "Live system demo",
+      "Product demonstration"
+    ],
+    "preferredDates": [
+      "2025-11-17"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.13,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-19T20:39:13.786Z",
+    "updatedAt": "2025-10-06T09:52:40.378Z"
+  },
+  {
+    "id": "req_0014",
+    "companyName": "Innovation Partners",
+    "companyTier": "tier_4",
+    "contactName": "Shaun Hayes",
+    "contactEmail": "Kacey_Homenick43@hotmail.com",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Networking opportunity"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-17"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.14,
+    "isDuplicate": true,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-29T19:08:10.743Z",
+    "updatedAt": "2025-10-06T09:52:40.378Z"
+  },
+  {
+    "id": "req_0015",
+    "companyName": "TechCorp Industries",
+    "companyTier": "tier_4",
+    "contactName": "Angela Hayes",
+    "contactEmail": "Alyce_Nicolas25@yahoo.com",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Product demonstration",
+      "Pricing discussion",
+      "Contract negotiation"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "critical",
+    "status": "qualified",
+    "importanceScore": 74,
+    "qualificationReason": "Odio optio ambitus terror appositus nostrum.",
+    "fraudScore": 0.2,
+    "isDuplicate": true,
+    "metadata": {
+      "source": "api",
+      "referredBy": "Elisa Lind"
+    },
+    "submittedAt": "2025-10-05T08:05:32.830Z",
+    "qualifiedAt": "2025-10-05T09:05:32.830Z",
+    "updatedAt": "2025-10-06T09:52:40.378Z"
+  },
+  {
+    "id": "req_0016",
+    "companyName": "Advanced Computing Ltd",
+    "companyTier": "tier_3",
+    "contactName": "Marta Block",
+    "contactEmail": "Newell_Shields71@yahoo.com",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Joint venture opportunities",
+      "Ecosystem collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-16"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.13,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-15T07:00:38.578Z",
+    "updatedAt": "2025-10-06T09:52:40.379Z"
+  },
+  {
+    "id": "req_0017",
+    "companyName": "Green Tech Corp",
+    "companyTier": "tier_3",
+    "contactName": "Darrin Stiedemann",
+    "contactEmail": "Carrie.Bradtke@yahoo.com",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Use case walkthrough",
+      "Live system demo"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-16"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.22,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-22T18:44:37.210Z",
+    "updatedAt": "2025-10-06T09:52:40.379Z"
+  },
+  {
+    "id": "req_0018",
+    "companyName": "TechCorp Industries",
+    "companyTier": "tier_1",
+    "contactName": "Julia Harvey Jr.",
+    "contactEmail": "Joanie_Feil6@hotmail.com",
+    "contactPhone": "840-417-6824",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Ecosystem collaboration",
+      "Co-development initiatives"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-19",
+      "2025-11-15"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.27,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api",
+      "referredBy": "Kelvin Schumm"
+    },
+    "submittedAt": "2025-09-12T21:55:03.169Z",
+    "updatedAt": "2025-10-06T09:52:40.379Z"
+  },
+  {
+    "id": "req_0019",
+    "companyName": "Smart Technologies LLC",
+    "companyTier": "tier_2",
+    "contactName": "Mario Kulas",
+    "contactEmail": "Lorenza.Wisozk13@hotmail.com",
+    "contactPhone": "(914) 645-1895",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Infrastructure planning",
+      "API integration discussion",
+      "Security and compliance"
+    ],
+    "preferredDates": [
+      "2025-11-17"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.21,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-29T06:11:48.288Z",
+    "updatedAt": "2025-10-06T09:52:40.379Z"
+  },
+  {
+    "id": "req_0020",
+    "companyName": "NextGen Enterprises",
+    "companyTier": "unknown",
+    "contactName": "Jim Keebler",
+    "contactEmail": "Thaddeus58@yahoo.com",
+    "contactPhone": "909.644.5434 x8790",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Resource allocation"
+    ],
+    "preferredDates": [
+      "2025-11-16"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.04,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm",
+      "referredBy": "Devin Raynor-Wuckert V"
+    },
+    "submittedAt": "2025-09-28T09:58:05.954Z",
+    "updatedAt": "2025-10-06T09:52:40.379Z"
+  },
+  {
+    "id": "req_0021",
+    "companyName": "Financial Services Group",
+    "companyTier": "unknown",
+    "contactName": "Jay Okuneva",
+    "contactEmail": "Alysa_Conroy-Kub82@gmail.com",
+    "contactPhone": "409.342.4887",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Innovation showcase"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-18"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.03,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-15T17:27:40.721Z",
+    "updatedAt": "2025-10-06T09:52:40.379Z"
+  },
+  {
+    "id": "req_0022",
+    "companyName": "Future Systems AG",
+    "companyTier": "tier_1",
+    "contactName": "Mattie Douglas",
+    "contactEmail": "Henriette.Nicolas16@hotmail.com",
+    "contactPhone": "(416) 612-2466 x3232",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Integration opportunities"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-18",
+      "2025-11-16"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.15,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-10-03T18:45:22.552Z",
+    "updatedAt": "2025-10-06T09:52:40.380Z"
+  },
+  {
+    "id": "req_0023",
+    "companyName": "Research Institute AG",
+    "companyTier": "tier_2",
+    "contactName": "Sharon Gulgowski",
+    "contactEmail": "Rodolfo_Pollich48@gmail.com",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Future vision discussion",
+      "Innovation showcase",
+      "Best practices sharing"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-18",
+      "2025-11-17"
+    ],
+    "urgency": "critical",
+    "status": "qualified",
+    "importanceScore": 31,
+    "qualificationReason": "Sollicito bellum solio arcus congregatio.",
+    "fraudScore": 0.04,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-28T12:06:30.694Z",
+    "qualifiedAt": "2025-09-28T13:06:30.694Z",
+    "updatedAt": "2025-10-06T09:52:40.380Z"
+  },
+  {
+    "id": "req_0024",
+    "companyName": "Cloud Systems Group",
+    "companyTier": "tier_1",
+    "contactName": "Beulah Daniel",
+    "contactEmail": "Carlotta8@yahoo.com",
+    "contactPhone": "613-593-0866 x28912",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Networking opportunity"
+    ],
+    "preferredDates": [
+      "2025-11-15"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.05,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-27T11:52:10.958Z",
+    "updatedAt": "2025-10-06T09:52:40.384Z"
+  },
+  {
+    "id": "req_0025",
+    "companyName": "Financial Services Group",
+    "companyTier": "tier_1",
+    "contactName": "Tamara Kovacek",
+    "contactEmail": "Thad.Tromp36@hotmail.com",
+    "contactPhone": "1-476-640-4337 x7586",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Technical architecture review",
+      "Infrastructure planning"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-18",
+      "2025-11-19"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.09,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-17T15:34:53.874Z",
+    "updatedAt": "2025-10-06T09:52:40.384Z"
+  },
+  {
+    "id": "req_0026",
+    "companyName": "Media Networks Inc",
+    "companyTier": "tier_3",
+    "contactName": "Ms. Erica Sauer",
+    "contactEmail": "Gretchen_Emmerich@hotmail.com",
+    "contactPhone": "1-754-554-3979",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Digital transformation roadmap",
+      "Strategic alignment discussions"
+    ],
+    "preferredDates": [
+      "2025-11-15"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.2,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-19T23:03:23.808Z",
+    "updatedAt": "2025-10-06T09:52:40.384Z"
+  },
+  {
+    "id": "req_0027",
+    "companyName": "Energy Solutions Ltd",
+    "companyTier": "tier_3",
+    "contactName": "Larry Langosh",
+    "contactEmail": "Crystel35@yahoo.com",
+    "contactPhone": "1-745-446-1352 x3715",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Contract negotiation",
+      "Customer success stories"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-17",
+      "2025-11-19"
+    ],
+    "urgency": "medium",
+    "status": "qualified",
+    "importanceScore": 57,
+    "qualificationReason": "Saepe convoco volaticus.",
+    "fraudScore": 0.07,
+    "isDuplicate": true,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-10-01T10:32:51.784Z",
+    "qualifiedAt": "2025-10-01T11:32:51.784Z",
+    "updatedAt": "2025-10-06T09:52:40.385Z"
+  },
+  {
+    "id": "req_0028",
+    "companyName": "Education Platforms Ltd",
+    "companyTier": "tier_2",
+    "contactName": "Mr. Kent Kshlerin",
+    "contactEmail": "August_Goodwin@gmail.com",
+    "contactPhone": "577-937-6149 x0040",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Proof of concept presentation",
+      "Use case walkthrough"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-19"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.2,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-23T16:45:53.885Z",
+    "updatedAt": "2025-10-06T09:52:40.385Z"
+  },
+  {
+    "id": "req_0029",
+    "companyName": "Cloud Systems Group",
+    "companyTier": "unknown",
+    "contactName": "Gregg Stanton",
+    "contactEmail": "Dianna.Terry73@hotmail.com",
+    "meetingType": "other",
+    "requestedTopics": [
+      "General discussion"
+    ],
+    "preferredDates": [
+      "2025-11-15"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.11,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-12T02:08:55.936Z",
+    "updatedAt": "2025-10-06T09:52:40.385Z"
+  },
+  {
+    "id": "req_0030",
+    "companyName": "Global Innovations Ltd",
+    "companyTier": "unknown",
+    "contactName": "James Grady DVM",
+    "contactEmail": "Haylie14@yahoo.com",
+    "contactPhone": "499.291.9316",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Contract negotiation",
+      "Pricing discussion"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-19",
+      "2025-11-18"
+    ],
+    "urgency": "high",
+    "status": "qualified",
+    "importanceScore": 82,
+    "qualificationReason": "Turba cibus turpis.",
+    "fraudScore": 0.13,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api",
+      "referredBy": "Carla Collins"
+    },
+    "submittedAt": "2025-09-14T01:41:54.266Z",
+    "qualifiedAt": "2025-09-14T02:41:54.266Z",
+    "updatedAt": "2025-10-06T09:52:40.385Z"
+  },
+  {
+    "id": "req_0031",
+    "companyName": "Cloud Systems Group",
+    "companyTier": "tier_1",
+    "contactName": "Rosalie Ruecker",
+    "contactEmail": "Aletha.Rogahn@yahoo.com",
+    "contactPhone": "1-451-258-6696 x15970",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Co-development initiatives",
+      "Joint venture opportunities"
+    ],
+    "preferredDates": [
+      "2025-11-15"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.1,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-17T23:22:45.647Z",
+    "updatedAt": "2025-10-06T09:52:40.385Z"
+  },
+  {
+    "id": "req_0032",
+    "companyName": "Cyber Security Solutions",
+    "companyTier": "tier_2",
+    "contactName": "Edmund DuBuque PhD",
+    "contactEmail": "Litzy.Thompson57@gmail.com",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Integration opportunities"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-18",
+      "2025-11-19"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.18,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email",
+      "referredBy": "Jessie Jacobi"
+    },
+    "submittedAt": "2025-09-17T11:40:48.002Z",
+    "updatedAt": "2025-10-06T09:52:40.385Z"
+  },
+  {
+    "id": "req_0033",
+    "companyName": "Biotech Innovations",
+    "companyTier": "unknown",
+    "contactName": "Mrs. Della Reilly",
+    "contactEmail": "Jakayla_Hansen@gmail.com",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Industry trends presentation",
+      "Future vision discussion",
+      "Thought leadership session"
+    ],
+    "preferredDates": [
+      "2025-11-18"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.08,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm",
+      "referredBy": "Kristen Fritsch"
+    },
+    "submittedAt": "2025-09-24T20:48:50.679Z",
+    "updatedAt": "2025-10-06T09:52:40.386Z"
+  },
+  {
+    "id": "req_0034",
+    "companyName": "Innovation Partners",
+    "companyTier": "tier_4",
+    "contactName": "Theodore Abbott",
+    "contactEmail": "Houston53@hotmail.com",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Future vision discussion"
+    ],
+    "preferredDates": [
+      "2025-11-15"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.2,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm",
+      "referredBy": "Herman Wilderman Jr."
+    },
+    "submittedAt": "2025-09-23T17:37:33.337Z",
+    "updatedAt": "2025-10-06T09:52:40.386Z"
+  },
+  {
+    "id": "req_0035",
+    "companyName": "Energy Solutions Ltd",
+    "companyTier": "unknown",
+    "contactName": "Miss Theresa Ebert",
+    "contactEmail": "Hershel_Hilll73@gmail.com",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Integration opportunities",
+      "Ecosystem collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-17"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.16,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-21T19:09:28.400Z",
+    "updatedAt": "2025-10-06T09:52:40.386Z"
+  },
+  {
+    "id": "req_0036",
+    "companyName": "Future Systems AG",
+    "companyTier": "tier_3",
+    "contactName": "Rita McGlynn",
+    "contactEmail": "Jerrold.Mraz90@hotmail.com",
+    "contactPhone": "(368) 271-2879 x68853",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Market expansion strategies",
+      "Strategic alignment discussions"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-16"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.13,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email",
+      "referredBy": "Misty Mayer"
+    },
+    "submittedAt": "2025-09-20T17:48:57.690Z",
+    "updatedAt": "2025-10-06T09:52:40.386Z"
+  },
+  {
+    "id": "req_0037",
+    "companyName": "Gaming Technologies",
+    "companyTier": "tier_4",
+    "contactName": "Ricky Kozey",
+    "contactEmail": "Pasquale.Hayes63@hotmail.com",
+    "contactPhone": "667-598-4104 x949",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Market research"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.03,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-10-05T18:46:43.192Z",
+    "updatedAt": "2025-10-06T09:52:40.386Z"
+  },
+  {
+    "id": "req_0038",
+    "companyName": "Data Intelligence Inc",
+    "companyTier": "unknown",
+    "contactName": "Shawn Balistreri",
+    "contactEmail": "Judson16@yahoo.com",
+    "contactPhone": "242.211.9015 x21086",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Long-term partnership opportunities",
+      "Strategic alignment discussions",
+      "Market expansion strategies"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-16"
+    ],
+    "urgency": "medium",
+    "status": "qualified",
+    "importanceScore": 95,
+    "qualificationReason": "Adipisci trans vado ustilo vulnus.",
+    "fraudScore": 0.12,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-15T17:53:32.098Z",
+    "qualifiedAt": "2025-09-15T18:53:32.098Z",
+    "updatedAt": "2025-10-06T09:52:40.386Z"
+  },
+  {
+    "id": "req_0039",
+    "companyName": "Strategic Ventures Corp",
+    "companyTier": "tier_1",
+    "contactName": "Zachary Dickinson DVM",
+    "contactEmail": "Buster.Konopelski46@yahoo.com",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Pricing discussion",
+      "Product demonstration"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.21,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api",
+      "referredBy": "Glenn Heathcote"
+    },
+    "submittedAt": "2025-09-11T03:24:32.869Z",
+    "updatedAt": "2025-10-06T09:52:40.386Z"
+  },
+  {
+    "id": "req_0040",
+    "companyName": "Innovation Partners",
+    "companyTier": "tier_4",
+    "contactName": "Cecilia Crist-Funk",
+    "contactEmail": "Edwin88@yahoo.com",
+    "contactPhone": "1-864-597-0837 x089",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Innovation collaboration",
+      "Market expansion strategies"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-18",
+      "2025-11-16"
+    ],
+    "urgency": "medium",
+    "status": "qualified",
+    "importanceScore": 53,
+    "qualificationReason": "Vomer velum crepusculum votum pauper conventus commodi.",
+    "fraudScore": 0.04,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-18T13:48:03.019Z",
+    "qualifiedAt": "2025-09-18T14:48:03.019Z",
+    "updatedAt": "2025-10-06T09:52:40.387Z"
+  },
+  {
+    "id": "req_0041",
+    "companyName": "Research Institute AG",
+    "companyTier": "tier_3",
+    "contactName": "Cody Beer",
+    "contactEmail": "Justyn56@gmail.com",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Best practices sharing",
+      "Innovation showcase",
+      "Industry trends presentation"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-16"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 55,
+    "qualificationReason": "Abbas carcer deputo cupiditate.",
+    "fraudScore": 0.29,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-10-02T02:39:49.866Z",
+    "qualifiedAt": "2025-10-02T03:39:49.866Z",
+    "updatedAt": "2025-10-06T09:52:40.387Z"
+  },
+  {
+    "id": "req_0042",
+    "companyName": "Education Platforms Ltd",
+    "companyTier": "unknown",
+    "contactName": "Howard Lang",
+    "contactEmail": "Juanita.Crooks@yahoo.com",
+    "contactPhone": "1-947-273-7292 x60902",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Integration opportunities",
+      "Ecosystem collaboration",
+      "Joint venture opportunities"
+    ],
+    "preferredDates": [
+      "2025-11-18"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 32,
+    "qualificationReason": "Aveho comis ter cruciamentum sint ante vinitor vulnus deprimo abstergo.",
+    "fraudScore": 0.28,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-20T01:28:02.288Z",
+    "qualifiedAt": "2025-09-20T02:28:02.288Z",
+    "updatedAt": "2025-10-06T09:52:40.387Z"
+  },
+  {
+    "id": "req_0043",
+    "companyName": "Advanced Computing Ltd",
+    "companyTier": "unknown",
+    "contactName": "Tonya Tremblay",
+    "contactEmail": "Rafael_Mayert11@hotmail.com",
+    "contactPhone": "1-411-619-3114 x93553",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Product demonstration"
+    ],
+    "preferredDates": [
+      "2025-11-18"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-14T01:23:16.728Z",
+    "updatedAt": "2025-10-06T09:52:40.387Z"
+  },
+  {
+    "id": "req_0044",
+    "companyName": "Gaming Technologies",
+    "companyTier": "tier_3",
+    "contactName": "Leonard Simonis Jr.",
+    "contactEmail": "Crystal_Schulist-Gleichner@yahoo.com",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Information exchange",
+      "Industry insights",
+      "Networking opportunity"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-15"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.12,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email",
+      "referredBy": "Andy Erdman"
+    },
+    "submittedAt": "2025-09-23T22:44:54.542Z",
+    "updatedAt": "2025-10-06T09:52:40.387Z"
+  },
+  {
+    "id": "req_0045",
+    "companyName": "Media Networks Inc",
+    "companyTier": "tier_4",
+    "contactName": "Erika Konopelski",
+    "contactEmail": "Carol.Ebert@yahoo.com",
+    "contactPhone": "786-776-1801 x42854",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Strategic alignment discussions",
+      "Long-term partnership opportunities",
+      "Innovation collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-15"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.15,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-18T11:09:42.852Z",
+    "updatedAt": "2025-10-06T09:52:40.387Z"
+  },
+  {
+    "id": "req_0046",
+    "companyName": "Global Innovations Ltd",
+    "companyTier": "tier_2",
+    "contactName": "Rick Stroman",
+    "contactEmail": "Candelario.Mertz@yahoo.com",
+    "contactPhone": "601.967.1732 x42984",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Workflow automation",
+      "Resource allocation"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "medium",
+    "status": "qualified",
+    "importanceScore": 53,
+    "qualificationReason": "Cetera vapulus incidunt tenax subito spiculum.",
+    "fraudScore": 0.16,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-21T08:22:41.360Z",
+    "qualifiedAt": "2025-09-21T09:22:41.360Z",
+    "updatedAt": "2025-10-06T09:52:40.388Z"
+  },
+  {
+    "id": "req_0047",
+    "companyName": "Robotics International",
+    "companyTier": "unknown",
+    "contactName": "Derek Abbott",
+    "contactEmail": "Santino.Langworth@gmail.com",
+    "contactPhone": "(836) 453-3877 x278",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Joint venture opportunities",
+      "Integration opportunities",
+      "Co-development initiatives"
+    ],
+    "preferredDates": [
+      "2025-11-18"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.21,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-16T22:07:39.196Z",
+    "updatedAt": "2025-10-06T09:52:40.388Z"
+  },
+  {
+    "id": "req_0048",
+    "companyName": "Education Platforms Ltd",
+    "companyTier": "tier_4",
+    "contactName": "Juana Welch",
+    "contactEmail": "Garth6@hotmail.com",
+    "contactPhone": "447-217-7850 x28782",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Pricing discussion",
+      "Product demonstration",
+      "Sales pipeline review"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-18"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.09,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api",
+      "referredBy": "June Kris"
+    },
+    "submittedAt": "2025-10-03T14:36:11.955Z",
+    "updatedAt": "2025-10-06T09:52:40.388Z"
+  },
+  {
+    "id": "req_0049",
+    "companyName": "Media Networks Inc",
+    "companyTier": "tier_2",
+    "contactName": "Darrell Bogan",
+    "contactEmail": "Angus9@hotmail.com",
+    "contactPhone": "329-392-2705",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Operational efficiency improvements",
+      "Resource allocation",
+      "Process optimization"
+    ],
+    "preferredDates": [
+      "2025-11-18"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.26,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-11T02:47:12.886Z",
+    "updatedAt": "2025-10-06T09:52:40.388Z"
+  },
+  {
+    "id": "req_0050",
+    "companyName": "Blockchain Ventures",
+    "companyTier": "unknown",
+    "contactName": "Al Konopelski",
+    "contactEmail": "Vito.Wyman@yahoo.com",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Live system demo",
+      "Product demonstration",
+      "Proof of concept presentation"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-19"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 62,
+    "qualificationReason": "Crebro tenetur vado ver creta sollicito cometes.",
+    "fraudScore": 0.05,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-16T07:42:34.687Z",
+    "qualifiedAt": "2025-09-16T08:42:34.687Z",
+    "updatedAt": "2025-10-06T09:52:40.388Z"
+  },
+  {
+    "id": "req_0051",
+    "companyName": "Education Platforms Ltd",
+    "companyTier": "tier_3",
+    "contactName": "Patsy Beahan",
+    "contactEmail": "Bradley.Terry41@gmail.com",
+    "contactPhone": "221-320-4310 x96611",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Team collaboration",
+      "Resource allocation"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-17"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.09,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-28T18:12:28.645Z",
+    "updatedAt": "2025-10-06T09:52:40.388Z"
+  },
+  {
+    "id": "req_0052",
+    "companyName": "Smart City Solutions",
+    "companyTier": "unknown",
+    "contactName": "Misty Veum",
+    "contactEmail": "Tyrese73@hotmail.com",
+    "contactPhone": "285-647-9662",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Customer success stories"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.19,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-14T17:23:30.940Z",
+    "updatedAt": "2025-10-06T09:52:40.388Z"
+  },
+  {
+    "id": "req_0053",
+    "companyName": "Energy Solutions Ltd",
+    "companyTier": "tier_4",
+    "contactName": "Darryl Howe",
+    "contactEmail": "Sylvia.Dare8@yahoo.com",
+    "contactPhone": "1-358-246-3663 x4563",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Future vision discussion",
+      "Thought leadership session",
+      "Industry trends presentation"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-18",
+      "2025-11-15"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.09,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-18T10:02:39.098Z",
+    "updatedAt": "2025-10-06T09:52:40.389Z"
+  },
+  {
+    "id": "req_0054",
+    "companyName": "Strategic Ventures Corp",
+    "companyTier": "tier_2",
+    "contactName": "Ramiro Torphy",
+    "contactEmail": "Marcelina_Botsford@hotmail.com",
+    "contactPhone": "622.285.5342 x47491",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Proof of concept presentation",
+      "Feature showcase",
+      "Live system demo"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-17",
+      "2025-11-19"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.01,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-21T12:22:03.428Z",
+    "updatedAt": "2025-10-06T09:52:40.389Z"
+  },
+  {
+    "id": "req_0055",
+    "companyName": "Gaming Technologies",
+    "companyTier": "unknown",
+    "contactName": "Lawrence Frami V",
+    "contactEmail": "Madge.Wuckert@gmail.com",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Use case walkthrough"
+    ],
+    "preferredDates": [
+      "2025-11-18"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.13,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-10-05T09:30:25.778Z",
+    "updatedAt": "2025-10-06T09:52:40.389Z"
+  },
+  {
+    "id": "req_0056",
+    "companyName": "Robotics International",
+    "companyTier": "tier_4",
+    "contactName": "Colin Kreiger",
+    "contactEmail": "Camylle_Kuphal@gmail.com",
+    "contactPhone": "354-672-9595 x302",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Future vision discussion",
+      "Industry trends presentation"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "critical",
+    "status": "qualified",
+    "importanceScore": 37,
+    "qualificationReason": "Decerno vaco placeat asperiores tabula.",
+    "fraudScore": 0.16,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-10-01T21:32:50.263Z",
+    "qualifiedAt": "2025-10-01T22:32:50.263Z",
+    "updatedAt": "2025-10-06T09:52:40.389Z"
+  },
+  {
+    "id": "req_0057",
+    "companyName": "Biotech Innovations",
+    "companyTier": "tier_1",
+    "contactName": "Justin Leannon",
+    "contactEmail": "Marie25@yahoo.com",
+    "contactPhone": "230.316.7584 x26126",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Long-term partnership opportunities"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-17"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.13,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm",
+      "referredBy": "Eleanor Johnston"
+    },
+    "submittedAt": "2025-09-19T00:38:21.553Z",
+    "updatedAt": "2025-10-06T09:52:40.389Z"
+  },
+  {
+    "id": "req_0058",
+    "companyName": "Digital Horizons SA",
+    "companyTier": "tier_1",
+    "contactName": "Dr. Robin Emmerich",
+    "contactEmail": "Cedrick.Schulist72@hotmail.com",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Performance optimization",
+      "API integration discussion"
+    ],
+    "preferredDates": [
+      "2025-11-16"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.3,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-10-01T03:19:31.028Z",
+    "updatedAt": "2025-10-06T09:52:40.389Z"
+  },
+  {
+    "id": "req_0059",
+    "companyName": "Financial Services Group",
+    "companyTier": "tier_2",
+    "contactName": "Nichole Heaney",
+    "contactEmail": "Caitlyn17@yahoo.com",
+    "contactPhone": "559-670-8055 x99159",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Innovation collaboration",
+      "Market expansion strategies"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.15,
+    "isDuplicate": true,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-13T16:52:11.082Z",
+    "updatedAt": "2025-10-06T09:52:40.390Z"
+  },
+  {
+    "id": "req_0060",
+    "companyName": "Smart Technologies LLC",
+    "companyTier": "unknown",
+    "contactName": "Marta Olson",
+    "contactEmail": "Osborne_Koch99@gmail.com",
+    "contactPhone": "444.838.4381 x402",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Thought leadership session",
+      "Industry trends presentation",
+      "Best practices sharing"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-16",
+      "2025-11-19"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 31,
+    "qualificationReason": "Adnuo tabula apud nobis adversus.",
+    "fraudScore": 0,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api",
+      "referredBy": "Cary Rau"
+    },
+    "submittedAt": "2025-09-10T15:47:03.121Z",
+    "qualifiedAt": "2025-09-10T16:47:03.121Z",
+    "updatedAt": "2025-10-06T09:52:40.390Z"
+  },
+  {
+    "id": "req_0061",
+    "companyName": "Cloud Systems Group",
+    "companyTier": "tier_2",
+    "contactName": "Felix Hilpert",
+    "contactEmail": "Kaylin30@hotmail.com",
+    "contactPhone": "502.709.9141 x8696",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Networking opportunity"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-15",
+      "2025-11-18"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.3,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email",
+      "referredBy": "Alfredo Stamm"
+    },
+    "submittedAt": "2025-09-06T22:17:48.803Z",
+    "updatedAt": "2025-10-06T09:52:40.390Z"
+  },
+  {
+    "id": "req_0062",
+    "companyName": "Media Networks Inc",
+    "companyTier": "tier_3",
+    "contactName": "Curtis Volkman",
+    "contactEmail": "Golden.Baumbach5@gmail.com",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Industry insights"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-17",
+      "2025-11-19"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.17,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-25T05:49:19.196Z",
+    "updatedAt": "2025-10-06T09:52:40.390Z"
+  },
+  {
+    "id": "req_0063",
+    "companyName": "Sustainability Partners",
+    "companyTier": "unknown",
+    "contactName": "Maryann Sauer",
+    "contactEmail": "Garrison1@gmail.com",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Networking opportunity",
+      "Information exchange",
+      "Market research"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-15",
+      "2025-11-19"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 47,
+    "qualificationReason": "Curriculum capitulus aliquid.",
+    "fraudScore": 0.14,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-26T21:52:18.824Z",
+    "qualifiedAt": "2025-09-26T22:52:18.824Z",
+    "updatedAt": "2025-10-06T09:52:40.390Z"
+  },
+  {
+    "id": "req_0064",
+    "companyName": "Financial Services Group",
+    "companyTier": "tier_2",
+    "contactName": "Franklin Stehr-Cummings",
+    "contactEmail": "Briana_Weissnat38@gmail.com",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Live system demo",
+      "Product demonstration"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-17"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.19,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-17T12:52:09.272Z",
+    "updatedAt": "2025-10-06T09:52:40.390Z"
+  },
+  {
+    "id": "req_0065",
+    "companyName": "E-Commerce Global",
+    "companyTier": "unknown",
+    "contactName": "Forrest Olson",
+    "contactEmail": "Otto.Beahan@gmail.com",
+    "contactPhone": "(539) 688-5087",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Live system demo",
+      "Proof of concept presentation",
+      "Use case walkthrough"
+    ],
+    "preferredDates": [
+      "2025-11-16"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 64,
+    "qualificationReason": "Via adulatio cubo voveo.",
+    "fraudScore": 0.23,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-10-05T14:57:31.736Z",
+    "qualifiedAt": "2025-10-05T15:57:31.736Z",
+    "updatedAt": "2025-10-06T09:52:40.391Z"
+  },
+  {
+    "id": "req_0066",
+    "companyName": "Energy Solutions Ltd",
+    "companyTier": "tier_4",
+    "contactName": "Freda Kuphal",
+    "contactEmail": "Beaulah_Hayes38@yahoo.com",
+    "contactPhone": "211-964-8495",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Security and compliance",
+      "Infrastructure planning",
+      "API integration discussion"
+    ],
+    "preferredDates": [
+      "2025-11-18"
+    ],
+    "urgency": "medium",
+    "status": "qualified",
+    "importanceScore": 70,
+    "qualificationReason": "Cultura tabula fugiat.",
+    "fraudScore": 0.02,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web",
+      "referredBy": "Debra Gislason"
+    },
+    "submittedAt": "2025-09-22T11:51:48.503Z",
+    "qualifiedAt": "2025-09-22T12:51:48.503Z",
+    "updatedAt": "2025-10-06T09:52:40.391Z"
+  },
+  {
+    "id": "req_0067",
+    "companyName": "Gaming Technologies",
+    "companyTier": "tier_1",
+    "contactName": "Dr. Conrad Kutch",
+    "contactEmail": "Monty97@yahoo.com",
+    "contactPhone": "1-593-588-5860 x092",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Integration opportunities"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-17"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.15,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm",
+      "referredBy": "Audrey Lang"
+    },
+    "submittedAt": "2025-09-10T05:07:06.676Z",
+    "updatedAt": "2025-10-06T09:52:40.391Z"
+  },
+  {
+    "id": "req_0068",
+    "companyName": "Blockchain Ventures",
+    "companyTier": "tier_3",
+    "contactName": "Vincent Herzog",
+    "contactEmail": "Carli.Pfannerstill7@yahoo.com",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Digital transformation roadmap"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-19"
+    ],
+    "urgency": "critical",
+    "status": "qualified",
+    "importanceScore": 97,
+    "qualificationReason": "Nulla vado tunc cur.",
+    "fraudScore": 0.16,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-21T10:32:50.505Z",
+    "qualifiedAt": "2025-09-21T11:32:50.505Z",
+    "updatedAt": "2025-10-06T09:52:40.391Z"
+  },
+  {
+    "id": "req_0069",
+    "companyName": "Cyber Security Solutions",
+    "companyTier": "tier_1",
+    "contactName": "Lance Bogisich",
+    "contactEmail": "Ally_Koelpin24@hotmail.com",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Industry trends presentation"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-18"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.15,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-25T20:58:25.648Z",
+    "updatedAt": "2025-10-06T09:52:40.391Z"
+  },
+  {
+    "id": "req_0070",
+    "companyName": "Smart City Solutions",
+    "companyTier": "tier_3",
+    "contactName": "Joseph Wiza",
+    "contactEmail": "Nicklaus16@hotmail.com",
+    "contactPhone": "391-310-4427 x943",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Infrastructure planning",
+      "Security and compliance"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-16"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.09,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-12T11:45:11.918Z",
+    "updatedAt": "2025-10-06T09:52:40.391Z"
+  },
+  {
+    "id": "req_0071",
+    "companyName": "Cyber Security Solutions",
+    "companyTier": "tier_2",
+    "contactName": "Ms. Stacy Farrell",
+    "contactEmail": "Lelia46@hotmail.com",
+    "contactPhone": "1-589-979-7799 x8173",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Channel partnership"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-17"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 75,
+    "qualificationReason": "Subito veniam cras ex adipisci soluta.",
+    "fraudScore": 0.1,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web",
+      "referredBy": "Jennifer Schneider"
+    },
+    "submittedAt": "2025-09-16T19:38:59.154Z",
+    "qualifiedAt": "2025-09-16T20:38:59.154Z",
+    "updatedAt": "2025-10-06T09:52:40.391Z"
+  },
+  {
+    "id": "req_0072",
+    "companyName": "Consulting Partners",
+    "companyTier": "tier_4",
+    "contactName": "Evan Trantow",
+    "contactEmail": "Stephan92@gmail.com",
+    "contactPhone": "1-304-771-1280 x3620",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Channel partnership"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-16",
+      "2025-11-15"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.09,
+    "isDuplicate": true,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-09T08:28:51.084Z",
+    "updatedAt": "2025-10-06T09:52:40.392Z"
+  },
+  {
+    "id": "req_0073",
+    "companyName": "TechCorp Industries",
+    "companyTier": "tier_3",
+    "contactName": "Darlene Keeling",
+    "contactEmail": "Judy54@yahoo.com",
+    "contactPhone": "997-334-2449 x442",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Thought leadership session"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-15",
+      "2025-11-16"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.26,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-19T09:25:42.780Z",
+    "updatedAt": "2025-10-06T09:52:40.392Z"
+  },
+  {
+    "id": "req_0074",
+    "companyName": "Healthcare Technologies",
+    "companyTier": "tier_2",
+    "contactName": "Jerry Monahan",
+    "contactEmail": "Dayne_Blanda85@yahoo.com",
+    "contactPhone": "1-935-858-5728",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Pricing discussion",
+      "Customer success stories"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-19",
+      "2025-11-16"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.04,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-10-03T02:45:25.089Z",
+    "updatedAt": "2025-10-06T09:52:40.392Z"
+  },
+  {
+    "id": "req_0075",
+    "companyName": "Media Networks Inc",
+    "companyTier": "tier_1",
+    "contactName": "Bob Hilll",
+    "contactEmail": "Julianne_Nolan44@gmail.com",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Technical architecture review",
+      "API integration discussion",
+      "Security and compliance"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-18",
+      "2025-11-17"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.03,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-09T17:54:28.228Z",
+    "updatedAt": "2025-10-06T09:52:40.392Z"
+  },
+  {
+    "id": "req_0076",
+    "companyName": "TechCorp Industries",
+    "companyTier": "tier_3",
+    "contactName": "Tyler Halvorson",
+    "contactEmail": "Evert12@yahoo.com",
+    "contactPhone": "614-849-5962 x612",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Feature showcase"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-16",
+      "2025-11-19"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.19,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web",
+      "referredBy": "Eunice Raynor"
+    },
+    "submittedAt": "2025-09-19T07:52:05.985Z",
+    "updatedAt": "2025-10-06T09:52:40.392Z"
+  },
+  {
+    "id": "req_0077",
+    "companyName": "Innovation Partners",
+    "companyTier": "tier_1",
+    "contactName": "Isaac Jacobs-Stroman",
+    "contactEmail": "Libby63@yahoo.com",
+    "contactPhone": "1-255-481-2912 x262",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Industry insights",
+      "Information exchange"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-19",
+      "2025-11-16"
+    ],
+    "urgency": "high",
+    "status": "qualified",
+    "importanceScore": 98,
+    "qualificationReason": "Damno cunae via.",
+    "fraudScore": 0.27,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-06T10:09:15.143Z",
+    "qualifiedAt": "2025-09-06T11:09:15.143Z",
+    "updatedAt": "2025-10-06T09:52:40.392Z"
+  },
+  {
+    "id": "req_0078",
+    "companyName": "Media Networks Inc",
+    "companyTier": "tier_4",
+    "contactName": "Annie Block",
+    "contactEmail": "Tess_Zemlak@hotmail.com",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Thought leadership session",
+      "Best practices sharing"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-17",
+      "2025-11-16"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.05,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-10-04T14:28:27.449Z",
+    "updatedAt": "2025-10-06T09:52:40.392Z"
+  },
+  {
+    "id": "req_0079",
+    "companyName": "Cloud Systems Group",
+    "companyTier": "tier_2",
+    "contactName": "Rufus Kuphal",
+    "contactEmail": "Wilfred_Marks79@yahoo.com",
+    "contactPhone": "1-311-911-4928 x291",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Channel partnership",
+      "Joint venture opportunities"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-18"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.28,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web",
+      "referredBy": "Sarah Carter"
+    },
+    "submittedAt": "2025-09-22T19:27:28.883Z",
+    "updatedAt": "2025-10-06T09:52:40.392Z"
+  },
+  {
+    "id": "req_0080",
+    "companyName": "Healthcare Technologies",
+    "companyTier": "tier_2",
+    "contactName": "Nettie Maggio",
+    "contactEmail": "Haven10@hotmail.com",
+    "contactPhone": "1-252-560-9999 x057",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Technical architecture review"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-15",
+      "2025-11-17"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.09,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-10-04T03:23:49.771Z",
+    "updatedAt": "2025-10-06T09:52:40.392Z"
+  },
+  {
+    "id": "req_0081",
+    "companyName": "Advanced Computing Ltd",
+    "companyTier": "tier_3",
+    "contactName": "Kristopher Kiehn",
+    "contactEmail": "Abigale72@yahoo.com",
+    "contactPhone": "384-829-3955",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Market expansion strategies",
+      "Strategic alignment discussions"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-17"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web",
+      "referredBy": "Owen Conn"
+    },
+    "submittedAt": "2025-09-25T06:09:33.412Z",
+    "updatedAt": "2025-10-06T09:52:40.393Z"
+  },
+  {
+    "id": "req_0082",
+    "companyName": "Healthcare Technologies",
+    "companyTier": "tier_4",
+    "contactName": "Lynda Kohler",
+    "contactEmail": "Phoebe_Powlowski@gmail.com",
+    "contactPhone": "730.971.9946 x17053",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Product demonstration",
+      "Feature showcase"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-18"
+    ],
+    "urgency": "high",
+    "status": "qualified",
+    "importanceScore": 80,
+    "qualificationReason": "Vilicus accusamus inflammatio vado eius explicabo uxor.",
+    "fraudScore": 0.2,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-17T23:22:50.349Z",
+    "qualifiedAt": "2025-09-18T00:22:50.349Z",
+    "updatedAt": "2025-10-06T09:52:40.393Z"
+  },
+  {
+    "id": "req_0083",
+    "companyName": "TechCorp Industries",
+    "companyTier": "tier_3",
+    "contactName": "Rachel Bergstrom",
+    "contactEmail": "Major.Balistreri87@hotmail.com",
+    "contactPhone": "(572) 255-7320 x169",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Strategic alignment discussions",
+      "Market expansion strategies",
+      "Digital transformation roadmap"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-16",
+      "2025-11-17"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.24,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-19T15:20:44.501Z",
+    "updatedAt": "2025-10-06T09:52:40.393Z"
+  },
+  {
+    "id": "req_0084",
+    "companyName": "Future Systems AG",
+    "companyTier": "tier_3",
+    "contactName": "Darryl Ankunding",
+    "contactEmail": "Adelia63@hotmail.com",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Future vision discussion"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-15"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 85,
+    "qualificationReason": "Paulatim sponte comitatus uberrime accusamus.",
+    "fraudScore": 0.12,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web",
+      "referredBy": "Darryl O'Keefe"
+    },
+    "submittedAt": "2025-09-09T13:23:36.622Z",
+    "qualifiedAt": "2025-09-09T14:23:36.622Z",
+    "updatedAt": "2025-10-06T09:52:40.393Z"
+  },
+  {
+    "id": "req_0085",
+    "companyName": "Innovation Partners",
+    "companyTier": "tier_1",
+    "contactName": "Dr. Darin Zboncak",
+    "contactEmail": "Louie_Tremblay-Ryan@hotmail.com",
+    "contactPhone": "468-887-0145 x6329",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Best practices sharing"
+    ],
+    "preferredDates": [
+      "2025-11-18"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 91,
+    "qualificationReason": "Sol comedo nam id cras defendo pariatur villa facilis.",
+    "fraudScore": 0.25,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-15T18:06:19.929Z",
+    "qualifiedAt": "2025-09-15T19:06:19.929Z",
+    "updatedAt": "2025-10-06T09:52:40.393Z"
+  },
+  {
+    "id": "req_0086",
+    "companyName": "Consulting Partners",
+    "companyTier": "tier_1",
+    "contactName": "Sonya Metz",
+    "contactEmail": "Brody_Graham67@gmail.com",
+    "meetingType": "other",
+    "requestedTopics": [
+      "General discussion",
+      "Industry insights",
+      "Networking opportunity"
+    ],
+    "preferredDates": [
+      "2025-11-16"
+    ],
+    "urgency": "medium",
+    "status": "qualified",
+    "importanceScore": 49,
+    "qualificationReason": "Nobis audax odit stultus summopere aggero.",
+    "fraudScore": 0.12,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-21T07:58:11.163Z",
+    "qualifiedAt": "2025-09-21T08:58:11.163Z",
+    "updatedAt": "2025-10-06T09:52:40.394Z"
+  },
+  {
+    "id": "req_0087",
+    "companyName": "Biotech Innovations",
+    "companyTier": "tier_1",
+    "contactName": "Kerry Metz",
+    "contactEmail": "Jake.Zieme43@gmail.com",
+    "contactPhone": "(593) 985-0461 x574",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Process optimization"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-17",
+      "2025-11-16"
+    ],
+    "urgency": "critical",
+    "status": "qualified",
+    "importanceScore": 51,
+    "qualificationReason": "Veritas viridis caveo accendo vacuus contra tubineus celebrer.",
+    "fraudScore": 0.21,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-10-03T20:09:46.899Z",
+    "qualifiedAt": "2025-10-03T21:09:46.899Z",
+    "updatedAt": "2025-10-06T09:52:40.394Z"
+  },
+  {
+    "id": "req_0088",
+    "companyName": "Digital Horizons SA",
+    "companyTier": "tier_1",
+    "contactName": "Nathaniel Schmidt-Hilpert DDS",
+    "contactEmail": "Neoma.Haley@hotmail.com",
+    "contactPhone": "372.554.2520 x887",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Operational efficiency improvements",
+      "Resource allocation",
+      "Process optimization"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-17"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.07,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-30T20:17:40.037Z",
+    "updatedAt": "2025-10-06T09:52:40.394Z"
+  },
+  {
+    "id": "req_0089",
+    "companyName": "Energy Solutions Ltd",
+    "companyTier": "tier_1",
+    "contactName": "Gilberto Schuppe",
+    "contactEmail": "Torrey32@hotmail.com",
+    "contactPhone": "749-959-0492 x0603",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Information exchange"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-17"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.16,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-19T15:21:52.782Z",
+    "updatedAt": "2025-10-06T09:52:40.394Z"
+  },
+  {
+    "id": "req_0090",
+    "companyName": "Sustainability Partners",
+    "companyTier": "tier_2",
+    "contactName": "Harry Fahey",
+    "contactEmail": "Jonas_Schmitt@yahoo.com",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Market research",
+      "Industry insights"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-15",
+      "2025-11-18"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.22,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-30T13:41:43.962Z",
+    "updatedAt": "2025-10-06T09:52:40.394Z"
+  },
+  {
+    "id": "req_0091",
+    "companyName": "Digital Horizons SA",
+    "companyTier": "tier_3",
+    "contactName": "Mr. Randal Cremin-Nicolas",
+    "contactEmail": "Katelynn.Crist@yahoo.com",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Innovation collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "medium",
+    "status": "qualified",
+    "importanceScore": 85,
+    "qualificationReason": "Cohaero cilicium coniecto alveus deprimo astrum triduana usque.",
+    "fraudScore": 0.29,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-10-02T10:17:36.294Z",
+    "qualifiedAt": "2025-10-02T11:17:36.294Z",
+    "updatedAt": "2025-10-06T09:52:40.394Z"
+  },
+  {
+    "id": "req_0092",
+    "companyName": "Entertainment Systems",
+    "companyTier": "tier_3",
+    "contactName": "Benny Bartoletti-Mueller",
+    "contactEmail": "Electa79@gmail.com",
+    "contactPhone": "(645) 973-0508 x637",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Customer success stories",
+      "Sales pipeline review",
+      "Pricing discussion"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-17",
+      "2025-11-15"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.08,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-17T17:20:48.307Z",
+    "updatedAt": "2025-10-06T09:52:40.394Z"
+  },
+  {
+    "id": "req_0093",
+    "companyName": "Future Systems AG",
+    "companyTier": "tier_3",
+    "contactName": "Myron Powlowski",
+    "contactEmail": "Norma.Cormier39@hotmail.com",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Feature showcase",
+      "Live system demo",
+      "Product demonstration"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-19"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.07,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-25T09:12:37.648Z",
+    "updatedAt": "2025-10-06T09:52:40.394Z"
+  },
+  {
+    "id": "req_0094",
+    "companyName": "Green Tech Corp",
+    "companyTier": "tier_2",
+    "contactName": "Kayla Barton",
+    "contactEmail": "Ronny22@hotmail.com",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Contract negotiation",
+      "Sales pipeline review"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-17",
+      "2025-11-19"
+    ],
+    "urgency": "high",
+    "status": "qualified",
+    "importanceScore": 35,
+    "qualificationReason": "Earum valde libero sodalitas vereor arcesso aggero talis adulescens clementia.",
+    "fraudScore": 0.27,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-27T11:41:38.289Z",
+    "qualifiedAt": "2025-09-27T12:41:38.289Z",
+    "updatedAt": "2025-10-06T09:52:40.395Z"
+  },
+  {
+    "id": "req_0095",
+    "companyName": "Cloud Systems Group",
+    "companyTier": "tier_2",
+    "contactName": "Ann Schamberger",
+    "contactEmail": "Adrien41@gmail.com",
+    "contactPhone": "493.418.1824 x1983",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Sales pipeline review",
+      "Product demonstration",
+      "Pricing discussion"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-16",
+      "2025-11-17"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.07,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api",
+      "referredBy": "Irvin Lowe"
+    },
+    "submittedAt": "2025-09-10T20:52:15.468Z",
+    "updatedAt": "2025-10-06T09:52:40.395Z"
+  },
+  {
+    "id": "req_0096",
+    "companyName": "Advanced Computing Ltd",
+    "companyTier": "tier_2",
+    "contactName": "Dr. Frank Kertzmann",
+    "contactEmail": "Greta_Cormier74@gmail.com",
+    "contactPhone": "586.534.1898 x429",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Co-development initiatives"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-19",
+      "2025-11-17"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.27,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-12T10:13:54.636Z",
+    "updatedAt": "2025-10-06T09:52:40.395Z"
+  },
+  {
+    "id": "req_0097",
+    "companyName": "Global Innovations Ltd",
+    "companyTier": "tier_3",
+    "contactName": "Priscilla Barrows",
+    "contactEmail": "Meta36@hotmail.com",
+    "contactPhone": "949-571-7784 x50913",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Process optimization",
+      "Team collaboration",
+      "Resource allocation"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-15"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.3,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-22T05:31:27.943Z",
+    "updatedAt": "2025-10-06T09:52:40.395Z"
+  },
+  {
+    "id": "req_0098",
+    "companyName": "TechCorp Industries",
+    "companyTier": "tier_2",
+    "contactName": "Dr. Priscilla Cummerata",
+    "contactEmail": "Mertie4@yahoo.com",
+    "contactPhone": "925.640.6356 x50114",
+    "meetingType": "operational",
+    "requestedTopics": [
+      "Team collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-15"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.02,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-25T23:44:23.979Z",
+    "updatedAt": "2025-10-06T09:52:40.396Z"
+  },
+  {
+    "id": "req_0099",
+    "companyName": "Cyber Security Solutions",
+    "companyTier": "tier_1",
+    "contactName": "Cameron Crooks",
+    "contactEmail": "Sarai.Prohaska74@gmail.com",
+    "contactPhone": "(623) 804-5953",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Market research"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "critical",
+    "status": "pending",
+    "fraudScore": 0.28,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-21T04:23:42.305Z",
+    "updatedAt": "2025-10-06T09:52:40.396Z"
+  },
+  {
+    "id": "req_0100",
+    "companyName": "Digital Horizons SA",
+    "companyTier": "tier_2",
+    "contactName": "Diane Parker",
+    "contactEmail": "Jakob11@gmail.com",
+    "contactPhone": "570.778.2582 x45031",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Future vision discussion",
+      "Thought leadership session",
+      "Best practices sharing"
+    ],
+    "preferredDates": [
+      "2025-11-15"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.24,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-22T17:53:29.359Z",
+    "updatedAt": "2025-10-06T09:52:40.396Z"
+  },
+  {
+    "id": "req_0101",
+    "companyName": "Robotics International",
+    "companyTier": "unknown",
+    "contactName": "Ramon Homenick",
+    "contactEmail": "Hardy_Barton73@yahoo.com",
+    "contactPhone": "(918) 812-9592 x4635",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Security and compliance",
+      "Performance optimization",
+      "API integration discussion"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-15",
+      "2025-11-17"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.13,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api",
+      "referredBy": "Wesley Toy"
+    },
+    "submittedAt": "2025-09-07T10:56:04.361Z",
+    "updatedAt": "2025-10-06T09:52:40.396Z"
+  },
+  {
+    "id": "req_0102",
+    "companyName": "Sustainability Partners",
+    "companyTier": "tier_3",
+    "contactName": "Charlie Hermiston III",
+    "contactEmail": "Theresia_Blanda51@gmail.com",
+    "contactPhone": "626.719.5734 x3954",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Long-term partnership opportunities",
+      "Strategic alignment discussions"
+    ],
+    "preferredDates": [
+      "2025-11-16"
+    ],
+    "urgency": "critical",
+    "status": "qualified",
+    "importanceScore": 35,
+    "qualificationReason": "Deleniti acidus convoco auctor deprecator vallum conventus confero sollers civis.",
+    "fraudScore": 0.17,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-20T04:44:58.734Z",
+    "qualifiedAt": "2025-09-20T05:44:58.734Z",
+    "updatedAt": "2025-10-06T09:52:40.396Z"
+  },
+  {
+    "id": "req_0103",
+    "companyName": "E-Commerce Global",
+    "companyTier": "tier_1",
+    "contactName": "Diana Dibbert DDS",
+    "contactEmail": "Dorthy.Windler@yahoo.com",
+    "contactPhone": "1-258-754-0785 x92519",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Performance optimization",
+      "API integration discussion"
+    ],
+    "preferredDates": [
+      "2025-11-18"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.04,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api",
+      "referredBy": "Rene Senger"
+    },
+    "submittedAt": "2025-09-28T23:36:52.165Z",
+    "updatedAt": "2025-10-06T09:52:40.396Z"
+  },
+  {
+    "id": "req_0104",
+    "companyName": "Energy Solutions Ltd",
+    "companyTier": "tier_2",
+    "contactName": "Lynette Abbott",
+    "contactEmail": "Drew.Zboncak@yahoo.com",
+    "meetingType": "other",
+    "requestedTopics": [
+      "Market research",
+      "General discussion",
+      "Information exchange"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "critical",
+    "status": "qualified",
+    "importanceScore": 45,
+    "qualificationReason": "Veritas animadverto verto appello sperno aspernatur aedificium demergo consectetur currus.",
+    "fraudScore": 0.04,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-07T15:49:59.522Z",
+    "qualifiedAt": "2025-09-07T16:49:59.522Z",
+    "updatedAt": "2025-10-06T09:52:40.396Z"
+  },
+  {
+    "id": "req_0105",
+    "companyName": "Strategic Ventures Corp",
+    "companyTier": "unknown",
+    "contactName": "Denise Becker",
+    "contactEmail": "Karine79@gmail.com",
+    "contactPhone": "975-790-7438 x35436",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Thought leadership session"
+    ],
+    "preferredDates": [
+      "2025-11-19"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.22,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-10-04T08:57:12.820Z",
+    "updatedAt": "2025-10-06T09:52:40.396Z"
+  },
+  {
+    "id": "req_0106",
+    "companyName": "Sustainability Partners",
+    "companyTier": "tier_4",
+    "contactName": "Wayne Langworth",
+    "contactEmail": "Ben_Crist75@gmail.com",
+    "contactPhone": "785.486.2793 x075",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Integration opportunities",
+      "Ecosystem collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-17",
+      "2025-11-15"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.13,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api",
+      "referredBy": "Laurie Roberts Jr."
+    },
+    "submittedAt": "2025-09-17T07:54:52.049Z",
+    "updatedAt": "2025-10-06T09:52:40.397Z"
+  },
+  {
+    "id": "req_0107",
+    "companyName": "Healthcare Technologies",
+    "companyTier": "tier_3",
+    "contactName": "Allen Lynch",
+    "contactEmail": "Tad90@gmail.com",
+    "contactPhone": "(453) 227-4439 x71649",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Use case walkthrough",
+      "Proof of concept presentation"
+    ],
+    "preferredDates": [
+      "2025-11-17"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.01,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-23T12:07:19.641Z",
+    "updatedAt": "2025-10-06T09:52:40.397Z"
+  },
+  {
+    "id": "req_0108",
+    "companyName": "AI Solutions Group",
+    "companyTier": "tier_3",
+    "contactName": "Marion Dickinson",
+    "contactEmail": "Leland1@yahoo.com",
+    "contactPhone": "(964) 999-6831 x678",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Ecosystem collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-19"
+    ],
+    "urgency": "high",
+    "status": "qualified",
+    "importanceScore": 73,
+    "qualificationReason": "Facere spargo eius.",
+    "fraudScore": 0.16,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-19T22:22:25.656Z",
+    "qualifiedAt": "2025-09-19T23:22:25.656Z",
+    "updatedAt": "2025-10-06T09:52:40.397Z"
+  },
+  {
+    "id": "req_0109",
+    "companyName": "Blockchain Ventures",
+    "companyTier": "tier_4",
+    "contactName": "Natalie Rowe",
+    "contactEmail": "Raven_Feil86@hotmail.com",
+    "contactPhone": "1-545-246-2722 x2476",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Innovation collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-19"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.03,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-19T16:33:25.151Z",
+    "updatedAt": "2025-10-06T09:52:40.397Z"
+  },
+  {
+    "id": "req_0110",
+    "companyName": "Biotech Innovations",
+    "companyTier": "tier_4",
+    "contactName": "Miss Camille Wiegand",
+    "contactEmail": "Savanah75@yahoo.com",
+    "contactPhone": "781.352.1812",
+    "meetingType": "keynote",
+    "requestedTopics": [
+      "Thought leadership session",
+      "Best practices sharing",
+      "Innovation showcase"
+    ],
+    "preferredDates": [
+      "2025-11-17"
+    ],
+    "urgency": "low",
+    "status": "qualified",
+    "importanceScore": 51,
+    "qualificationReason": "Ulciscor aveho comedo cado calcar villa utique decipio.",
+    "fraudScore": 0.15,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm",
+      "referredBy": "Mae Stracke V"
+    },
+    "submittedAt": "2025-09-29T10:39:37.845Z",
+    "qualifiedAt": "2025-09-29T11:39:37.845Z",
+    "updatedAt": "2025-10-06T09:52:40.397Z"
+  },
+  {
+    "id": "req_0111",
+    "companyName": "Entertainment Systems",
+    "companyTier": "tier_3",
+    "contactName": "Marlene Hirthe",
+    "contactEmail": "Opal73@hotmail.com",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Digital transformation roadmap",
+      "Innovation collaboration",
+      "Long-term partnership opportunities"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-15"
+    ],
+    "urgency": "critical",
+    "status": "qualified",
+    "importanceScore": 56,
+    "qualificationReason": "Theca conspergo calculus abscido sto pecco quibusdam.",
+    "fraudScore": 0.29,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm",
+      "referredBy": "Randy Sauer"
+    },
+    "submittedAt": "2025-09-27T15:15:22.819Z",
+    "qualifiedAt": "2025-09-27T16:15:22.819Z",
+    "updatedAt": "2025-10-06T09:52:40.397Z"
+  },
+  {
+    "id": "req_0112",
+    "companyName": "Future Systems AG",
+    "companyTier": "tier_1",
+    "contactName": "Herman Spinka",
+    "contactEmail": "Vada_Mann35@yahoo.com",
+    "contactPhone": "221.606.3519",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Infrastructure planning",
+      "Performance optimization"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-17",
+      "2025-11-19"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.01,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-09-26T05:16:25.825Z",
+    "updatedAt": "2025-10-06T09:52:40.397Z"
+  },
+  {
+    "id": "req_0113",
+    "companyName": "Research Institute AG",
+    "companyTier": "unknown",
+    "contactName": "Elvira Thompson",
+    "contactEmail": "Jeramie95@gmail.com",
+    "contactPhone": "(893) 534-8221 x8581",
+    "meetingType": "demo",
+    "requestedTopics": [
+      "Live system demo",
+      "Feature showcase"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-18",
+      "2025-11-15"
+    ],
+    "urgency": "medium",
+    "status": "pending",
+    "fraudScore": 0.11,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-10-01T21:24:29.372Z",
+    "updatedAt": "2025-10-06T09:52:40.398Z"
+  },
+  {
+    "id": "req_0114",
+    "companyName": "Financial Services Group",
+    "companyTier": "tier_2",
+    "contactName": "Margie Lueilwitz",
+    "contactEmail": "Trevion87@hotmail.com",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Co-development initiatives",
+      "Joint venture opportunities",
+      "Ecosystem collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-17",
+      "2025-11-18"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.12,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "web"
+    },
+    "submittedAt": "2025-09-23T13:28:13.416Z",
+    "updatedAt": "2025-10-06T09:52:40.398Z"
+  },
+  {
+    "id": "req_0115",
+    "companyName": "Global Innovations Ltd",
+    "companyTier": "unknown",
+    "contactName": "Winifred Dibbert",
+    "contactEmail": "Eulalia.Conn56@gmail.com",
+    "contactPhone": "1-483-228-9322 x2319",
+    "meetingType": "sales",
+    "requestedTopics": [
+      "Product demonstration"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-19"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.04,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-10-04T19:19:48.208Z",
+    "updatedAt": "2025-10-06T09:52:40.398Z"
+  },
+  {
+    "id": "req_0116",
+    "companyName": "Quantum Dynamics Inc",
+    "companyTier": "unknown",
+    "contactName": "Dr. Erick Ferry",
+    "contactEmail": "Isadore.Veum4@gmail.com",
+    "contactPhone": "(328) 688-8522 x3531",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Strategic alignment discussions",
+      "Market expansion strategies",
+      "Innovation collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-15",
+      "2025-11-18"
+    ],
+    "urgency": "high",
+    "status": "qualified",
+    "importanceScore": 43,
+    "qualificationReason": "Appono adeptio utique spiritus esse cum conicio vulgus volup.",
+    "fraudScore": 0.14,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm",
+      "referredBy": "Grant Marks MD"
+    },
+    "submittedAt": "2025-09-21T16:30:34.863Z",
+    "qualifiedAt": "2025-09-21T17:30:34.863Z",
+    "updatedAt": "2025-10-06T09:52:40.398Z"
+  },
+  {
+    "id": "req_0117",
+    "companyName": "Cloud Systems Group",
+    "companyTier": "tier_2",
+    "contactName": "Marian Skiles MD",
+    "contactEmail": "Cleo66@yahoo.com",
+    "contactPhone": "445-999-1546 x9215",
+    "meetingType": "strategic",
+    "requestedTopics": [
+      "Market expansion strategies",
+      "Digital transformation roadmap"
+    ],
+    "preferredDates": [
+      "2025-11-17"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.15,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "email"
+    },
+    "submittedAt": "2025-10-03T19:59:20.672Z",
+    "updatedAt": "2025-10-06T09:52:40.398Z"
+  },
+  {
+    "id": "req_0118",
+    "companyName": "Healthcare Technologies",
+    "companyTier": "tier_2",
+    "contactName": "Mrs. Judith Swift",
+    "contactEmail": "Jacinthe.Braun6@yahoo.com",
+    "contactPhone": "455-866-5809",
+    "meetingType": "other",
+    "requestedTopics": [
+      "General discussion",
+      "Information exchange",
+      "Market research"
+    ],
+    "preferredDates": [
+      "2025-11-18",
+      "2025-11-16"
+    ],
+    "urgency": "high",
+    "status": "pending",
+    "fraudScore": 0.15,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-23T01:09:22.302Z",
+    "updatedAt": "2025-10-06T09:52:40.398Z"
+  },
+  {
+    "id": "req_0119",
+    "companyName": "TechCorp Industries",
+    "companyTier": "tier_1",
+    "contactName": "Kellie Bailey",
+    "contactEmail": "Armani_Huel@yahoo.com",
+    "contactPhone": "717.821.4855 x958",
+    "meetingType": "technical",
+    "requestedTopics": [
+      "Performance optimization",
+      "Security and compliance"
+    ],
+    "preferredDates": [
+      "2025-11-16",
+      "2025-11-18",
+      "2025-11-19"
+    ],
+    "urgency": "high",
+    "status": "qualified",
+    "importanceScore": 59,
+    "qualificationReason": "Patrocinor comedo supra tricesimus curto defleo.",
+    "fraudScore": 0.27,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "api"
+    },
+    "submittedAt": "2025-09-22T01:34:20.952Z",
+    "qualifiedAt": "2025-09-22T02:34:20.952Z",
+    "updatedAt": "2025-10-06T09:52:40.398Z"
+  },
+  {
+    "id": "req_0120",
+    "companyName": "Financial Services Group",
+    "companyTier": "tier_3",
+    "contactName": "Dr. Henry Donnelly",
+    "contactEmail": "Skyla_Gottlieb@gmail.com",
+    "contactPhone": "(482) 697-4310 x052",
+    "meetingType": "partnership",
+    "requestedTopics": [
+      "Integration opportunities",
+      "Ecosystem collaboration"
+    ],
+    "preferredDates": [
+      "2025-11-19",
+      "2025-11-18",
+      "2025-11-15"
+    ],
+    "urgency": "low",
+    "status": "pending",
+    "fraudScore": 0.02,
+    "isDuplicate": false,
+    "metadata": {
+      "source": "crm"
+    },
+    "submittedAt": "2025-09-15T16:49:51.205Z",
+    "updatedAt": "2025-10-06T09:52:40.399Z"
+  }
+]

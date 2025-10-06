@@ -1,0 +1,21 @@
+{
+  "name": "@agenda-manager/data",
+  "version": "0.1.0",
+  "description": "Synthetic data generator for testing and development",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "generate": "ts-node src/index.ts",
+    "clean": "rm -rf dist output"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@agenda-manager/shared": "*",
+    "@faker-js/faker": "^8.3.1"
+  }
+}

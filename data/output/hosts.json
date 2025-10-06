@@ -1,0 +1,1838 @@
+[
+  {
+    "id": "host_001",
+    "name": "Cindy Block-Maggio IV",
+    "email": "Emory_Farrell90@hotmail.com",
+    "role": "Senior Manager of Sales",
+    "department": "Sales",
+    "expertise": [
+      "Cybersecurity",
+      "Innovation Management",
+      "Digital Transformation",
+      "Cloud Architecture"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 4,
+    "preferredMeetingTypes": [
+      "operational",
+      "strategic",
+      "technical",
+      "demo"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "senior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_002",
+    "name": "Damon DuBuque",
+    "email": "Burnice_Bernhard@gmail.com",
+    "role": "Principal of Executive",
+    "department": "Executive",
+    "expertise": [
+      "Innovation Management",
+      "Artificial Intelligence"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 8,
+    "preferredMeetingTypes": [
+      "demo",
+      "technical",
+      "partnership",
+      "keynote"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "senior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_003",
+    "name": "Charlotte Lang",
+    "email": "Adrain_Wuckert48@gmail.com",
+    "role": "Senior Manager of Strategy",
+    "department": "Strategy",
+    "expertise": [
+      "Cloud Architecture",
+      "Digital Transformation",
+      "Technology Consulting",
+      "Data Science"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [],
+        "isBlocked": true,
+        "blockReason": "Off-site meeting"
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 5,
+    "preferredMeetingTypes": [
+      "technical",
+      "partnership"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "mid",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_004",
+    "name": "Casey Nitzsche-Johnson",
+    "email": "Jazlyn.Bosco@hotmail.com",
+    "role": "Lead of Product",
+    "department": "Product",
+    "expertise": [
+      "Product Strategy",
+      "Digital Transformation",
+      "Innovation Management"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [],
+        "isBlocked": true,
+        "blockReason": "Company event"
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 7,
+    "preferredMeetingTypes": [
+      "keynote",
+      "sales",
+      "technical",
+      "other"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "senior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_005",
+    "name": "Mr. Victor Legros",
+    "email": "Magnolia.Goodwin46@hotmail.com",
+    "role": "Senior Manager of Executive",
+    "department": "Executive",
+    "expertise": [
+      "Cloud Architecture",
+      "Digital Transformation",
+      "Data Science"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 5,
+    "preferredMeetingTypes": [
+      "strategic",
+      "other"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "senior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_006",
+    "name": "Norma Walter",
+    "email": "Brad.Marvin33@gmail.com",
+    "role": "Director of Sales",
+    "department": "Sales",
+    "expertise": [
+      "Quantum Computing",
+      "Cloud Architecture"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [],
+        "isBlocked": true,
+        "blockReason": "Company event"
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 6,
+    "preferredMeetingTypes": [
+      "strategic",
+      "sales",
+      "keynote"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "junior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_007",
+    "name": "Steven Friesen V",
+    "email": "Louvenia45@yahoo.com",
+    "role": "VP of Engineering",
+    "department": "Engineering",
+    "expertise": [
+      "Product Strategy",
+      "Business Development",
+      "Digital Transformation"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 8,
+    "preferredMeetingTypes": [
+      "demo",
+      "other"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "junior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_008",
+    "name": "Alicia Maggio",
+    "email": "Isaac_Wolf97@hotmail.com",
+    "role": "Director of Strategy",
+    "department": "Strategy",
+    "expertise": [
+      "Cybersecurity",
+      "Business Development",
+      "Artificial Intelligence"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 6,
+    "preferredMeetingTypes": [
+      "keynote",
+      "demo",
+      "technical"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "junior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_009",
+    "name": "Miss Bernadette Runolfsson",
+    "email": "Brett_Corwin92@hotmail.com",
+    "role": "Principal of Strategy",
+    "department": "Strategy",
+    "expertise": [
+      "Cybersecurity",
+      "Cloud Architecture"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [],
+        "isBlocked": true,
+        "blockReason": "Off-site meeting"
+      }
+    ],
+    "maxMeetingsPerDay": 7,
+    "preferredMeetingTypes": [
+      "technical",
+      "operational"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "mid",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_010",
+    "name": "Ashley Pfannerstill DDS",
+    "email": "Alize_Cole84@hotmail.com",
+    "role": "Director of Product",
+    "department": "Product",
+    "expertise": [
+      "Quantum Computing",
+      "Product Strategy",
+      "Cybersecurity",
+      "Cloud Architecture"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [],
+        "isBlocked": true,
+        "blockReason": "Off-site meeting"
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 5,
+    "preferredMeetingTypes": [
+      "partnership",
+      "strategic"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "senior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_011",
+    "name": "Delia McDermott",
+    "email": "Marco_Hahn8@yahoo.com",
+    "role": "VP of Strategy",
+    "department": "Strategy",
+    "expertise": [
+      "Technology Consulting",
+      "Digital Transformation"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 6,
+    "preferredMeetingTypes": [
+      "demo",
+      "strategic",
+      "other"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "senior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_012",
+    "name": "Lori Mann",
+    "email": "Verna.Gerlach@yahoo.com",
+    "role": "VP of Engineering",
+    "department": "Engineering",
+    "expertise": [
+      "Digital Transformation",
+      "Business Development",
+      "Technology Consulting",
+      "Cloud Architecture"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [],
+        "isBlocked": true,
+        "blockReason": "Company event"
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 6,
+    "preferredMeetingTypes": [
+      "operational",
+      "sales",
+      "technical",
+      "keynote"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "mid",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_013",
+    "name": "Eugene Rath-Cruickshank",
+    "email": "Beverly_Strosin26@gmail.com",
+    "role": "VP of Product",
+    "department": "Product",
+    "expertise": [
+      "Data Science",
+      "Digital Transformation"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 5,
+    "preferredMeetingTypes": [
+      "operational",
+      "partnership",
+      "demo"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "senior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_014",
+    "name": "Clinton Haag",
+    "email": "Cristian.Kunde59@yahoo.com",
+    "role": "VP of Marketing",
+    "department": "Marketing",
+    "expertise": [
+      "Data Science",
+      "Cybersecurity",
+      "Technology Consulting"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "17:00",
+            "endTime": "18:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 5,
+    "preferredMeetingTypes": [
+      "other",
+      "sales",
+      "technical"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "senior",
+      "timezone": "UTC+01:00"
+    }
+  },
+  {
+    "id": "host_015",
+    "name": "Jody Kling-Rippin",
+    "email": "Kailee48@hotmail.com",
+    "role": "Senior Manager of Strategy",
+    "department": "Strategy",
+    "expertise": [
+      "Business Development",
+      "Cloud Architecture",
+      "Quantum Computing",
+      "Digital Transformation"
+    ],
+    "availability": [
+      {
+        "date": "2025-11-15",
+        "timeSlots": [
+          {
+            "date": "2025-11-15",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          },
+          {
+            "date": "2025-11-15",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-16",
+        "timeSlots": [
+          {
+            "date": "2025-11-16",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "13:00",
+            "endTime": "14:00"
+          },
+          {
+            "date": "2025-11-16",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-17",
+        "timeSlots": [
+          {
+            "date": "2025-11-17",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-17",
+            "startTime": "10:00",
+            "endTime": "11:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-18",
+        "timeSlots": [
+          {
+            "date": "2025-11-18",
+            "startTime": "09:00",
+            "endTime": "10:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-18",
+            "startTime": "14:00",
+            "endTime": "15:00"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-19",
+        "timeSlots": [
+          {
+            "date": "2025-11-19",
+            "startTime": "15:00",
+            "endTime": "16:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "11:00",
+            "endTime": "12:00"
+          },
+          {
+            "date": "2025-11-19",
+            "startTime": "16:00",
+            "endTime": "17:00"
+          }
+        ]
+      }
+    ],
+    "maxMeetingsPerDay": 4,
+    "preferredMeetingTypes": [
+      "strategic",
+      "sales",
+      "demo",
+      "operational"
+    ],
+    "isActive": true,
+    "metadata": {
+      "seniority": "mid",
+      "timezone": "UTC+01:00"
+    }
+  }
+]

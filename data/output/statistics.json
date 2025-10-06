@@ -1,0 +1,43 @@
+{
+  "requests": {
+    "total": 120,
+    "byStatus": {
+      "pending": 85,
+      "qualified": 35
+    },
+    "byType": {
+      "keynote": 18,
+      "strategic": 19,
+      "partnership": 19,
+      "technical": 13,
+      "operational": 10,
+      "sales": 13,
+      "demo": 13,
+      "other": 15
+    },
+    "byTier": {
+      "tier_2": 26,
+      "tier_4": 19,
+      "tier_3": 28,
+      "tier_1": 22,
+      "unknown": 25
+    },
+    "avgImportanceScore": 62.9,
+    "duplicates": 5
+  },
+  "hosts": {
+    "total": 15,
+    "active": 15,
+    "totalAvailableSlots": 216
+  },
+  "metadata": {
+    "generatedAt": "2025-10-06T09:52:40.402Z",
+    "eventDates": [
+      "2025-11-15",
+      "2025-11-16",
+      "2025-11-17",
+      "2025-11-18",
+      "2025-11-19"
+    ]
+  }
+}

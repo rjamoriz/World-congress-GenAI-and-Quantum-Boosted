@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-700;
+  }
+  
+  body {
+    @apply bg-dark-900 text-gray-100;
+  }
+}
+
+@layer components {
+  .neumorphic-card {
+    @apply bg-dark-800 rounded-2xl;
+    box-shadow: 8px 8px 16px #0a0a0a, -8px -8px 16px #1e1e1e;
+  }
+  
+  .neumorphic-button {
+    @apply bg-dark-800 rounded-xl px-6 py-3 transition-all duration-200;
+    box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #1e1e1e;
+  }
+  
+  .neumorphic-button:hover {
+    box-shadow: 4px 4px 8px #0a0a0a, -4px -4px 8px #1e1e1e;
+  }
+  
+  .neumorphic-button:active {
+    box-shadow: inset 4px 4px 8px #0a0a0a, inset -4px -4px 8px #1e1e1e;
+  }
+  
+  .neumorphic-input {
+    @apply bg-dark-800 rounded-xl px-4 py-2 w-full outline-none transition-all duration-200;
+    box-shadow: inset 4px 4px 8px #0a0a0a, inset -4px -4px 8px #1e1e1e;
+  }
+  
+  .neumorphic-input:focus {
+    @apply ring-2 ring-primary-500 ring-opacity-50;
+  }
+  
+  .glass-panel {
+    @apply backdrop-blur-lg bg-dark-800/50 border border-gray-700/50 rounded-2xl;
+  }
+}

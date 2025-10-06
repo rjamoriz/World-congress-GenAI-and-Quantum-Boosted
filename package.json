@@ -1,0 +1,48 @@
+{
+  "name": "world-congress-agenda-manager",
+  "version": "0.1.0",
+  "description": "Copilot-first agenda manager with GenAI qualification and quantum-inspired scheduling",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared",
+    "data"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "build": "npm run build --workspaces",
+    "build:frontend": "npm run build --workspace=frontend",
+    "build:backend": "npm run build --workspace=backend",
+    "test": "npm run test --workspaces",
+    "test:backend": "npm run test --workspace=backend",
+    "test:frontend": "npm run test --workspace=frontend",
+    "lint": "npm run lint --workspaces",
+    "generate-data": "npm run generate --workspace=data",
+    "import-data": "node scripts/import-data.js",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "keywords": [
+    "agenda-manager",
+    "genai",
+    "quantum-computing",
+    "optimization",
+    "scheduling",
+    "copilot",
+    "automation"
+  ],
+  "author": "Ruben",
+  "license": "MIT"
+}

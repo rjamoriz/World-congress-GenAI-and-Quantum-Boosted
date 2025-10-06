@@ -1,0 +1,17 @@
+{
+  "name": "@agenda-manager/shared",
+  "version": "0.1.0",
+  "description": "Shared TypeScript types and constants",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {},
+  "keywords": ["types", "shared", "constants"]
+}
