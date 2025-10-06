@@ -50,11 +50,57 @@ router.post('/optimize', schedulerRateLimiter, asyncHandler(async (req: Request,
     algorithm
   });
   
-  logger.info(`Optimization complete: ${result.assignments.length} meetings scheduled`);
+  // Save scheduled meetings to database
+  const savedMeetings = [];
+  for (const assignment of result.assignments) {
+    try {
+      logger.info(`Attempting to save meeting for request ${assignment.requestId}, host ${assignment.hostId}`);
+      
+      const scheduledMeeting = await ScheduledMeetingModel.create({
+        requestId: assignment.requestId,
+        hostId: assignment.hostId,
+        timeSlot: {
+          ...assignment.timeSlot,
+          hostId: assignment.hostId
+        },
+        status: 'confirmed',
+        materialsGenerated: false,
+        followUpSent: false
+      });
+      
+      logger.info(`Successfully created scheduled meeting: ${scheduledMeeting._id}`);
+      
+      // Update request status to scheduled
+      const updatedRequest = await MeetingRequestModel.findByIdAndUpdate(assignment.requestId, {
+        status: RequestStatus.SCHEDULED,
+        scheduledAt: new Date()
+      });
+      
+      if (updatedRequest) {
+        logger.info(`Updated request ${assignment.requestId} status to scheduled`);
+      } else {
+        logger.warn(`Could not find request ${assignment.requestId} to update`);
+      }
+      
+      savedMeetings.push(scheduledMeeting);
+    } catch (error: any) {
+      logger.error(`Failed to save meeting assignment for request ${assignment.requestId}:`, error.message);
+      logger.error(`Error details:`, error);
+    }
+  }
+  
+  logger.info(`Optimization complete: ${result.assignments.length} meetings scheduled, ${savedMeetings.length} saved to database`);
+  
+  // Enhanced result with saved meetings info
+  const enhancedResult = {
+    ...result,
+    savedMeetings: savedMeetings.length,
+    explanation: `${result.explanation} - Successfully scheduled ${savedMeetings.length} meetings out of ${result.assignments.length} assignments.`
+  };
   
   res.json({
     success: true,
-    data: result,
+    data: enhancedResult,
     timestamp: new Date().toISOString()
   });
 }));
