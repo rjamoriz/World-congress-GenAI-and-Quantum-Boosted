@@ -25,12 +25,15 @@ export default function RequestsPage() {
         params.status = filter
       }
       
+      console.log('Fetching requests with params:', params)
       const response = await apiClient.get('/requests', { params })
+      console.log('API Response:', response.data)
+      
       setRequests(response.data.data || [])
       setTotalPages(response.data.pagination?.totalPages || 1)
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to fetch requests:', error)
-      // Show mock data for demo without backend
+      console.error('Error details:', error.response?.data || error.message)
       setRequests([])
     } finally {
       setLoading(false)
