@@ -114,22 +114,47 @@ const PORT = process.env.PORT || 3001;
 
 async function startServer() {
   try {
+    console.log('Starting server initialization...');
+    
     // Connect to databases
+    console.log('Connecting to MongoDB...');
     await connectDatabase();
+    console.log('MongoDB connected!');
+    
+    console.log('Connecting to Redis...');
     await connectRedis();
+    console.log('Redis connected!');
     
     // Start HTTP server
+    console.log(`Starting HTTP server on port ${PORT}...`);
     httpServer.listen(PORT, () => {
       logger.info(`🚀 Server running on port ${PORT}`);
       logger.info(`📡 WebSocket server ready`);
       logger.info(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`✅ Server is ready at http://localhost:${PORT}`);
     });
   } catch (error) {
+    console.error('Failed to start server:', error);
     logger.error('Failed to start server:', error);
     process.exit(1);
   }
 }
 
-startServer();
+console.log('Initializing application...');
+
+// Add timeout to prevent hanging
+const startupTimeout = setTimeout(() => {
+  console.error('❌ Server startup timeout after 30 seconds');
+  process.exit(1);
+}, 30000);
+
+startServer().then(() => {
+  clearTimeout(startupTimeout);
+  console.log('✅ Server startup completed successfully');
+}).catch(err => {
+  clearTimeout(startupTimeout);
+  console.error('Startup error:', err);
+  process.exit(1);
+});
 
 export { app, io };

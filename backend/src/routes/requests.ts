@@ -89,14 +89,14 @@ router.post('/', asyncHandler(async (req: Request, res: Response) => {
   await AuditLogModel.create({
     action: AUDIT_ACTIONS.CREATE,
     resource: 'MeetingRequest',
-    resourceId: newRequest._id.toString(),
+    resourceId: (newRequest._id as any).toString(),
     metadata: { companyName: requestData.companyName },
     timestamp: new Date(),
     ipAddress: req.ip,
     userAgent: req.get('user-agent')
   });
   
-  logger.info(`New meeting request created: ${newRequest._id}`);
+  logger.info(`New meeting request created: ${(newRequest._id as any).toString()}`);
   
   res.status(HTTP_STATUS.CREATED).json({
     success: true,
