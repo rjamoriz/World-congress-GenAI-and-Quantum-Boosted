@@ -3,7 +3,6 @@
  */
 
 import { Router, Request, Response } from 'express';
-import { WebSocket } from 'ws';
 import { asyncHandler } from '../middleware/errorHandler';
 import { logger } from '../utils/logger';
 
@@ -23,7 +22,7 @@ router.get('/realtime', asyncHandler(async (req: Request, res: Response) => {
 
   // This would typically be handled by a WebSocket server
   // For now, return connection info
-  res.json({
+  return res.json({
     message: 'WebSocket endpoint ready',
     endpoint: '/api/voice/realtime',
     instructions: 'Use WebSocket connection to connect to OpenAI Realtime API'
@@ -64,11 +63,11 @@ router.post('/tts', asyncHandler(async (req: Request, res: Response) => {
       'Content-Length': audioBuffer.byteLength.toString(),
     });
     
-    res.send(Buffer.from(audioBuffer));
+    return res.send(Buffer.from(audioBuffer));
 
   } catch (error: any) {
     logger.error('TTS error:', error);
-    res.status(500).json({ error: 'Text-to-speech failed', details: error.message });
+    return res.status(500).json({ error: 'Text-to-speech failed', details: error.message });
   }
 }));
 
@@ -104,11 +103,11 @@ router.post('/stt', asyncHandler(async (req: Request, res: Response) => {
     }
 
     const result = await response.json();
-    res.json(result);
+    return res.json(result);
 
   } catch (error: any) {
     logger.error('STT error:', error);
-    res.status(500).json({ error: 'Speech-to-text failed', details: error.message });
+    return res.status(500).json({ error: 'Speech-to-text failed', details: error.message });
   }
 }));
 
@@ -166,11 +165,11 @@ router.post('/chat', asyncHandler(async (req: Request, res: Response) => {
     }
 
     const result = await response.json();
-    res.json(result);
+    return res.json(result);
 
   } catch (error: any) {
     logger.error('Chat completion error:', error);
-    res.status(500).json({ error: 'Chat completion failed', details: error.message });
+    return res.status(500).json({ error: 'Chat completion failed', details: error.message });
   }
 }));
 
@@ -247,7 +246,7 @@ router.post('/command', asyncHandler(async (req: Request, res: Response) => {
 
   } catch (error: any) {
     logger.error('Voice command processing error:', error);
-    res.status(500).json({ 
+    return res.status(500).json({ 
       error: 'Command processing failed', 
       details: error.message,
       success: false
