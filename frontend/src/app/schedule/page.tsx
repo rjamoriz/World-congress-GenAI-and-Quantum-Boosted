@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Sparkles, Calendar, Cpu, Zap, Settings, Play, BarChart3, Clock } from 'lucide-react'
+import { Sparkles, Calendar, Cpu, Zap, Settings, Play, BarChart3, Clock, CheckCircle } from 'lucide-react'
 import DashboardLayout from '@/components/DashboardLayout'
 import { apiClient } from '@/lib/api'
 
@@ -11,6 +11,8 @@ export default function SchedulePage() {
   const [optimizationResult, setOptimizationResult] = useState<any>(null)
   const [scheduledMeetings, setScheduledMeetings] = useState([])
   const [loading, setLoading] = useState(true)
+  const [notification, setNotification] = useState<{type: 'success' | 'error', message: string} | null>(null)
+  const [isQualifying, setIsQualifying] = useState(false)
   
   useEffect(() => {
     fetchScheduledMeetings()
@@ -32,26 +34,97 @@ export default function SchedulePage() {
   async function runOptimization() {
     setIsOptimizing(true)
     try {
+      console.log('Starting optimization with algorithm:', algorithm)
+      
       const response = await apiClient.post('/schedule/optimize', {
         algorithm,
-        maxIterations: algorithm === 'quantum' ? 1000 : 500,
-        includeUnscheduled: true
+        constraints: {
+          eventStartDate: new Date().toISOString().split('T')[0],
+          eventEndDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+          workingHoursStart: '09:00',
+          workingHoursEnd: '18:00',
+          meetingDurationMinutes: 30,
+          maxMeetingsPerDay: 8,
+          bufferMinutes: 15
+        }
       })
       
+      console.log('Optimization result:', response.data)
       setOptimizationResult(response.data.data)
       await fetchScheduledMeetings() // Refresh the list
       
+      // Show success notification
+      setNotification({
+        type: 'success',
+        message: `✅ Optimization completed! Scheduled ${response.data.data.assignments?.length || 0} meetings using ${algorithm} algorithm.`
+      })
+      setTimeout(() => setNotification(null), 5000)
+      
     } catch (error: any) {
       console.error('Optimization failed:', error)
-      alert('Optimization failed: ' + (error.response?.data?.error || error.message))
+      console.error('Error details:', error.response?.data)
+      setNotification({
+        type: 'error',
+        message: `❌ Optimization failed: ${error.response?.data?.error || error.message}`
+      })
+      setTimeout(() => setNotification(null), 5000)
     } finally {
       setIsOptimizing(false)
+    }
+  }
+  
+  async function qualifyPendingRequests() {
+    setIsQualifying(true)
+    try {
+      // Get some pending requests
+      const response = await apiClient.get('/requests?status=pending&limit=10')
+      const pendingRequests = response.data.data || []
+      
+      if (pendingRequests.length === 0) {
+        setNotification({
+          type: 'error',
+          message: '❌ No pending requests found to qualify'
+        })
+        setTimeout(() => setNotification(null), 3000)
+        return
+      }
+      
+      // Qualify them in batch
+      const requestIds = pendingRequests.map((r: any) => r.id)
+      await apiClient.post('/qualification/qualify-batch', { requestIds })
+      
+      setNotification({
+        type: 'success',
+        message: `✅ Qualified ${pendingRequests.length} requests! Now you can run optimization.`
+      })
+      setTimeout(() => setNotification(null), 5000)
+      
+    } catch (error: any) {
+      console.error('Qualification failed:', error)
+      setNotification({
+        type: 'error',
+        message: `❌ Qualification failed: ${error.response?.data?.error || error.message}`
+      })
+      setTimeout(() => setNotification(null), 5000)
+    } finally {
+      setIsQualifying(false)
     }
   }
 
   return (
     <DashboardLayout>
       <div className="space-y-6">
+        {/* Notification */}
+        {notification && (
+          <div className={`fixed top-4 right-4 z-50 p-4 rounded-xl border-2 ${
+            notification.type === 'success' 
+              ? 'bg-green-500/20 border-green-500 text-green-400' 
+              : 'bg-red-500/20 border-red-500 text-red-400'
+          } backdrop-blur-lg`}>
+            {notification.message}
+          </div>
+        )}
+        
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
@@ -64,6 +137,26 @@ export default function SchedulePage() {
           </div>
           
           <div className="flex gap-3">
+            <button 
+              onClick={qualifyPendingRequests}
+              disabled={isQualifying}
+              className="neumorphic-button text-green-400 font-semibold disabled:opacity-50"
+            >
+              <span className="flex items-center gap-2">
+                {isQualifying ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-green-400"></div>
+                    Qualifying...
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle size={20} />
+                    Qualify Requests
+                  </>
+                )}
+              </span>
+            </button>
+            
             <button 
               onClick={runOptimization}
               disabled={isOptimizing}

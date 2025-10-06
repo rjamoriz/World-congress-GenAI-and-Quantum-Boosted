@@ -22,18 +22,31 @@ router.post('/optimize', schedulerRateLimiter, asyncHandler(async (req: Request,
   logger.info('Starting schedule optimization');
   
   // Fetch requests and hosts
-  const requests = await MeetingRequestModel.find({
-    _id: { $in: requestIds },
-    status: RequestStatus.QUALIFIED
-  }).lean();
+  let requestQuery: any = { status: RequestStatus.QUALIFIED };
+  if (requestIds && requestIds.length > 0) {
+    requestQuery._id = { $in: requestIds };
+  }
+  
+  const requests = await MeetingRequestModel.find(requestQuery).lean();
   
   const hosts = await HostModel.find({ isActive: true }).lean();
+  
+  // Default constraints if not provided
+  const defaultConstraints = {
+    eventStartDate: new Date().toISOString().split('T')[0], // Today
+    eventEndDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Next week
+    workingHoursStart: '09:00',
+    workingHoursEnd: '18:00',
+    meetingDurationMinutes: 30,
+    maxMeetingsPerDay: 8,
+    bufferMinutes: 15
+  };
   
   // Run scheduler
   const result = await schedulerService.optimize({
     requests: requests.map(r => ({ ...r, id: r._id.toString() })),
     hosts: hosts.map(h => ({ ...h, id: h._id.toString() })),
-    constraints,
+    constraints: constraints || defaultConstraints,
     algorithm
   });
   
