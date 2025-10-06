@@ -154,6 +154,15 @@ export interface SchedulerRequest {
   hosts: Host[];
   constraints: SchedulerConstraints;
   algorithm?: SchedulerAlgorithm;
+  quantumConfig?: QuantumConfig;
+}
+
+export interface QuantumConfig {
+  backend: string;
+  shots: number;
+  layers: number;
+  optimizer: string;
+  maxIterations: number;
 }
 
 export interface SchedulerConstraints {

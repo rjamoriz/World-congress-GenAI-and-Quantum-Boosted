@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { Sparkles, Calendar, Cpu, Zap, Settings, Play, BarChart3, Clock, CheckCircle } from 'lucide-react'
 import DashboardLayout from '@/components/DashboardLayout'
+import QuantumOptimizer from '@/components/QuantumOptimizer'
+import VoiceChat from '@/components/VoiceChatSimple'
 import { apiClient } from '@/lib/api'
 
 export default function SchedulePage() {
@@ -286,6 +288,12 @@ export default function SchedulePage() {
             )}
           </div>
         )}
+        
+        {/* IBM Qiskit Quantum Optimizer */}
+        <QuantumOptimizer />
+        
+        {/* OpenAI Realtime Voice Chat */}
+        <VoiceChat />
         
         {/* Scheduled Meetings */}
         <div className="neumorphic-card p-6">

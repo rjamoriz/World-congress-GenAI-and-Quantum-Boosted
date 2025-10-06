@@ -17,14 +17,17 @@ import {
 import { logger } from '../../utils/logger';
 import { ClassicalScheduler } from './ClassicalScheduler';
 import { QuantumInspiredScheduler } from './QuantumInspiredScheduler';
+import { QiskitQuantumScheduler } from './QiskitQuantumScheduler';
 
 export class SchedulerService {
   private classicalScheduler: ClassicalScheduler;
-  private quantumScheduler: QuantumInspiredScheduler;
+  private quantumInspiredScheduler: QuantumInspiredScheduler;
+  private qiskitQuantumScheduler: QiskitQuantumScheduler;
   
   constructor() {
     this.classicalScheduler = new ClassicalScheduler();
-    this.quantumScheduler = new QuantumInspiredScheduler();
+    this.quantumInspiredScheduler = new QuantumInspiredScheduler();
+    this.qiskitQuantumScheduler = new QiskitQuantumScheduler();
   }
   
   async optimize(request: SchedulerRequest): Promise<SchedulerResult> {
@@ -39,7 +42,12 @@ export class SchedulerService {
       
       switch (algorithm) {
         case SchedulerAlgorithm.QUANTUM:
-          result = await this.quantumScheduler.schedule(request);
+          // Use real Qiskit quantum scheduler if quantum config is provided
+          if (request.quantumConfig) {
+            result = await this.qiskitQuantumScheduler.schedule(request);
+          } else {
+            result = await this.quantumInspiredScheduler.schedule(request);
+          }
           break;
         case SchedulerAlgorithm.CLASSICAL:
           result = await this.classicalScheduler.schedule(request);
@@ -71,7 +79,7 @@ export class SchedulerService {
     // Try quantum-inspired first for smaller problem sizes
     if (request.requests.length <= 50 && request.hosts.length <= 10) {
       try {
-        const quantumResult = await this.quantumScheduler.schedule(request);
+        const quantumResult = await this.quantumInspiredScheduler.schedule(request);
         
         // If quantum gives good results, use it
         if (quantumResult.metrics.scheduledCount / quantumResult.metrics.totalRequests > 0.7) {

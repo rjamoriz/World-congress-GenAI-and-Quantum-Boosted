@@ -17,7 +17,7 @@ const schedulerService = new SchedulerService();
 
 // POST /api/schedule/optimize - Run optimization
 router.post('/optimize', schedulerRateLimiter, asyncHandler(async (req: Request, res: Response) => {
-  const { requestIds, constraints, algorithm } = req.body;
+  const { requestIds, constraints, algorithm, quantumConfig } = req.body;
   
   logger.info('Starting schedule optimization');
   
@@ -47,7 +47,8 @@ router.post('/optimize', schedulerRateLimiter, asyncHandler(async (req: Request,
     requests: requests.map(r => ({ ...r, id: r._id.toString() })),
     hosts: hosts.map(h => ({ ...h, id: h._id.toString() })),
     constraints: constraints || defaultConstraints,
-    algorithm
+    algorithm,
+    quantumConfig
   });
   
   // Save scheduled meetings to database

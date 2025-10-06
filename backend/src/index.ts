@@ -23,6 +23,7 @@ import scheduleRoutes from './routes/schedule';
 import qualificationRoutes from './routes/qualification';
 import workflowRoutes from './routes/workflow';
 import healthRoutes from './routes/health';
+import voiceRoutes from './routes/voice';
 
 // Load environment variables
 dotenv.config();
@@ -59,6 +60,7 @@ app.use('/api/hosts', hostRoutes);
 app.use('/api/schedule', scheduleRoutes);
 app.use('/api/qualification', qualificationRoutes);
 app.use('/api/workflow', workflowRoutes);
+app.use('/api/voice', voiceRoutes);
 
 // Root endpoint
 app.get('/', (req, res) => {
