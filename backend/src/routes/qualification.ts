@@ -62,7 +62,7 @@ router.post('/qualify/:id', genAIRateLimiter, asyncHandler(async (req: Request, 
   
   logger.info(`Qualification complete: ${id} - ${result.isQualified ? 'QUALIFIED' : 'REJECTED'}`);
   
-  res.json({
+  return res.json({
     success: true,
     data: {
       request: request.toJSON(),
@@ -133,7 +133,7 @@ router.post('/qualify-batch', genAIRateLimiter, asyncHandler(async (req: Request
   
   logger.info(`Batch qualification complete: ${results.length} processed`);
   
-  res.json({
+  return res.json({
     success: true,
     data: results,
     timestamp: new Date().toISOString()

@@ -7,6 +7,7 @@ import {
   SchedulerRequest,
   SchedulerResult,
   SchedulerAlgorithm,
+  SchedulerMetrics,
   MeetingAssignment,
   UnscheduledRequest,
   MeetingRequest,

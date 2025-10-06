@@ -44,7 +44,7 @@ const ScheduledMeetingSchema = new Schema<ScheduledMeetingDocument>({
 }, {
   timestamps: true,
   toJSON: { 
-    transform: (doc, ret) => {
+    transform: (doc: any, ret: any) => {
       ret.id = ret._id.toString();
       delete ret._id;
       delete ret.__v;

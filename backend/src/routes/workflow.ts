@@ -35,8 +35,8 @@ router.post('/materials/:meetingId', asyncHandler(async (req: Request, res: Resp
   
   const result = await workflowService.generateMaterials({
     meetingId,
-    requestData: { ...request.toObject(), id: request._id.toString() },
-    hostData: { ...host.toObject(), id: host._id.toString() },
+    requestData: { ...request.toObject(), id: (request._id as any).toString() },
+    hostData: { ...host.toObject(), id: (host._id as any).toString() },
     includeCompanyResearch,
     includeAgenda,
     includePresentation
