@@ -34,14 +34,24 @@ class DWaveQuantumScheduler:
         
         # Initialize D-Wave sampler
         if DWAVE_AVAILABLE:
+            # Check if D-Wave cloud token is available
             try:
-                # Try to connect to D-Wave cloud
-                self.sampler = EmbeddingComposite(DWaveSampler(solver=self.solver_name))
-                self.hybrid_sampler = LeapHybridSampler()
-                print(f"🌊 Connected to D-Wave {self.solver_name}", file=sys.stderr)
-            except Exception as e:
-                print(f"⚠️ D-Wave cloud connection failed: {e}", file=sys.stderr)
-                print("🔄 Using simulated annealing fallback", file=sys.stderr)
+                from dwave.cloud import Client
+                client = Client.from_config()
+                client.close()
+                # If we get here, cloud access is configured
+                try:
+                    self.sampler = EmbeddingComposite(DWaveSampler(solver=self.solver_name))
+                    self.hybrid_sampler = LeapHybridSampler()
+                    print(f"🌊 Connected to D-Wave cloud: {self.solver_name}", file=sys.stderr)
+                except Exception as e:
+                    print(f"⚠️ D-Wave cloud connection failed: {e}", file=sys.stderr)
+                    print("🧠 Using D-Wave simulated annealing (offline)", file=sys.stderr)
+                    self.sampler = dimod.SimulatedAnnealingSampler()
+                    self.hybrid_sampler = None
+            except:
+                # No cloud configuration - use offline simulator
+                print("🧠 Using D-Wave simulated annealing (offline - no API token needed)", file=sys.stderr)
                 self.sampler = dimod.SimulatedAnnealingSampler()
                 self.hybrid_sampler = None
         else:
@@ -141,18 +151,29 @@ class DWaveQuantumScheduler:
     
     def _quantum_solve(self, bqm: BinaryQuadraticModel, problem_data: Dict) -> Dict[str, Any]:
         """
-        Solve using pure D-Wave quantum annealing
+        Solve using D-Wave quantum annealing (cloud or offline simulation)
         """
-        print(f"🌊 Submitting to D-Wave quantum annealer...", file=sys.stderr)
+        print(f"🌊 Running D-Wave quantum annealing optimization...", file=sys.stderr)
         
-        # Sample from D-Wave quantum annealer
-        sampleset = self.sampler.sample(
-            bqm,
-            num_reads=self.num_reads,
-            chain_strength=self.chain_strength,
-            annealing_time=self.annealing_time,
-            auto_scale=self.auto_scale
-        )
+        # Sample from D-Wave (cloud or simulated annealing)
+        if isinstance(self.sampler, dimod.SimulatedAnnealingSampler):
+            # Offline simulated annealing - use appropriate parameters
+            sampleset = self.sampler.sample(
+                bqm,
+                num_reads=self.num_reads,
+                num_sweeps=10000,  # More sweeps for better quality
+                beta_range=[0.1, 10.0],  # Temperature range
+                seed=42  # Reproducible results
+            )
+        else:
+            # Real D-Wave quantum hardware
+            sampleset = self.sampler.sample(
+                bqm,
+                num_reads=self.num_reads,
+                chain_strength=self.chain_strength,
+                annealing_time=self.annealing_time,
+                auto_scale=self.auto_scale
+            )
         
         # Get best solution
         best_sample = sampleset.first.sample
@@ -168,16 +189,21 @@ class DWaveQuantumScheduler:
         
         print(f"📈 Active assignments: {active_vars}/{total_vars}", file=sys.stderr)
         
+        # Convert numpy types to Python native types for JSON serialization
+        solution_dict = {}
+        for key, value in best_sample.items():
+            solution_dict[str(key)] = int(value) if hasattr(value, 'item') else int(value)
+        
         return {
-            'solution': best_sample,
+            'solution': solution_dict,
             'energy': float(best_energy),
             'status': 'SUCCESS',
-            'quantum_backend': self.solver_name,
-            'num_reads': self.num_reads,
-            'annealing_time': self.annealing_time,
-            'chain_break_fraction': float(sampleset.data_vectors.get('chain_break_fraction', [0])[0]),
-            'active_assignments': active_vars,
-            'success_rate': active_vars / max(1, total_vars) * 100,
+            'quantum_backend': 'dwave_simulated_annealing' if isinstance(self.sampler, dimod.SimulatedAnnealingSampler) else self.solver_name,
+            'num_reads': int(self.num_reads),
+            'annealing_time': int(self.annealing_time),
+            'chain_break_fraction': float(sampleset.data_vectors.get('chain_break_fraction', [0])[0]) if 'chain_break_fraction' in sampleset.data_vectors else 0.0,
+            'active_assignments': int(active_vars),
+            'success_rate': float(active_vars / max(1, total_vars) * 100),
             'timing': dict(sampleset.info.get('timing', {}))
         }
     
@@ -202,13 +228,18 @@ class DWaveQuantumScheduler:
         
         active_vars = sum(1 for val in best_sample.values() if val == 1)
         
+        # Convert to JSON-serializable format
+        solution_dict = {}
+        for key, value in best_sample.items():
+            solution_dict[str(key)] = int(value) if hasattr(value, 'item') else int(value)
+        
         return {
-            'solution': best_sample,
+            'solution': solution_dict,
             'energy': float(best_energy),
             'status': 'SUCCESS',
             'quantum_backend': 'hybrid_solver',
-            'active_assignments': active_vars,
-            'success_rate': active_vars / max(1, len(best_sample)) * 100,
+            'active_assignments': int(active_vars),
+            'success_rate': float(active_vars / max(1, len(best_sample)) * 100),
             'timing': dict(sampleset.info.get('timing', {}))
         }
     
@@ -249,11 +280,11 @@ class DWaveQuantumScheduler:
         
         return {
             'solution': solution,
-            'energy': -sum(req.get('importanceScore', 50) for req in sorted_requests[:len(assigned_slots)]),
+            'energy': float(-sum(req.get('importanceScore', 50) for req in sorted_requests[:len(assigned_slots)])),
             'status': 'FALLBACK',
             'quantum_backend': 'classical_simulation',
-            'active_assignments': len(assigned_slots),
-            'success_rate': len(assigned_slots) / max(1, len(requests)) * 100
+            'active_assignments': int(len(assigned_slots)),
+            'success_rate': float(len(assigned_slots) / max(1, len(requests)) * 100)
         }
 
 def main():

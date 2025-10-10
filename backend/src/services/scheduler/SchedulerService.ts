@@ -46,17 +46,20 @@ export class SchedulerService {
       switch (algorithm) {
         case SchedulerAlgorithm.QUANTUM:
           // Choose quantum backend based on configuration
+          logger.info(`Quantum config received: ${JSON.stringify(request.quantumConfig)}`);
           if (request.quantumConfig?.backend === 'dwave') {
-            logger.info('Using D-Wave quantum annealing');
+            logger.info('🌊 Using D-Wave quantum annealing');
             result = await this.dwaveQuantumScheduler.schedule(request);
           } else if (request.quantumConfig?.backend === 'qiskit') {
-            logger.info('Using Qiskit quantum circuits (QAOA)');
+            logger.info('⚛️ Using Qiskit quantum circuits (QAOA)');
             result = await this.qiskitQuantumScheduler.schedule(request);
           } else if (request.quantumConfig) {
             // Default to Qiskit if quantum config provided
+            logger.info('⚛️ Using Qiskit quantum circuits (default)');
             result = await this.qiskitQuantumScheduler.schedule(request);
           } else {
             // Fallback to quantum-inspired
+            logger.info('🧠 Using quantum-inspired scheduler');
             result = await this.quantumInspiredScheduler.schedule(request);
           }
           break;

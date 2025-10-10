@@ -195,8 +195,7 @@ export class DWaveQuantumScheduler {
       if (!assignments.find(a => a.requestId === req.id)) {
         unscheduled.push({
           requestId: req.id,
-          reason: 'No feasible quantum annealing solution found',
-          constraints: ['host_availability', 'time_conflicts']
+          reason: 'No feasible quantum annealing solution found'
         });
       }
     }
@@ -276,8 +275,7 @@ export class DWaveQuantumScheduler {
       } else {
         unscheduled.push({
           requestId: req.id,
-          reason: 'No available slots',
-          constraints: ['capacity_limit']
+          reason: 'No available slots'
         });
       }
     }
