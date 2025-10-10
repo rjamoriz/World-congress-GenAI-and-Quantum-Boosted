@@ -18,16 +18,19 @@ import { logger } from '../../utils/logger';
 import { ClassicalScheduler } from './ClassicalScheduler';
 import { QuantumInspiredScheduler } from './QuantumInspiredScheduler';
 import { QiskitQuantumScheduler } from './QiskitQuantumScheduler';
+import { DWaveQuantumScheduler } from './DWaveQuantumScheduler';
 
 export class SchedulerService {
   private classicalScheduler: ClassicalScheduler;
   private quantumInspiredScheduler: QuantumInspiredScheduler;
   private qiskitQuantumScheduler: QiskitQuantumScheduler;
+  private dwaveQuantumScheduler: DWaveQuantumScheduler;
   
   constructor() {
     this.classicalScheduler = new ClassicalScheduler();
     this.quantumInspiredScheduler = new QuantumInspiredScheduler();
     this.qiskitQuantumScheduler = new QiskitQuantumScheduler();
+    this.dwaveQuantumScheduler = new DWaveQuantumScheduler();
   }
   
   async optimize(request: SchedulerRequest): Promise<SchedulerResult> {
@@ -42,10 +45,18 @@ export class SchedulerService {
       
       switch (algorithm) {
         case SchedulerAlgorithm.QUANTUM:
-          // Use real Qiskit quantum scheduler if quantum config is provided
-          if (request.quantumConfig) {
+          // Choose quantum backend based on configuration
+          if (request.quantumConfig?.backend === 'dwave') {
+            logger.info('Using D-Wave quantum annealing');
+            result = await this.dwaveQuantumScheduler.schedule(request);
+          } else if (request.quantumConfig?.backend === 'qiskit') {
+            logger.info('Using Qiskit quantum circuits (QAOA)');
+            result = await this.qiskitQuantumScheduler.schedule(request);
+          } else if (request.quantumConfig) {
+            // Default to Qiskit if quantum config provided
             result = await this.qiskitQuantumScheduler.schedule(request);
           } else {
+            // Fallback to quantum-inspired
             result = await this.quantumInspiredScheduler.schedule(request);
           }
           break;
