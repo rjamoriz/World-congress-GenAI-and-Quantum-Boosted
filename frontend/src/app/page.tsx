@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react'
 import { Calendar, Users, Clock, CheckCircle, AlertCircle, TrendingUp } from 'lucide-react'
 import DashboardLayout from '@/components/DashboardLayout'
-import RequestList from '@/components/RequestList'
-import StatsCard from '@/components/StatsCard'
+import { QuantumOptimizer } from '@/components/QuantumOptimizer';
+import { VoiceChatSimple } from '@/components/VoiceChatSimple';
+import EventAssistant from '@/components/EventAssistant';
 import { apiClient } from '@/lib/api'
 
 export default function Home() {
@@ -139,6 +140,11 @@ export default function Home() {
           </div>
           
           <RequestList />
+        </div>
+
+        {/* Event Assistant Section */}
+        <div className="col-span-full">
+          <EventAssistant />
         </div>
       </div>
     </DashboardLayout>

@@ -44,5 +44,9 @@
     "automation"
   ],
   "author": "Ruben",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "localtunnel": "^2.0.2",
+    "tunnelmole": "^2.4.0"
+  }
 }

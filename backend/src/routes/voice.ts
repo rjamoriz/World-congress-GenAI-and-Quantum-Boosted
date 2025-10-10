@@ -5,8 +5,12 @@
 import { Router, Request, Response } from 'express';
 import { asyncHandler } from '../middleware/errorHandler';
 import { logger } from '../utils/logger';
+import { EventAssistantService } from '../services/ai/EventAssistantService';
+import { PhoenixService } from '../services/observability/PhoenixService';
 
 const router = Router();
+const eventAssistant = new EventAssistantService();
+const phoenixService = new PhoenixService();
 
 // WebSocket proxy for OpenAI Realtime API
 router.get('/realtime', asyncHandler(async (req: Request, res: Response) => {
@@ -29,34 +33,56 @@ router.get('/realtime', asyncHandler(async (req: Request, res: Response) => {
   });
 }));
 
-// Text-to-speech endpoint
+// Text-to-speech endpoint with Phoenix tracing
 router.post('/tts', asyncHandler(async (req: Request, res: Response) => {
-  const { text, voice = 'alloy', model = 'tts-1' } = req.body;
+  const { text, voice = 'alloy', model = 'tts-1', session_id } = req.body;
 
   if (!text) {
     return res.status(400).json({ error: 'Text is required' });
   }
 
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: 'OpenAI API key not configured' });
+  }
+
   try {
-    const response = await fetch('https://api.openai.com/v1/audio/speech', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+    // Wrap TTS call with Phoenix tracing
+    const audioBuffer = await phoenixService.wrapLLMCall(
+      {
+        operation: 'text_to_speech',
+        provider: 'openai',
         model,
-        input: text,
-        voice,
-        response_format: 'mp3'
-      }),
-    });
+        userId: 'voice_user',
+        sessionId: session_id || 'voice_session',
+        metadata: {
+          voice,
+          text_length: text.length,
+          response_format: 'mp3'
+        }
+      },
+      async () => {
+        const response = await fetch('https://api.openai.com/v1/audio/speech', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model,
+            input: text,
+            voice,
+            response_format: 'mp3'
+          }),
+        });
 
-    if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.statusText}`);
-    }
+        if (!response.ok) {
+          throw new Error(`OpenAI API error: ${response.statusText}`);
+        }
 
-    const audioBuffer = await response.arrayBuffer();
+        return await response.arrayBuffer();
+      }
+    );
     
     res.set({
       'Content-Type': 'audio/mpeg',
@@ -250,6 +276,214 @@ router.post('/command', asyncHandler(async (req: Request, res: Response) => {
       error: 'Command processing failed', 
       details: error.message,
       success: false
+    });
+  }
+}));
+
+// Speech-to-Speech Event Assistant
+router.post('/ask-voice', asyncHandler(async (req: Request, res: Response) => {
+  const { audio, attendee_profile, session_id, voice = 'alloy' } = req.body;
+
+  if (!audio) {
+    return res.status(400).json({ error: 'Audio data is required' });
+  }
+
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: 'OpenAI API key not configured' });
+  }
+
+  try {
+    logger.info('Processing speech-to-speech event question', { session_id });
+
+    // Step 1: Speech-to-Text (Whisper)
+    const transcription = await phoenixService.wrapLLMCall(
+      {
+        operation: 'speech_to_text',
+        provider: 'openai',
+        model: 'whisper-1',
+        userId: 'voice_user',
+        sessionId: session_id || 'voice_session',
+        metadata: {
+          audio_format: 'webm',
+          language: 'en'
+        }
+      },
+      async () => {
+        const formData = new FormData();
+        const audioBuffer = Buffer.from(audio, 'base64');
+        const audioBlob = new Blob([audioBuffer], { type: 'audio/webm' });
+        
+        formData.append('file', audioBlob, 'audio.webm');
+        formData.append('model', 'whisper-1');
+        formData.append('language', 'en');
+
+        const response = await fetch('https://api.openai.com/v1/audio/transcriptions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+          },
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error(`Whisper API error: ${response.statusText}`);
+        }
+
+        const result = await response.json() as { text: string };
+        return result.text;
+      }
+    );
+
+    logger.info('Speech transcribed', { transcription, session_id });
+
+    // Step 2: Process with Event Assistant
+    const eventResponse = await eventAssistant.answerEventQuestion({
+      question: transcription,
+      attendee_profile,
+      session_id
+    });
+
+    logger.info('Event assistant response generated', { session_id });
+
+    // Step 3: Text-to-Speech (TTS)
+    const audioBuffer = await phoenixService.wrapLLMCall(
+      {
+        operation: 'text_to_speech_response',
+        provider: 'openai',
+        model: 'tts-1',
+        userId: 'voice_user',
+        sessionId: session_id || 'voice_session',
+        metadata: {
+          voice,
+          response_length: eventResponse.answer.length,
+          confidence: eventResponse.confidence
+        }
+      },
+      async () => {
+        const response = await fetch('https://api.openai.com/v1/audio/speech', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            model: 'tts-1',
+            input: eventResponse.answer,
+            voice,
+            response_format: 'mp3'
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`TTS API error: ${response.statusText}`);
+        }
+
+        return await response.arrayBuffer();
+      }
+    );
+
+    // Return both the audio and the structured response
+    return res.json({
+      success: true,
+      data: {
+        transcription,
+        response: eventResponse,
+        audio: Buffer.from(audioBuffer).toString('base64'),
+        audio_format: 'mp3'
+      },
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error: any) {
+    logger.error('Speech-to-speech error:', error);
+    return res.status(500).json({ 
+      error: 'Speech-to-speech processing failed', 
+      details: error.message 
+    });
+  }
+}));
+
+// Voice Workshop Recommendations
+router.post('/recommend-voice', asyncHandler(async (req: Request, res: Response) => {
+  const { audio, attendee_profile, session_id, voice = 'alloy' } = req.body;
+
+  if (!audio) {
+    return res.status(400).json({ error: 'Audio data is required' });
+  }
+
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: 'OpenAI API key not configured' });
+  }
+
+  try {
+    // Step 1: Transcribe the audio (assuming it contains profile information)
+    const formData = new FormData();
+    const voiceAudioBuffer = Buffer.from(audio, 'base64');
+    const audioBlob = new Blob([voiceAudioBuffer], { type: 'audio/webm' });
+    
+    formData.append('file', audioBlob, 'audio.webm');
+    formData.append('model', 'whisper-1');
+    formData.append('language', 'en');
+
+    const transcriptionResponse = await fetch('https://api.openai.com/v1/audio/transcriptions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+      },
+      body: formData,
+    });
+
+    const transcriptionResult = await transcriptionResponse.json() as { text: string };
+    const spokenText = transcriptionResult.text;
+
+    logger.info('Voice recommendation request transcribed', { spokenText, session_id });
+
+    // Step 2: Get workshop recommendations
+    const recommendations = await eventAssistant.getWorkshopRecommendations(attendee_profile || {});
+
+    // Step 3: Create a spoken response
+    const responseText = `Based on your profile, I found ${recommendations.length} workshop recommendations for you. ` +
+      recommendations.map((rec, i) => 
+        `${i + 1}. ${rec.workshop_name} on ${rec.time_slot}, which is ${rec.difficulty_level} level. ${rec.reason}`
+      ).join('. ') + 
+      '. Would you like more details about any of these workshops?';
+
+    // Step 4: Convert to speech
+    const ttsResponse = await fetch('https://api.openai.com/v1/audio/speech', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'tts-1',
+        input: responseText,
+        voice,
+        response_format: 'mp3'
+      }),
+    });
+
+    const responseAudioBuffer = await ttsResponse.arrayBuffer();
+
+    return res.json({
+      success: true,
+      data: {
+        transcription: spokenText,
+        recommendations,
+        response_text: responseText,
+        audio: Buffer.from(responseAudioBuffer).toString('base64'),
+        audio_format: 'mp3'
+      },
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error: any) {
+    logger.error('Voice recommendation error:', error);
+    return res.status(500).json({ 
+      error: 'Voice recommendation processing failed', 
+      details: error.message 
     });
   }
 }));

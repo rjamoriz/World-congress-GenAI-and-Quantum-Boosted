@@ -13,9 +13,11 @@ import {
 } from '@agenda-manager/shared';
 import { logger } from '../../utils/logger';
 import { cacheGet, cacheSet } from '../../config/redis';
+import { PhoenixService } from '../observability/PhoenixService';
 
 export class QualificationService {
   private openai: OpenAI | null = null;
+  private phoenixService: PhoenixService;
   
   constructor() {
     if (process.env.OPENAI_API_KEY) {
@@ -25,6 +27,9 @@ export class QualificationService {
     } else {
       logger.warn('OpenAI API key not configured - using mock qualification');
     }
+    
+    // Initialize Phoenix service (non-breaking)
+    this.phoenixService = new PhoenixService();
   }
   
   async qualify(request: QualificationRequest): Promise<QualificationResult> {
@@ -83,21 +88,38 @@ Respond in JSON format:
 }
 `;
     
-    const completion = await this.openai!.chat.completions.create({
-      model: process.env.OPENAI_MODEL || 'gpt-4-turbo-preview',
-      messages: [
-        {
-          role: 'system',
-          content: 'You are an expert meeting request qualifier. Respond only with valid JSON.'
-        },
-        {
-          role: 'user',
-          content: prompt
+    // Wrap OpenAI call with Phoenix tracing
+    const completion = await this.phoenixService.wrapLLMCall(
+      {
+        operation: 'qualification',
+        provider: 'openai',
+        model: process.env.OPENAI_MODEL || 'gpt-4-turbo-preview',
+        userId: 'system',
+        requestId: request.requestId,
+        metadata: {
+          companyName: request.companyName,
+          meetingType: request.meetingType,
+          topicsCount: request.requestedTopics.length
         }
-      ],
-      temperature: 0.3,
-      response_format: { type: 'json_object' }
-    });
+      },
+      async () => {
+        return await this.openai!.chat.completions.create({
+          model: process.env.OPENAI_MODEL || 'gpt-4-turbo-preview',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are an expert meeting request qualifier. Respond only with valid JSON.'
+            },
+            {
+              role: 'user',
+              content: prompt
+            }
+          ],
+          temperature: 0.3,
+          response_format: { type: 'json_object' }
+        });
+      }
+    );
     
     const responseText = completion.choices[0]?.message?.content || '{}';
     const aiResult = JSON.parse(responseText);

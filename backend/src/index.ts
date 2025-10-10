@@ -15,6 +15,7 @@ import { connectRedis } from './config/redis';
 import { logger } from './utils/logger';
 import { errorHandler } from './middleware/errorHandler';
 import { rateLimiter } from './middleware/rateLimiter';
+import { initializeTelemetry } from './config/telemetry';
 
 // Routes
 import requestRoutes from './routes/requests';
@@ -24,6 +25,7 @@ import qualificationRoutes from './routes/qualification';
 import workflowRoutes from './routes/workflow';
 import healthRoutes from './routes/health';
 import voiceRoutes from './routes/voice';
+import assistantRoutes from './routes/assistant';
 
 // Load environment variables
 dotenv.config();
@@ -48,21 +50,18 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Rate limiting
-app.use('/api', rateLimiter);
-
 // Make io accessible to routes
 app.set('io', io);
 
 // API Routes
-app.use('/api/health', healthRoutes);
 app.use('/api/requests', requestRoutes);
 app.use('/api/hosts', hostRoutes);
 app.use('/api/schedule', scheduleRoutes);
 app.use('/api/qualification', qualificationRoutes);
 app.use('/api/workflow', workflowRoutes);
+app.use('/api/health', healthRoutes);
 app.use('/api/voice', voiceRoutes);
-
-// Root endpoint
+app.use('/api/assistant', assistantRoutes);
 app.get('/', (req, res) => {
   res.json({
     name: 'Agenda Manager API',
@@ -126,6 +125,15 @@ async function startServer() {
     console.log('Connecting to Redis...');
     await connectRedis();
     console.log('Redis connected!');
+    
+    // Initialize Phoenix observability (non-breaking)
+    console.log('Initializing Phoenix observability...');
+    const phoenixInitialized = initializeTelemetry();
+    if (phoenixInitialized) {
+      console.log('Phoenix observability initialized!');
+    } else {
+      console.log('Phoenix observability disabled or failed to initialize');
+    }
     
     // Start HTTP server
     console.log(`Starting HTTP server on port ${PORT}...`);
