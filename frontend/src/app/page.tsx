@@ -19,6 +19,8 @@ export default function Home() {
   })
   
   const [loading, setLoading] = useState(true)
+  const [isOptimizing, setIsOptimizing] = useState(false)
+  const [notification, setNotification] = useState<{type: 'success' | 'error', message: string} | null>(null)
   
   useEffect(() => {
     fetchStats()
@@ -46,10 +48,63 @@ export default function Home() {
       setLoading(false)
     }
   }
+
+  async function runOptimization() {
+    setIsOptimizing(true)
+    try {
+      console.log('Starting quantum optimization from dashboard...')
+      
+      const response = await apiClient.post('/schedule/optimize', {
+        algorithm: 'quantum',
+        constraints: {
+          eventStartDate: new Date().toISOString().split('T')[0],
+          eventEndDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+          workingHoursStart: '09:00',
+          workingHoursEnd: '18:00',
+          meetingDurationMinutes: 30,
+          maxMeetingsPerDay: 8,
+          bufferMinutes: 15
+        }
+      })
+      
+      console.log('Optimization result:', response.data)
+      
+      // Show success notification
+      setNotification({
+        type: 'success',
+        message: `🚀 Quantum optimization completed! Scheduled ${response.data.data.assignments?.length || 0} meetings successfully.`
+      })
+      setTimeout(() => setNotification(null), 5000)
+      
+      // Refresh stats
+      await fetchStats()
+      
+    } catch (error: any) {
+      console.error('Optimization failed:', error)
+      setNotification({
+        type: 'error',
+        message: `❌ Optimization failed: ${error.response?.data?.error || error.message}`
+      })
+      setTimeout(() => setNotification(null), 5000)
+    } finally {
+      setIsOptimizing(false)
+    }
+  }
   
   return (
     <DashboardLayout>
       <div className="space-y-8">
+        {/* Notification */}
+        {notification && (
+          <div className={`p-4 rounded-xl border ${
+            notification.type === 'success' 
+              ? 'bg-green-900/20 border-green-500/30 text-green-400' 
+              : 'bg-red-900/20 border-red-500/30 text-red-400'
+          }`}>
+            {notification.message}
+          </div>
+        )}
+        
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
@@ -61,10 +116,23 @@ export default function Home() {
             </p>
           </div>
           
-          <button className="neumorphic-button text-primary-400 font-semibold">
+          <button 
+            onClick={runOptimization}
+            disabled={isOptimizing}
+            className="neumorphic-button text-primary-400 font-semibold disabled:opacity-50"
+          >
             <span className="flex items-center gap-2">
-              <TrendingUp size={20} />
-              Run Optimization
+              {isOptimizing ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-400"></div>
+                  Optimizing...
+                </>
+              ) : (
+                <>
+                  <TrendingUp size={20} />
+                  Run Optimization
+                </>
+              )}
             </span>
           </button>
         </div>
