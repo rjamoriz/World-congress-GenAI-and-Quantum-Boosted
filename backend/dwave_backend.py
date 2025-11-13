@@ -3,22 +3,25 @@
 D-Wave Ocean SDK Backend for Meeting Optimization
 Real quantum annealing using D-Wave quantum computers
 """
+from __future__ import annotations
 
 import json
 import sys
 import numpy as np
 from typing import Dict, List, Any, Tuple
 
+# D-Wave Ocean SDK imports
+from dimod import BinaryQuadraticModel, SampleSet
+from dwave.system import DWaveSampler, EmbeddingComposite
+from dwave.system import LeapHybridSampler
+import dimod
+
 try:
-    # D-Wave Ocean SDK imports
-    from dimod import BinaryQuadraticModel, SampleSet
-    from dwave.system import DWaveSampler, EmbeddingComposite
-    from dwave.system import LeapHybridSampler
     from dwave.cloud import Client
-    import dimod
-    DWAVE_AVAILABLE = True
+    DWAVE_CLOUD_AVAILABLE = True
 except ImportError:
-    DWAVE_AVAILABLE = False
+    DWAVE_CLOUD_AVAILABLE = False
+    print("⚠️ D-Wave Cloud not available", file=sys.stderr)
 
 class DWaveQuantumScheduler:
     """
@@ -32,38 +35,16 @@ class DWaveQuantumScheduler:
         self.annealing_time = config.get('annealing_time', 20)
         self.auto_scale = config.get('auto_scale', True)
         
-        # Initialize D-Wave sampler
-        if DWAVE_AVAILABLE:
-            # Check if D-Wave cloud token is available
-            try:
-                from dwave.cloud import Client
-                client = Client.from_config()
-                client.close()
-                # If we get here, cloud access is configured
-                try:
-                    self.sampler = EmbeddingComposite(DWaveSampler(solver=self.solver_name))
-                    self.hybrid_sampler = LeapHybridSampler()
-                    print(f"🌊 Connected to D-Wave cloud: {self.solver_name}", file=sys.stderr)
-                except Exception as e:
-                    print(f"⚠️ D-Wave cloud connection failed: {e}", file=sys.stderr)
-                    print("🧠 Using D-Wave simulated annealing (offline)", file=sys.stderr)
-                    self.sampler = dimod.SimulatedAnnealingSampler()
-                    self.hybrid_sampler = None
-            except:
-                # No cloud configuration - use offline simulator
-                print("🧠 Using D-Wave simulated annealing (offline - no API token needed)", file=sys.stderr)
-                self.sampler = dimod.SimulatedAnnealingSampler()
-                self.hybrid_sampler = None
-        else:
-            print("❌ D-Wave Ocean SDK not installed", file=sys.stderr)
-            self.sampler = None
-            self.hybrid_sampler = None
+        # Initialize D-Wave sampler - always use simulated annealing
+        print("🧠 Using D-Wave simulated annealing (offline)", file=sys.stderr)
+        self.sampler = dimod.SimulatedAnnealingSampler()
+        self.hybrid_sampler = None
     
     def optimize(self, problem_data: Dict) -> Dict[str, Any]:
         """
         Main optimization function using D-Wave quantum annealing
         """
-        if not DWAVE_AVAILABLE or self.sampler is None:
+        if self.sampler is None:
             return self._classical_fallback(problem_data)
         
         try:
@@ -77,13 +58,37 @@ class DWaveQuantumScheduler:
             # Check if problem is suitable for pure quantum annealing
             if len(bqm.variables) > 5000:
                 print("🔀 Problem too large for pure quantum, using hybrid solver", file=sys.stderr)
-                return self._hybrid_solve(bqm, problem_data)
+                result = self._hybrid_solve(bqm, problem_data)
             else:
                 print("⚛️ Running pure quantum annealing...", file=sys.stderr)
-                return self._quantum_solve(bqm, problem_data)
+                result = self._quantum_solve(bqm, problem_data)
+            
+            # Decode solution to schedule
+            schedule = self._decode_solution(result['solution'], problem_data)
+            result['schedule'] = schedule
+            
+            # Add QUBO statistics
+            result['quboStats'] = {
+                'totalVariables': len(bqm.variables),
+                'linearTerms': len(bqm.linear),
+                'quadraticTerms': len(bqm.quadratic),
+                'energy': result.get('energy', 0)
+            }
+            
+            result['metrics'] = {
+                'scheduledMeetings': len(schedule),
+                'totalRequests': len(problem_data.get('requests', [])),
+                'successRate': result.get('success_rate', 0)
+            }
+            
+            print(f"✅ Decoded {len(schedule)} scheduled meetings", file=sys.stderr)
+            
+            return result
                 
         except Exception as e:
             print(f"❌ D-Wave optimization failed: {str(e)}", file=sys.stderr)
+            import traceback
+            traceback.print_exc()
             return self._classical_fallback(problem_data)
     
     def _build_bqm(self, problem_data: Dict) -> BinaryQuadraticModel:
@@ -92,7 +97,7 @@ class DWaveQuantumScheduler:
         """
         requests = problem_data['requests']
         hosts = problem_data['hosts']
-        constraints = problem_data['constraints']
+        constraints = problem_data.get('constraints', {})
         
         # Create binary variables: x_{request_id}_{host_id}_{time_slot}
         variables = []
@@ -102,28 +107,49 @@ class DWaveQuantumScheduler:
         # Time slots (8 slots per day for 7 days = 56 slots)
         num_slots = 56
         
+        print(f"📋 Building QUBO with {len(requests)} requests and {len(hosts)} hosts", file=sys.stderr)
+        
         # Create variables for each request-host-slot combination
         for req in requests:
             for host in hosts:
+                # Check expertise matching (if data available)
+                expertise_match = self._check_expertise_match(req, host)
+                
                 for slot in range(num_slots):
                     var = f"{req['id']}_{host['id']}_{slot}"
                     variables.append(var)
                     
-                    # Linear term: maximize importance score
-                    importance = req.get('importanceScore', 50)
-                    linear_terms[var] = -importance  # Negative because D-Wave minimizes
+                    # Linear term: maximize importance score and expertise match
+                    importance = req.get('importance', 50)
+                    # Strong reward for scheduling meetings (negative = good for minimization)
+                    reward = -(importance + expertise_match * 20)
+                    linear_terms[var] = reward
         
-        # Constraint 1: Each request assigned to at most one slot
+        print(f"✅ Created {len(linear_terms)} variables", file=sys.stderr)
+        
+        # Constraint 1: Each request assigned to exactly one slot (one-hot encoding)
+        penalty_multiple_assignments = 500.0  # Strong penalty
         for req in requests:
             req_vars = [f"{req['id']}_{host['id']}_{slot}" 
                        for host in hosts for slot in range(num_slots)]
             
-            # Add quadratic penalty for multiple assignments
+            # One-hot constraint: sum should equal 1
+            # Penalty = P * (sum(x_i) - 1)^2 = P * (sum(x_i^2) + sum_i sum_j(x_i*x_j) - 2*sum(x_i) + 1)
+            # Since x_i^2 = x_i for binary, this simplifies to:
+            # P * (sum(x_i) + 2*sum_i<j(x_i*x_j) - 2*sum(x_i) + 1)
+            
+            # Add to linear terms: P * (x_i - 2*x_i) = -P * x_i
+            for var in req_vars:
+                linear_terms[var] = linear_terms.get(var, 0) - penalty_multiple_assignments
+            
+            # Add to quadratic terms: 2*P * x_i * x_j
             for i, var1 in enumerate(req_vars):
                 for var2 in req_vars[i+1:]:
-                    quadratic_terms[(var1, var2)] = 2.0  # Penalty for double booking
+                    key = tuple(sorted([var1, var2]))
+                    quadratic_terms[key] = quadratic_terms.get(key, 0) + 2 * penalty_multiple_assignments
         
-        # Constraint 2: Each host can only have one meeting per time slot
+        # Constraint 2: Each host can only have one meeting per time slot (at most one)
+        penalty_host_conflict = 800.0  # Very strong penalty for double booking hosts
         for host in hosts:
             for slot in range(num_slots):
                 host_slot_vars = [f"{req['id']}_{host['id']}_{slot}" for req in requests]
@@ -131,7 +157,8 @@ class DWaveQuantumScheduler:
                 # Add quadratic penalty for host conflicts
                 for i, var1 in enumerate(host_slot_vars):
                     for var2 in host_slot_vars[i+1:]:
-                        quadratic_terms[(var1, var2)] = 3.0  # Strong penalty for host conflicts
+                        key = tuple(sorted([var1, var2]))
+                        quadratic_terms[key] = quadratic_terms.get(key, 0) + penalty_host_conflict
         
         # Constraint 3: Preferred time slots bonus
         for req in requests:
@@ -144,10 +171,104 @@ class DWaveQuantumScheduler:
                         if var in linear_terms:
                             linear_terms[var] -= 10  # Bonus for preferred dates
         
+        print(f"🔗 Created {len(quadratic_terms)} quadratic constraints", file=sys.stderr)
+        
         # Create BQM
         bqm = BinaryQuadraticModel(linear_terms, quadratic_terms, 'BINARY')
         
+        print(f"📊 QUBO complete: {len(bqm.variables)} variables, {len(bqm.linear)} linear, {len(bqm.quadratic)} quadratic", file=sys.stderr)
+        
         return bqm
+    
+    def _check_expertise_match(self, request: Dict, host: Dict) -> int:
+        """
+        Check if host has required expertise for request.
+        Returns match score: 2 = perfect match, 1 = partial, 0 = no match needed/available
+        """
+        req_expertise = request.get('expertise', [])
+        host_expertise = host.get('expertise', [])
+        
+        if not req_expertise or not host_expertise:
+            # No expertise data available - neutral (allow matching)
+            return 0
+        
+        # Check for expertise overlap
+        req_set = set(req_expertise)
+        host_set = set(host_expertise)
+        
+        matches = len(req_set & host_set)
+        if matches >= len(req_set):
+            return 2  # Perfect match
+        elif matches > 0:
+            return 1  # Partial match
+        else:
+            return -1  # No match (slight penalty)
+    
+    def _decode_solution(self, solution: Dict, problem_data: Dict) -> List[Dict[str, Any]]:
+        """
+        Decode binary solution variables into a schedule of meetings.
+        Variables are formatted as: {request_id}_{host_id}_{time_slot}
+        """
+        schedule = []
+        requests_map = {req['id']: req for req in problem_data['requests']}
+        hosts_map = {host['id']: host for host in problem_data['hosts']}
+        
+        # Process each active variable (value = 1)
+        for var_name, value in solution.items():
+            if value == 1:
+                # Parse variable name: request_id_host_id_slot
+                parts = var_name.split('_')
+                if len(parts) >= 3:
+                    request_id = parts[0]
+                    host_id = parts[1]
+                    slot = int(parts[2])
+                    
+                    # Get request and host details
+                    request = requests_map.get(request_id)
+                    host = hosts_map.get(host_id)
+                    
+                    if request and host:
+                        # Convert slot number to date and time
+                        # 8 slots per day, starting from Nov 15, 2025
+                        day_offset = slot // 8
+                        time_slot = slot % 8
+                        
+                        # Calculate date
+                        from datetime import datetime, timedelta
+                        base_date = datetime(2025, 11, 15)
+                        meeting_date = base_date + timedelta(days=day_offset)
+                        
+                        # Time slots: 9-10, 10-11, 11-12, 13-14, 14-15, 15-16, 16-17, 17-18
+                        time_mapping = [
+                            ("09:00", "10:00"),
+                            ("10:00", "11:00"),
+                            ("11:00", "12:00"),
+                            ("13:00", "14:00"),
+                            ("14:00", "15:00"),
+                            ("15:00", "16:00"),
+                            ("16:00", "17:00"),
+                            ("17:00", "18:00")
+                        ]
+                        
+                        if time_slot < len(time_mapping):
+                            start_time, end_time = time_mapping[time_slot]
+                            
+                            schedule.append({
+                                'requestId': request_id,
+                                'hostId': host_id,
+                                'hostName': host.get('name', 'Unknown'),
+                                'attendeeName': request.get('hostName', 'Unknown'),
+                                'topic': request.get('topic', 'Meeting'),
+                                'date': meeting_date.strftime('%Y-%m-%d'),
+                                'startTime': start_time,
+                                'endTime': end_time,
+                                'importance': request.get('importance', 50),
+                                'slot': slot
+                            })
+        
+        print(f"🗓️ Created schedule with {len(schedule)} meetings", file=sys.stderr)
+        return schedule
+
     
     def _quantum_solve(self, bqm: BinaryQuadraticModel, problem_data: Dict) -> Dict[str, Any]:
         """
@@ -320,7 +441,7 @@ def main():
     except Exception as e:
         error_result = {
             'solution': {},
-            'energy': float('inf'),
+            'energy': 999999,
             'status': 'ERROR',
             'error': str(e),
             'quantum_backend': 'error'
