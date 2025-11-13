@@ -198,7 +198,7 @@ router.post('/stt', asyncHandler(async (req: Request, res: Response) => {
 
 // Chat completion with function calling
 router.post('/chat', asyncHandler(async (req: Request, res: Response) => {
-  const { messages, functions, model = 'gpt-5.1-chat-latest' } = req.body;
+  const { messages, functions, model = 'gpt-4o' } = req.body;
 
   if (!messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: 'Messages array is required' });

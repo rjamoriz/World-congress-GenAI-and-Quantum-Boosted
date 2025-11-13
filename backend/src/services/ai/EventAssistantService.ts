@@ -73,7 +73,7 @@ export class EventAssistantService {
       {
         operation: 'event_question_answering',
         provider: 'openai',
-        model: process.env.OPENAI_MODEL || 'gpt-5.1-chat-latest',
+        model: process.env.OPENAI_MODEL || 'gpt-4o',
         userId: eventQuestion.session_id || 'anonymous',
         sessionId: eventQuestion.session_id,
         metadata: {
@@ -85,7 +85,7 @@ export class EventAssistantService {
       },
       async () => {
         const completion = await this.openai!.chat.completions.create({
-          model: process.env.OPENAI_MODEL || 'gpt-5.1-chat-latest',
+          model: process.env.OPENAI_MODEL || 'gpt-4o',
           messages: [
             { role: 'system', content: systemPrompt },
             { role: 'user', content: userPrompt }
@@ -115,7 +115,7 @@ export class EventAssistantService {
       {
         operation: 'workshop_recommendations',
         provider: 'openai',
-        model: process.env.OPENAI_MODEL || 'gpt-5.1-chat-latest',
+        model: process.env.OPENAI_MODEL || 'gpt-4o',
         userId: attendeeProfile.name || 'anonymous',
         metadata: {
           company: attendeeProfile.company,
@@ -127,7 +127,7 @@ export class EventAssistantService {
       },
       async () => {
         const completion = await this.openai!.chat.completions.create({
-          model: process.env.OPENAI_MODEL || 'gpt-5.1-chat-latest',
+          model: process.env.OPENAI_MODEL || 'gpt-4o',
           messages: [
             { role: 'system', content: systemPrompt },
             { role: 'user', content: userPrompt }
@@ -160,7 +160,7 @@ export class EventAssistantService {
       {
         operation: 'personalized_agenda',
         provider: 'openai',
-        model: process.env.OPENAI_MODEL || 'gpt-5.1-chat-latest',
+        model: process.env.OPENAI_MODEL || 'gpt-4o',
         userId: attendeeProfile.name || 'anonymous',
         metadata: {
           company: attendeeProfile.company,
@@ -170,7 +170,7 @@ export class EventAssistantService {
       },
       async () => {
         const completion = await this.openai!.chat.completions.create({
-          model: process.env.OPENAI_MODEL || 'gpt-5.1-chat-latest',
+          model: process.env.OPENAI_MODEL || 'gpt-4o',
           messages: [
             { role: 'system', content: systemPrompt },
             { role: 'user', content: userPrompt }
