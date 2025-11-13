@@ -289,12 +289,21 @@ class DWaveQuantumScheduler:
 
 def main():
     """
-    Main function to handle input/output with Node.js
+    Main entry point for the D-Wave backend.
+    Reads input from file and outputs results to stdout.
     """
     try:
-        # Read input from Node.js
-        input_line = sys.stdin.readline()
-        input_data = json.loads(input_line)
+        # Read input file from command line argument
+        if len(sys.argv) < 2:
+            print("Error: No input file specified", file=sys.stderr)
+            print(json.dumps({"error": "No input file"}))
+            sys.exit(1)
+        
+        input_file = sys.argv[1]
+        print(f"Reading D-Wave input from: {input_file}", file=sys.stderr)
+        
+        with open(input_file, 'r') as f:
+            input_data = json.load(f)
         
         dwave_config = input_data.get('dwaveConfig', {})
         problem_data = input_data.get('problemData', {})
