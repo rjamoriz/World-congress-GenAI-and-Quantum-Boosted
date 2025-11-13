@@ -28,6 +28,7 @@ import healthRoutes from './routes/health';
 import voiceRoutes from './routes/voice';
 import assistantRoutes from './routes/assistant';
 import quantumRoutes from './routes/quantum';
+import dwaveRoutes from './routes/dwave';
 
 // Load environment variables
 dotenv.config();
@@ -80,6 +81,7 @@ app.use('/api/health', healthRoutes);
 app.use('/api/voice', voiceRoutes);
 app.use('/api/assistant', assistantRoutes);
 app.use('/api/quantum', quantumRoutes);
+app.use('/api/dwave', dwaveRoutes);
 app.use('/api/outlook', require('./routes/outlook').default);
 app.get('/', (req, res) => {
   res.json({

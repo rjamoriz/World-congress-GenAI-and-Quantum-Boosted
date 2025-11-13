@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Sparkles, Calendar, Cpu, Zap, Settings, Play, BarChart3, Clock, CheckCircle, Waves } from 'lucide-react'
 import DashboardLayout from '@/components/DashboardLayout'
 import QuantumOptimizer from '@/components/QuantumOptimizer'
+import DWaveOptimizer from '@/components/DWaveOptimizer'
 import VoiceChat from '@/components/VoiceChatSimple'
 import { apiClient } from '@/lib/api'
 
@@ -361,6 +362,9 @@ export default function SchedulePage() {
         
         {/* IBM Qiskit Quantum Optimizer */}
         <QuantumOptimizer />
+        
+        {/* D-Wave Ocean SDK Quantum Annealing Optimizer */}
+        <DWaveOptimizer />
         
         {/* OpenAI Realtime Voice Chat */}
         <VoiceChat />
