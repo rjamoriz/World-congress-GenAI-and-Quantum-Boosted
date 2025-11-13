@@ -65,7 +65,7 @@ export default function RequestsPage() {
 
       switch (action) {
         case 'qualify':
-          endpoint = `/api/qualification/${request.id}/qualify`
+          endpoint = `/api/qualification/qualify/${request.id}`
           break
         case 'reject':
           endpoint = `/api/requests/${request.id}`
