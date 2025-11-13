@@ -39,7 +39,7 @@ export default function QuantumOptimizer() {
   })
   
   const [config, setConfig] = useState({
-    algorithm: 'qaoa',
+    algorithm: 'dwave',  // Default to D-Wave
     backend: 'aer_simulator',
     shots: 1024,
     layers: 1,
@@ -114,6 +114,7 @@ export default function QuantumOptimizer() {
       
       // Call quantum optimization API
       const response = await apiClient.post('/quantum/optimize', {
+        algorithm: config.algorithm,  // Send selected algorithm
         hosts: hosts.map((h: any) => ({
           id: h._id,
           name: h.name,
@@ -208,8 +209,13 @@ export default function QuantumOptimizer() {
         <div className="flex items-center gap-3">
           <Atom className="text-purple-400" size={32} />
           <div>
-            <h3 className="text-xl font-semibold">IBM Qiskit Quantum Optimizer</h3>
-            <p className="text-sm text-gray-400">Real quantum computing for meeting optimization</p>
+            <h3 className="text-xl font-semibold">Quantum Optimizer</h3>
+            <p className="text-sm text-gray-400">
+              {config.algorithm === 'dwave' 
+                ? 'D-Wave quantum annealing for meeting optimization'
+                : 'IBM Qiskit QAOA for quantum computing optimization'
+              }
+            </p>
           </div>
         </div>
         
@@ -238,7 +244,7 @@ export default function QuantumOptimizer() {
             >
               <span className="flex items-center gap-2">
                 <Play size={20} />
-                Run QAOA
+                {config.algorithm === 'dwave' ? 'Run D-Wave' : 'Run QAOA'}
               </span>
             </button>
           )}
@@ -253,60 +259,139 @@ export default function QuantumOptimizer() {
             Quantum Configuration
           </h4>
           
+          {/* Algorithm Selector */}
+          <div className="mb-4">
+            <label className="block text-sm text-gray-400 mb-2">Quantum Algorithm</label>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={() => setConfig(prev => ({ ...prev, algorithm: 'qaoa' }))}
+                className={`p-3 rounded-lg border-2 transition-all ${
+                  config.algorithm === 'qaoa'
+                    ? 'border-purple-500 bg-purple-500/20 text-purple-400'
+                    : 'border-dark-600 bg-dark-600 text-gray-400 hover:border-purple-500/50'
+                }`}
+              >
+                <div className="font-semibold">IBM Qiskit QAOA</div>
+                <div className="text-xs mt-1">Gate-based quantum circuits</div>
+              </button>
+              
+              <button
+                onClick={() => setConfig(prev => ({ ...prev, algorithm: 'dwave' }))}
+                className={`p-3 rounded-lg border-2 transition-all ${
+                  config.algorithm === 'dwave'
+                    ? 'border-cyan-500 bg-cyan-500/20 text-cyan-400'
+                    : 'border-dark-600 bg-dark-600 text-gray-400 hover:border-cyan-500/50'
+                }`}
+              >
+                <div className="font-semibold">D-Wave Annealing</div>
+                <div className="text-xs mt-1">Quantum annealing (offline)</div>
+              </button>
+            </div>
+          </div>
+          
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">Backend</label>
-              <select
-                value={config.backend}
-                onChange={(e) => setConfig(prev => ({ ...prev, backend: e.target.value }))}
-                className="neumorphic-input py-2 px-3 w-full"
-              >
-                <option value="aer_simulator">AER Simulator</option>
-                <option value="statevector_simulator">Statevector Simulator</option>
-                <option value="qasm_simulator">QASM Simulator</option>
-                <option value="ibm_brisbane">IBM Brisbane (127 qubits)</option>
-                <option value="ibm_kyoto">IBM Kyoto (127 qubits)</option>
-              </select>
-            </div>
-            
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">Shots</label>
-              <input
-                type="number"
-                value={config.shots}
-                onChange={(e) => setConfig(prev => ({ ...prev, shots: parseInt(e.target.value) }))}
-                className="neumorphic-input py-2 px-3 w-full"
-                min="100"
-                max="8192"
-                step="256"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">QAOA Layers</label>
-              <input
-                type="number"
-                value={config.layers}
-                onChange={(e) => setConfig(prev => ({ ...prev, layers: parseInt(e.target.value) }))}
-                className="neumorphic-input py-2 px-3 w-full"
-                min="1"
-                max="10"
-              />
-            </div>
-            
-            <div>
-              <label className="block text-sm text-gray-400 mb-2">Optimizer</label>
-              <select
-                value={config.optimizer}
-                onChange={(e) => setConfig(prev => ({ ...prev, optimizer: e.target.value }))}
-                className="neumorphic-input py-2 px-3 w-full"
-              >
-                <option value="COBYLA">COBYLA</option>
-                <option value="SPSA">SPSA</option>
-                <option value="SLSQP">SLSQP</option>
-                <option value="L_BFGS_B">L-BFGS-B</option>
-              </select>
-            </div>
+            {config.algorithm === 'qaoa' ? (
+              <>
+                {/* QAOA-specific configuration */}
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">Backend</label>
+                  <select
+                    value={config.backend}
+                    onChange={(e) => setConfig(prev => ({ ...prev, backend: e.target.value }))}
+                    className="neumorphic-input py-2 px-3 w-full"
+                  >
+                    <option value="aer_simulator">AER Simulator</option>
+                    <option value="statevector_simulator">Statevector Simulator</option>
+                    <option value="qasm_simulator">QASM Simulator</option>
+                    <option value="ibm_brisbane">IBM Brisbane (127 qubits)</option>
+                    <option value="ibm_kyoto">IBM Kyoto (127 qubits)</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">Shots</label>
+                  <input
+                    type="number"
+                    value={config.shots}
+                    onChange={(e) => setConfig(prev => ({ ...prev, shots: parseInt(e.target.value) }))}
+                    className="neumorphic-input py-2 px-3 w-full"
+                    min="100"
+                    max="8192"
+                    step="256"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">QAOA Layers</label>
+                  <input
+                    type="number"
+                    value={config.layers}
+                    onChange={(e) => setConfig(prev => ({ ...prev, layers: parseInt(e.target.value) }))}
+                    className="neumorphic-input py-2 px-3 w-full"
+                    min="1"
+                    max="10"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">Optimizer</label>
+                  <select
+                    value={config.optimizer}
+                    onChange={(e) => setConfig(prev => ({ ...prev, optimizer: e.target.value }))}
+                    className="neumorphic-input py-2 px-3 w-full"
+                  >
+                    <option value="COBYLA">COBYLA</option>
+                    <option value="SPSA">SPSA</option>
+                    <option value="SLSQP">SLSQP</option>
+                    <option value="L_BFGS_B">L-BFGS-B</option>
+                  </select>
+                </div>
+              </>
+            ) : (
+              <>
+                {/* D-Wave-specific configuration */}
+                <div className="col-span-2">
+                  <label className="block text-sm text-gray-400 mb-2">Solver Type</label>
+                  <select
+                    value={config.backend}
+                    onChange={(e) => setConfig(prev => ({ ...prev, backend: e.target.value }))}
+                    className="neumorphic-input py-2 px-3 w-full"
+                  >
+                    <option value="simulated_annealing">Simulated Annealing (Offline)</option>
+                    <option value="dwave_sampler">D-Wave Hardware (Cloud)</option>
+                    <option value="hybrid_sampler">Hybrid Solver (Cloud)</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">Num Reads</label>
+                  <input
+                    type="number"
+                    value={config.shots}
+                    onChange={(e) => setConfig(prev => ({ ...prev, shots: parseInt(e.target.value) }))}
+                    className="neumorphic-input py-2 px-3 w-full"
+                    min="100"
+                    max="10000"
+                    step="100"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Number of annealing cycles</p>
+                </div>
+                
+                <div>
+                  <label className="block text-sm text-gray-400 mb-2">Sweeps</label>
+                  <input
+                    type="number"
+                    value={config.layers * 1000}
+                    onChange={(e) => setConfig(prev => ({ ...prev, layers: Math.floor(parseInt(e.target.value) / 1000) }))}
+                    className="neumorphic-input py-2 px-3 w-full"
+                    min="1000"
+                    max="50000"
+                    step="1000"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Annealing sweeps (offline only)</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
@@ -315,9 +400,14 @@ export default function QuantumOptimizer() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         <div className="bg-dark-700 p-4 rounded-xl text-center">
           <div className="text-2xl font-bold text-purple-400">
-            {quantumState.qubits || config.layers * 4}
+            {config.algorithm === 'dwave' 
+              ? 'Offline' 
+              : quantumState.qubits || config.layers * 4
+            }
           </div>
-          <div className="text-sm text-gray-400">Qubits</div>
+          <div className="text-sm text-gray-400">
+            {config.algorithm === 'dwave' ? 'Mode' : 'Qubits'}
+          </div>
         </div>
         
         <div className="bg-dark-700 p-4 rounded-xl text-center">
