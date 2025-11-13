@@ -81,6 +81,13 @@ docker-compose.override.yml
 
 # Monitoring
 .otel/
+monitoring/prometheus/data/
+monitoring/grafana/data/
+
+# Keep configuration but ignore data
+!monitoring/prometheus/prometheus.yml
+!monitoring/grafana/provisioning/
+!monitoring/grafana/dashboards/
 
 # Certificates
 *.pem

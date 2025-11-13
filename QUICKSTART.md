@@ -85,9 +85,17 @@ node scripts/import-data.js
 
 ## Access the Application
 
+### Core Application
 - **Frontend Dashboard**: http://localhost:3000
 - **Backend API**: http://localhost:3001/api
 - **API Health Check**: http://localhost:3001/api/health
+
+### Monitoring & Observability
+- **Grafana**: http://localhost:3002 (admin/admin123)
+- **Prometheus**: http://localhost:9090
+- **Phoenix (AI Tracing)**: http://localhost:6006
+
+### Database Management
 - **MongoDB Express**: http://localhost:8081 (admin/admin123)
 - **RedisInsight**: http://localhost:8001
 
@@ -161,9 +169,10 @@ npm run dev:frontend
 ## Next Steps
 
 1. **Explore the Dashboard**: Open http://localhost:3000
-2. **Review API Docs**: See [docs/API.md](./docs/API.md)
-3. **Read Architecture**: See [README.md](./README.md)
-4. **Check Project Status**: See [PROJECT_STATUS.md](./PROJECT_STATUS.md)
+2. **View Monitoring**: Check Grafana at http://localhost:3002 (see [GRAFANA_MONITORING.md](./docs/GRAFANA_MONITORING.md))
+3. **Review API Docs**: See [docs/API.md](./docs/API.md)
+4. **Read Architecture**: See [README.md](./README.md)
+5. **Check Project Status**: See [PROJECT_STATUS.md](./PROJECT_STATUS.md)
 
 ## Stop Services
 
