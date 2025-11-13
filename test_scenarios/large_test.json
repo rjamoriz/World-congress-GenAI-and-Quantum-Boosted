@@ -1,0 +1,287 @@
+{
+  "name": "Large Test - 10 hosts, 25 requests (Classical solver recommended)",
+  "hosts": [
+    {
+      "_id": "host_large_1",
+      "name": "Dr. Alexandra Bennett",
+      "organization": "MIT Quantum Lab",
+      "availability": [
+        { "start": "2025-11-15T09:00:00Z", "end": "2025-11-15T17:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_large_2",
+      "name": "Prof. Marcus Chen",
+      "organization": "Stanford AI Institute",
+      "availability": [
+        { "start": "2025-11-15T08:00:00Z", "end": "2025-11-15T16:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_large_3",
+      "name": "Dr. Priya Sharma",
+      "organization": "Berkeley Innovation Center",
+      "availability": [
+        { "start": "2025-11-15T10:00:00Z", "end": "2025-11-15T18:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_large_4",
+      "name": "Prof. Leonardo Rossi",
+      "organization": "Caltech Quantum",
+      "availability": [
+        { "start": "2025-11-15T09:30:00Z", "end": "2025-11-15T17:30:00Z" }
+      ]
+    },
+    {
+      "_id": "host_large_5",
+      "name": "Dr. Yuki Tanaka",
+      "organization": "Harvard Tech Lab",
+      "availability": [
+        { "start": "2025-11-15T11:00:00Z", "end": "2025-11-15T19:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_large_6",
+      "name": "Prof. Amara Okafor",
+      "organization": "Princeton AI Research",
+      "availability": [
+        { "start": "2025-11-15T08:30:00Z", "end": "2025-11-15T16:30:00Z" }
+      ]
+    },
+    {
+      "_id": "host_large_7",
+      "name": "Dr. Sofia Kowalski",
+      "organization": "Yale Quantum Center",
+      "availability": [
+        { "start": "2025-11-15T10:30:00Z", "end": "2025-11-15T18:30:00Z" }
+      ]
+    },
+    {
+      "_id": "host_large_8",
+      "name": "Prof. Rajesh Patel",
+      "organization": "Columbia Innovation Hub",
+      "availability": [
+        { "start": "2025-11-15T09:00:00Z", "end": "2025-11-15T17:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_large_9",
+      "name": "Dr. Elena Volkov",
+      "organization": "Cornell Tech Institute",
+      "availability": [
+        { "start": "2025-11-15T12:00:00Z", "end": "2025-11-15T20:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_large_10",
+      "name": "Prof. Hassan Al-Rashid",
+      "organization": "Carnegie Mellon Quantum",
+      "availability": [
+        { "start": "2025-11-15T07:00:00Z", "end": "2025-11-15T15:00:00Z" }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "_id": "req_large_1",
+      "visitorName": "Victoria Chang",
+      "organization": "Tech Giants Inc",
+      "preferredHosts": ["host_large_1", "host_large_2"],
+      "duration": 60,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_2",
+      "visitorName": "Nathan Foster",
+      "organization": "Innovation Partners",
+      "preferredHosts": ["host_large_2", "host_large_3"],
+      "duration": 45,
+      "priority": 2
+    },
+    {
+      "_id": "req_large_3",
+      "visitorName": "Carmen Rodriguez",
+      "organization": "Quantum Enterprises",
+      "preferredHosts": ["host_large_3", "host_large_4", "host_large_5"],
+      "duration": 60,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_4",
+      "visitorName": "Kevin O'Brien",
+      "organization": "AI Dynamics",
+      "preferredHosts": ["host_large_4", "host_large_6"],
+      "duration": 30,
+      "priority": 3
+    },
+    {
+      "_id": "req_large_5",
+      "visitorName": "Mei Lin",
+      "organization": "Future Systems",
+      "preferredHosts": ["host_large_5", "host_large_7"],
+      "duration": 45,
+      "priority": 2
+    },
+    {
+      "_id": "req_large_6",
+      "visitorName": "Ahmed Hassan",
+      "organization": "Tech Innovators",
+      "preferredHosts": ["host_large_6", "host_large_8"],
+      "duration": 60,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_7",
+      "visitorName": "Grace Thompson",
+      "organization": "Quantum Ventures",
+      "preferredHosts": ["host_large_7", "host_large_9"],
+      "duration": 45,
+      "priority": 2
+    },
+    {
+      "_id": "req_large_8",
+      "visitorName": "Diego Martinez",
+      "organization": "Innovation Labs",
+      "preferredHosts": ["host_large_8", "host_large_10"],
+      "duration": 30,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_9",
+      "visitorName": "Zara Ali",
+      "organization": "AI Solutions",
+      "preferredHosts": ["host_large_1", "host_large_9"],
+      "duration": 60,
+      "priority": 3
+    },
+    {
+      "_id": "req_large_10",
+      "visitorName": "Lucas Silva",
+      "organization": "Tech Leaders",
+      "preferredHosts": ["host_large_2", "host_large_10"],
+      "duration": 45,
+      "priority": 2
+    },
+    {
+      "_id": "req_large_11",
+      "visitorName": "Fatima Nasser",
+      "organization": "Quantum Tech",
+      "preferredHosts": ["host_large_1", "host_large_5", "host_large_9"],
+      "duration": 60,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_12",
+      "visitorName": "Ryan Cooper",
+      "organization": "Innovation Corp",
+      "preferredHosts": ["host_large_3", "host_large_7"],
+      "duration": 30,
+      "priority": 2
+    },
+    {
+      "_id": "req_large_13",
+      "visitorName": "Aisha Khan",
+      "organization": "AI Partners",
+      "preferredHosts": ["host_large_4", "host_large_8"],
+      "duration": 45,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_14",
+      "visitorName": "Marco Bianchi",
+      "organization": "Tech Ventures",
+      "preferredHosts": ["host_large_2", "host_large_6", "host_large_10"],
+      "duration": 60,
+      "priority": 3
+    },
+    {
+      "_id": "req_large_15",
+      "visitorName": "Lily Chen",
+      "organization": "Quantum Innovations",
+      "preferredHosts": ["host_large_1", "host_large_3"],
+      "duration": 45,
+      "priority": 2
+    },
+    {
+      "_id": "req_large_16",
+      "visitorName": "Omar Ibrahim",
+      "organization": "Future Tech",
+      "preferredHosts": ["host_large_5", "host_large_9"],
+      "duration": 30,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_17",
+      "visitorName": "Chloe Anderson",
+      "organization": "AI Enterprises",
+      "preferredHosts": ["host_large_6", "host_large_7"],
+      "duration": 60,
+      "priority": 2
+    },
+    {
+      "_id": "req_large_18",
+      "visitorName": "Javier Gomez",
+      "organization": "Innovation Hub",
+      "preferredHosts": ["host_large_4", "host_large_8", "host_large_10"],
+      "duration": 45,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_19",
+      "visitorName": "Nina Petrov",
+      "organization": "Tech Systems",
+      "preferredHosts": ["host_large_2", "host_large_5"],
+      "duration": 60,
+      "priority": 3
+    },
+    {
+      "_id": "req_large_20",
+      "visitorName": "Ethan Wright",
+      "organization": "Quantum Partners",
+      "preferredHosts": ["host_large_1", "host_large_7"],
+      "duration": 30,
+      "priority": 2
+    },
+    {
+      "_id": "req_large_21",
+      "visitorName": "Sara Johnson",
+      "organization": "AI Innovations",
+      "preferredHosts": ["host_large_3", "host_large_6", "host_large_9"],
+      "duration": 45,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_22",
+      "visitorName": "Andre Santos",
+      "organization": "Tech Solutions",
+      "preferredHosts": ["host_large_4", "host_large_10"],
+      "duration": 60,
+      "priority": 2
+    },
+    {
+      "_id": "req_large_23",
+      "visitorName": "Yuki Yamamoto",
+      "organization": "Innovation Partners",
+      "preferredHosts": ["host_large_5", "host_large_8"],
+      "duration": 45,
+      "priority": 1
+    },
+    {
+      "_id": "req_large_24",
+      "visitorName": "Liam Murphy",
+      "organization": "Quantum Dynamics",
+      "preferredHosts": ["host_large_1", "host_large_2", "host_large_3"],
+      "duration": 30,
+      "priority": 3
+    },
+    {
+      "_id": "req_large_25",
+      "visitorName": "Amina Rashid",
+      "organization": "AI Leaders",
+      "preferredHosts": ["host_large_7", "host_large_9", "host_large_10"],
+      "duration": 60,
+      "priority": 1
+    }
+  ]
+}

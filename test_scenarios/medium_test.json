@@ -1,0 +1,111 @@
+{
+  "name": "Medium Test - 5 hosts, 8 requests",
+  "hosts": [
+    {
+      "_id": "host_med_1",
+      "name": "Dr. Alice Johnson",
+      "organization": "Berkeley Quantum Institute",
+      "availability": [
+        { "start": "2025-11-15T09:00:00Z", "end": "2025-11-15T17:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_med_2",
+      "name": "Prof. Robert Kim",
+      "organization": "Caltech AI Research",
+      "availability": [
+        { "start": "2025-11-15T10:00:00Z", "end": "2025-11-15T16:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_med_3",
+      "name": "Dr. Maria Garcia",
+      "organization": "Harvard Innovation Lab",
+      "availability": [
+        { "start": "2025-11-15T11:00:00Z", "end": "2025-11-15T18:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_med_4",
+      "name": "Prof. David Lee",
+      "organization": "Princeton Quantum",
+      "availability": [
+        { "start": "2025-11-15T08:00:00Z", "end": "2025-11-15T15:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_med_5",
+      "name": "Dr. Jennifer Wang",
+      "organization": "Yale AI Center",
+      "availability": [
+        { "start": "2025-11-15T12:00:00Z", "end": "2025-11-15T19:00:00Z" }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "_id": "req_med_1",
+      "visitorName": "Thomas Brown",
+      "organization": "Innovation Corp",
+      "preferredHosts": ["host_med_1", "host_med_2"],
+      "duration": 60,
+      "priority": 1
+    },
+    {
+      "_id": "req_med_2",
+      "visitorName": "Emma Davis",
+      "organization": "Future Tech",
+      "preferredHosts": ["host_med_2", "host_med_3"],
+      "duration": 45,
+      "priority": 2
+    },
+    {
+      "_id": "req_med_3",
+      "visitorName": "Daniel Wilson",
+      "organization": "Quantum Ventures",
+      "preferredHosts": ["host_med_1", "host_med_3", "host_med_4"],
+      "duration": 30,
+      "priority": 1
+    },
+    {
+      "_id": "req_med_4",
+      "visitorName": "Olivia Taylor",
+      "organization": "AI Innovations",
+      "preferredHosts": ["host_med_4", "host_med_5"],
+      "duration": 60,
+      "priority": 3
+    },
+    {
+      "_id": "req_med_5",
+      "visitorName": "Christopher Moore",
+      "organization": "Tech Leaders",
+      "preferredHosts": ["host_med_2", "host_med_5"],
+      "duration": 45,
+      "priority": 2
+    },
+    {
+      "_id": "req_med_6",
+      "visitorName": "Sophia Martin",
+      "organization": "Innovation Hub",
+      "preferredHosts": ["host_med_1", "host_med_4"],
+      "duration": 30,
+      "priority": 1
+    },
+    {
+      "_id": "req_med_7",
+      "visitorName": "Matthew Jackson",
+      "organization": "Quantum Solutions",
+      "preferredHosts": ["host_med_3", "host_med_5"],
+      "duration": 60,
+      "priority": 2
+    },
+    {
+      "_id": "req_med_8",
+      "visitorName": "Isabella Thompson",
+      "organization": "AI Partners",
+      "preferredHosts": ["host_med_1", "host_med_2", "host_med_3"],
+      "duration": 45,
+      "priority": 1
+    }
+  ]
+}

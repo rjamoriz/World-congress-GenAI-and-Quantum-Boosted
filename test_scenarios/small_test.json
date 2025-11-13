@@ -1,0 +1,47 @@
+{
+  "name": "Small Test - 2 hosts, 3 requests",
+  "hosts": [
+    {
+      "_id": "host_small_1",
+      "name": "Dr. Emily Chen",
+      "organization": "MIT AI Lab",
+      "availability": [
+        { "start": "2025-11-15T09:00:00Z", "end": "2025-11-15T17:00:00Z" }
+      ]
+    },
+    {
+      "_id": "host_small_2",
+      "name": "Prof. Michael Torres",
+      "organization": "Stanford Quantum",
+      "availability": [
+        { "start": "2025-11-15T10:00:00Z", "end": "2025-11-15T18:00:00Z" }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "_id": "req_small_1",
+      "visitorName": "Sarah Williams",
+      "organization": "Tech Innovators",
+      "preferredHosts": ["host_small_1"],
+      "duration": 60,
+      "priority": 1
+    },
+    {
+      "_id": "req_small_2",
+      "visitorName": "James Martinez",
+      "organization": "AI Ventures",
+      "preferredHosts": ["host_small_2"],
+      "duration": 45,
+      "priority": 2
+    },
+    {
+      "_id": "req_small_3",
+      "visitorName": "Lisa Anderson",
+      "organization": "Quantum Futures",
+      "preferredHosts": ["host_small_1", "host_small_2"],
+      "duration": 30,
+      "priority": 1
+    }
+  ]
+}

@@ -10,7 +10,7 @@ import sys
 from typing import Dict, List, Any
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
-from qiskit_aer.primitives import Sampler
+from qiskit_aer.primitives import SamplerV2
 from qiskit_algorithms import QAOA, NumPyMinimumEigensolver
 from qiskit_algorithms.optimizers import COBYLA
 from qiskit_optimization import QuadraticProgram
@@ -109,8 +109,9 @@ class QuantumMeetingScheduler:
                 classical_optimizer = MinimumEigenOptimizer(classical_solver)
                 result = classical_optimizer.solve(qp)
             else:
-                # Setup sampler for QAOA (Qiskit Aer primitives)
-                sampler = Sampler()
+                # Setup SamplerV2 for QAOA (Qiskit Aer primitives - updated to avoid deprecation)
+                from qiskit_aer.primitives import SamplerV2
+                sampler = SamplerV2()
                 
                 # Try QAOA first
                 try:
