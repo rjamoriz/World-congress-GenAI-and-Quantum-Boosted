@@ -2,13 +2,17 @@
  * Main entry point for the Agenda Manager backend server
  */
 
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import dotenv from 'dotenv';
 import { createServer } from 'http';
-import { Server as SocketServer } from 'socket.io';
+import { Server as SocketIOServer } from 'socket.io';
+import { WebSocketServer, WebSocket } from 'ws';
+import { v4 as uuidv4 } from 'uuid';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import path from 'path';
 
 import { connectDatabase } from './config/database';
 import { connectRedis } from './config/redis';
@@ -31,6 +35,7 @@ import quantumRoutes from './routes/quantum';
 import dwaveRoutes from './routes/dwave';
 import metricsRoutes from './routes/metrics';
 import { metricsMiddleware } from './middleware/metrics';
+import { RealtimeVoiceService } from './services/voice/RealtimeVoiceService';
 
 // Load environment variables
 dotenv.config();
@@ -43,13 +48,20 @@ const allowedOrigins = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL ||
   .map(o => o.trim())
   .filter(Boolean);
 
-const io = new SocketServer(httpServer, {
+const io = new SocketIOServer(httpServer, {
   cors: {
     origin: allowedOrigins,
     methods: ['GET', 'POST'],
     credentials: true
   }
 });
+
+// WebSocket server for OpenAI Realtime API proxy
+const wss = new WebSocketServer({ 
+  noServer: true,
+  path: '/api/voice/realtime-ws'
+});
+const realtimeVoiceService = new RealtimeVoiceService();
 
 // Middleware
 app.use(helmet());
@@ -118,6 +130,31 @@ io.on('connection', (socket) => {
     socket.leave(room);
     logger.info(`Client ${socket.id} unsubscribed from room: ${room}`);
   });
+});
+
+// Handle WebSocket upgrade for Realtime API
+httpServer.on('upgrade', (request: any, socket: any, head: any) => {
+  const url = new URL(request.url || '', `http://${request.headers.host}`);
+  
+  // Handle Realtime API WebSocket connections
+  if (url.pathname === '/api/voice/realtime-ws') {
+    wss.handleUpgrade(request, socket, head, (ws) => {
+      const sessionId = uuidv4();
+      const query = Object.fromEntries(url.searchParams);
+      
+      const config = {
+        model: query.model as string || 'gpt-4o-realtime-preview-2024-12-17',
+        voice: (query.voice as any) || 'alloy',
+        modalities: query.modalities ? query.modalities.split(',') as any : ['text', 'audio'],
+        temperature: query.temperature ? parseFloat(query.temperature) : 0.7
+      };
+
+      logger.info('Realtime WebSocket upgrade', { sessionId, config });
+      
+      // Create Realtime session
+      realtimeVoiceService.createRealtimeSession(ws, config, sessionId);
+    });
+  }
 });
 
 // Graceful shutdown

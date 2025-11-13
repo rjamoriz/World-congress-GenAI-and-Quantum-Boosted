@@ -27,10 +27,10 @@ export default function VoiceChat() {
   })
   
   const [config, setConfig] = useState({
-    model: 'gpt-4o-realtime-preview',
+    model: 'gpt-4o-realtime-preview-2024-12-17',
     voice: 'alloy',
     temperature: 0.7,
-    maxTokens: 1000
+    maxTokens: 4096
   })
   
   const [showConfig, setShowConfig] = useState(false)
@@ -50,66 +50,15 @@ export default function VoiceChat() {
     try {
       setVoiceState(prev => ({ ...prev, isConnected: true }))
       
-      // Initialize WebSocket connection to OpenAI Realtime API
-      // Note: This would typically go through your backend for API key security
-      const ws = new WebSocket('wss://api.openai.com/v1/realtime?model=' + config.model)
+      // Connect through backend WebSocket proxy (secure - API key on server)
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
+      const wsUrl = backendUrl.replace('http:', 'ws:').replace('https:', 'wss:');
+      const wsEndpoint = `${wsUrl}/api/voice/realtime-ws?model=${config.model}&voice=${config.voice}&temperature=${config.temperature}`;
+      
+      const ws = new WebSocket(wsEndpoint);
       
       ws.onopen = () => {
-        showNotification('success', '🎤 Connected to OpenAI Realtime API')
-        
-        // Send session configuration
-        ws.send(JSON.stringify({
-          type: 'session.update',
-          session: {
-            modalities: ['text', 'audio'],
-            instructions: `You are an AI assistant for the World Congress Agenda Manager. 
-            Help users with meeting scheduling, quantum optimization, and event management.
-            Be concise and helpful. You can:
-            - Schedule meetings
-            - Run quantum optimizations  
-            - Manage hosts and requests
-            - Provide system status
-            - Answer questions about the platform`,
-            voice: config.voice,
-            input_audio_format: 'pcm16',
-            output_audio_format: 'pcm16',
-            input_audio_transcription: {
-              model: 'whisper-1'
-            },
-            turn_detection: {
-              type: 'server_vad',
-              threshold: 0.5,
-              prefix_padding_ms: 300,
-              silence_duration_ms: 200
-            },
-            tools: [
-              {
-                type: 'function',
-                name: 'schedule_optimization',
-                description: 'Run quantum or classical scheduling optimization',
-                parameters: {
-                  type: 'object',
-                  properties: {
-                    algorithm: {
-                      type: 'string',
-                      enum: ['classical', 'quantum', 'hybrid'],
-                      description: 'Optimization algorithm to use'
-                    }
-                  }
-                }
-              },
-              {
-                type: 'function', 
-                name: 'get_system_status',
-                description: 'Get current system status and metrics',
-                parameters: {
-                  type: 'object',
-                  properties: {}
-                }
-              }
-            ]
-          }
-        }))
+        showNotification('success', '🎤 Connected to OpenAI Realtime API via secure proxy')
       }
       
       ws.onmessage = (event) => {
@@ -132,7 +81,7 @@ export default function VoiceChat() {
       
     } catch (error) {
       console.error('Failed to connect:', error)
-      showNotification('error', '❌ Failed to connect to OpenAI Realtime API')
+      showNotification('error', '❌ Failed to connect to Realtime API')
       setVoiceState(prev => ({ ...prev, isConnected: false }))
     }
   }
@@ -434,8 +383,11 @@ export default function VoiceChat() {
                 onChange={(e) => setConfig(prev => ({ ...prev, model: e.target.value }))}
                 className="neumorphic-input py-2 px-3 w-full"
               >
-                <option value="gpt-4o-realtime-preview">GPT-4o Realtime</option>
+                <option value="gpt-4o-realtime-preview-2024-12-17">GPT-4o Realtime (Dec 2024)</option>
                 <option value="gpt-4o-realtime-preview-2024-10-01">GPT-4o Realtime (Oct 2024)</option>
+                <option value="gpt-realtime-2025-08-28">GPT-5 Realtime (Latest)</option>
+                <option value="gpt-realtime-mini-2025-10-06">GPT-5 Realtime Mini</option>
+                <option value="gpt-4o-mini-realtime-preview-2024-12-17">GPT-4o Mini Realtime</option>
               </select>
             </div>
             
@@ -477,7 +429,7 @@ export default function VoiceChat() {
                 onChange={(e) => setConfig(prev => ({ ...prev, maxTokens: parseInt(e.target.value) }))}
                 className="neumorphic-input py-2 px-3 w-full"
                 min="100"
-                max="4000"
+                max="16000"
                 step="100"
               />
             </div>

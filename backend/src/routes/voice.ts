@@ -1,5 +1,6 @@
 /**
  * Voice Chat routes - OpenAI Realtime API proxy
+ * Supports GPT-4o Realtime, GPT-5 Realtime, and advanced transcription
  */
 
 import { Router, Request, Response } from 'express';
@@ -7,10 +8,15 @@ import { asyncHandler } from '../middleware/errorHandler';
 import { logger } from '../utils/logger';
 import { EventAssistantService } from '../services/ai/EventAssistantService';
 import { PhoenixService } from '../services/observability/PhoenixService';
+import { RealtimeVoiceService } from '../services/voice/RealtimeVoiceService';
+import { TranscriptionService } from '../services/voice/TranscriptionService';
+import { v4 as uuidv4 } from 'uuid';
 
 const router = Router();
 const eventAssistant = new EventAssistantService();
 const phoenixService = new PhoenixService();
+const realtimeService = new RealtimeVoiceService();
+const transcriptionService = new TranscriptionService();
 
 // WebSocket proxy for OpenAI Realtime API
 router.get('/realtime', asyncHandler(async (req: Request, res: Response) => {
@@ -24,18 +30,71 @@ router.get('/realtime', asyncHandler(async (req: Request, res: Response) => {
     return res.status(500).json({ error: 'OpenAI API key not configured' });
   }
 
-  // This would typically be handled by a WebSocket server
-  // For now, return connection info
+  // Return WebSocket endpoint info (actual upgrade handled by WebSocket server)
   return res.json({
     message: 'WebSocket endpoint ready',
     endpoint: '/api/voice/realtime',
-    instructions: 'Use WebSocket connection to connect to OpenAI Realtime API'
+    models: [
+      'gpt-4o-realtime-preview-2024-12-17',
+      'gpt-4o-realtime-preview-2024-10-01',
+      'gpt-realtime-2025-08-28',
+      'gpt-realtime-mini-2025-10-06'
+    ],
+    instructions: 'Use WebSocket connection to connect to OpenAI Realtime API with model parameter'
   });
+}));
+
+// Advanced transcription with speaker diarization
+router.post('/transcribe-advanced', asyncHandler(async (req: Request, res: Response) => {
+  const { audio, model = 'gpt-4o-transcribe-diarize', language = 'en', session_id } = req.body;
+
+  if (!audio) {
+    return res.status(400).json({ error: 'Audio data is required' });
+  }
+
+  try {
+    logger.info('Advanced transcription request', { model, language, session_id });
+
+    const result = await transcriptionService.transcribeBase64Audio(
+      audio,
+      'audio.webm',
+      'audio/webm',
+      {
+        model: model as any,
+        language,
+        timestamp_granularities: ['word', 'segment']
+      }
+    );
+
+    // Get speaker summary if diarization was used
+    const summary = model.includes('diarize') 
+      ? await transcriptionService.getSpeakerSummary(result)
+      : result.text;
+
+    return res.json({
+      success: true,
+      data: {
+        transcription: result,
+        summary,
+        srt: transcriptionService.formatAsSRT(result),
+        speakers: result.speakers || [],
+        model_used: model
+      },
+      timestamp: new Date().toISOString()
+    });
+
+  } catch (error: any) {
+    logger.error('Advanced transcription error:', error);
+    return res.status(500).json({ 
+      error: 'Transcription failed', 
+      details: error.message 
+    });
+  }
 }));
 
 // Text-to-speech endpoint with Phoenix tracing
 router.post('/tts', asyncHandler(async (req: Request, res: Response) => {
-  const { text, voice = 'alloy', model = 'tts-1', session_id } = req.body;
+  const { text, voice = 'alloy', model = 'tts-1-hd', session_id } = req.body;
 
   if (!text) {
     return res.status(400).json({ error: 'Text is required' });
@@ -139,7 +198,7 @@ router.post('/stt', asyncHandler(async (req: Request, res: Response) => {
 
 // Chat completion with function calling
 router.post('/chat', asyncHandler(async (req: Request, res: Response) => {
-  const { messages, functions, model = 'gpt-4o' } = req.body;
+  const { messages, functions, model = 'gpt-5.1-chat-latest' } = req.body;
 
   if (!messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: 'Messages array is required' });
