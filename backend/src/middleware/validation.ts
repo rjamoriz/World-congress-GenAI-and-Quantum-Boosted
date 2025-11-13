@@ -66,22 +66,23 @@ export function validateRequest(schema: {
 
 export const createMeetingRequestBody = z.object({
   companyName: z.string().min(1, 'Company name is required').trim(),
-  companyTier: z.enum(['TIER1', 'TIER2', 'TIER3', 'UNKNOWN']).optional(),
+  companyTier: z.enum(['tier_1', 'tier_2', 'tier_3', 'tier_4', 'unknown']).optional(),
   contactName: z.string().min(1, 'Contact name is required').trim(),
   contactEmail: z.string().email('Invalid email format').toLowerCase(),
   contactPhone: z.string().optional(),
   meetingType: z.enum([
-    'KEYNOTE',
-    'PANEL',
-    'WORKSHOP',
-    'NETWORKING',
-    'DEMO',
-    'CONSULTATION',
-    'OTHER'
+    'strategic',
+    'operational',
+    'sales',
+    'partnership',
+    'technical',
+    'keynote',
+    'demo',
+    'other'
   ]),
   requestedTopics: z.array(z.string()).optional().default([]),
   preferredDates: z.array(z.string()).optional().default([]),
-  urgency: z.enum(['LOW', 'MEDIUM', 'HIGH', 'CRITICAL']).optional().default('MEDIUM'),
+  urgency: z.enum(['low', 'medium', 'high', 'critical']).optional().default('medium'),
   metadata: z.record(z.any()).optional()
 });
 
@@ -91,24 +92,25 @@ export const updateMeetingRequestBody = z.object({
   contactEmail: z.string().email().toLowerCase().optional(),
   contactPhone: z.string().optional(),
   meetingType: z.enum([
-    'KEYNOTE',
-    'PANEL',
-    'WORKSHOP',
-    'NETWORKING',
-    'DEMO',
-    'CONSULTATION',
-    'OTHER'
+    'strategic',
+    'operational',
+    'sales',
+    'partnership',
+    'technical',
+    'keynote',
+    'demo',
+    'other'
   ]).optional(),
   requestedTopics: z.array(z.string()).optional(),
   status: z.enum([
-    'PENDING',
-    'QUALIFIED',
-    'REJECTED',
-    'SCHEDULED',
-    'COMPLETED',
-    'CANCELLED'
+    'pending',
+    'qualified',
+    'rejected',
+    'scheduled',
+    'completed',
+    'cancelled'
   ]).optional(),
-  urgency: z.enum(['LOW', 'MEDIUM', 'HIGH', 'CRITICAL']).optional()
+  urgency: z.enum(['low', 'medium', 'high', 'critical']).optional()
 }).partial();
 
 export const bulkCreateRequestsBody = z.array(z.object({
@@ -221,9 +223,9 @@ export const paginationQuery = z.object({
 export const meetingRequestQuery = z.object({
   page: z.string().regex(/^\d+$/).transform(Number).optional(),
   limit: z.string().regex(/^\d+$/).transform(Number).optional(),
-  status: z.enum(['PENDING', 'QUALIFIED', 'REJECTED', 'SCHEDULED', 'COMPLETED', 'CANCELLED']).optional(),
-  meetingType: z.enum(['KEYNOTE', 'PANEL', 'WORKSHOP', 'NETWORKING', 'DEMO', 'CONSULTATION', 'OTHER']).optional(),
-  companyTier: z.enum(['TIER1', 'TIER2', 'TIER3', 'UNKNOWN']).optional(),
+  status: z.enum(['pending', 'qualified', 'rejected', 'scheduled', 'completed', 'cancelled']).optional(),
+  meetingType: z.enum(['strategic', 'operational', 'sales', 'partnership', 'technical', 'keynote', 'demo', 'other']).optional(),
+  companyTier: z.enum(['tier_1', 'tier_2', 'tier_3', 'tier_4', 'unknown']).optional(),
   sortBy: z.string().optional(),
   sortOrder: z.enum(['asc', 'desc']).optional()
 }).partial();
