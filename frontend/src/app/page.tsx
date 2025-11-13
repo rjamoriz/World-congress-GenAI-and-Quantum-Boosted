@@ -3,9 +3,12 @@
 import { useEffect, useState } from 'react'
 import { Calendar, Users, Clock, CheckCircle, AlertCircle, TrendingUp } from 'lucide-react'
 import DashboardLayout from '@/components/DashboardLayout'
-import { QuantumOptimizer } from '@/components/QuantumOptimizer';
-import { VoiceChatSimple } from '@/components/VoiceChatSimple';
+import StatsCard from '@/components/StatsCard'
+import RequestList from '@/components/RequestList'
+import QuantumOptimizer from '@/components/QuantumOptimizer';
+import VoiceChatSimple from '@/components/VoiceChatSimple';
 import EventAssistant from '@/components/EventAssistant';
+import PageTransition, { FadeIn, ScaleIn } from '@/components/PageTransition'
 import { apiClient } from '@/lib/api'
 
 export default function Home() {
@@ -93,22 +96,26 @@ export default function Home() {
   
   return (
     <DashboardLayout>
+      <PageTransition>
       <div className="space-y-8">
         {/* Notification */}
         {notification && (
-          <div className={`p-4 rounded-xl border ${
+          <ScaleIn>
+          <div className={`p-4 rounded-xl border transition-all duration-300 ${
             notification.type === 'success' 
               ? 'bg-green-900/20 border-green-500/30 text-green-400' 
               : 'bg-red-900/20 border-red-500/30 text-red-400'
           }`}>
             {notification.message}
           </div>
+          </ScaleIn>
         )}
         
         {/* Header */}
+        <FadeIn>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold gradient-text">
               Copilot Dashboard
             </h1>
             <p className="text-gray-400 mt-2">
@@ -119,12 +126,12 @@ export default function Home() {
           <button 
             onClick={runOptimization}
             disabled={isOptimizing}
-            className="neumorphic-button text-primary-400 font-semibold disabled:opacity-50"
+            className="neumorphic-button ripple hover-lift text-primary-400 font-semibold disabled:opacity-50"
           >
             <span className="flex items-center gap-2">
               {isOptimizing ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-400"></div>
+                  <div className="spinner w-5 h-5"></div>
                   Optimizing...
                 </>
               ) : (
@@ -136,8 +143,10 @@ export default function Home() {
             </span>
           </button>
         </div>
+        </FadeIn>
         
         {/* Stats Grid */}
+        <FadeIn delay={100}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <StatsCard
             title="Total Requests"
@@ -192,9 +201,11 @@ export default function Home() {
             loading={loading}
           />
         </div>
+        </FadeIn>
         
         {/* Request List */}
-        <div className="neumorphic-card p-6">
+        <FadeIn delay={200}>
+        <div className="neumorphic-card card-glow p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold">Recent Requests</h2>
             <div className="flex gap-4">
@@ -209,12 +220,16 @@ export default function Home() {
           
           <RequestList />
         </div>
+        </FadeIn>
 
         {/* Event Assistant Section */}
+        <FadeIn delay={300}>
         <div className="col-span-full">
           <EventAssistant />
         </div>
+        </FadeIn>
       </div>
+      </PageTransition>
     </DashboardLayout>
   )
 }

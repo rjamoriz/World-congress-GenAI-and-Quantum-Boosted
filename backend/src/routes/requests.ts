@@ -8,11 +8,19 @@ import { AuditLogModel } from '../models/AuditLog';
 import { asyncHandler, NotFoundError, ValidationError } from '../middleware/errorHandler';
 import { HTTP_STATUS, AUDIT_ACTIONS, PAGINATION } from '@agenda-manager/shared';
 import { logger } from '../utils/logger';
+import {
+  validateRequest,
+  meetingRequestQuery,
+  createMeetingRequestBody,
+  updateMeetingRequestBody,
+  idParams,
+  bulkCreateRequestsBody
+} from '../middleware/validation';
 
 const router = Router();
 
 // GET /api/requests - List all requests with pagination and filters
-router.get('/', asyncHandler(async (req: Request, res: Response) => {
+router.get('/', validateRequest({ query: meetingRequestQuery }), asyncHandler(async (req: Request, res: Response) => {
   const { 
     page = PAGINATION.DEFAULT_PAGE, 
     limit = PAGINATION.DEFAULT_LIMIT,
@@ -60,7 +68,7 @@ router.get('/', asyncHandler(async (req: Request, res: Response) => {
 }));
 
 // GET /api/requests/:id - Get single request
-router.get('/:id', asyncHandler(async (req: Request, res: Response) => {
+router.get('/:id', validateRequest({ params: idParams }), asyncHandler(async (req: Request, res: Response) => {
   const request = await MeetingRequestModel.findById(req.params.id).lean();
   
   if (!request) {
@@ -75,13 +83,10 @@ router.get('/:id', asyncHandler(async (req: Request, res: Response) => {
 }));
 
 // POST /api/requests - Create new request
-router.post('/', asyncHandler(async (req: Request, res: Response) => {
+router.post('/', validateRequest({ body: createMeetingRequestBody }), asyncHandler(async (req: Request, res: Response) => {
   const requestData = req.body;
   
-  // Basic validation
-  if (!requestData.companyName || !requestData.contactEmail || !requestData.meetingType) {
-    throw new ValidationError('Missing required fields: companyName, contactEmail, meetingType');
-  }
+  // Validation is already done by middleware, no need for manual checks
   
   const newRequest = await MeetingRequestModel.create(requestData);
   
@@ -107,7 +112,7 @@ router.post('/', asyncHandler(async (req: Request, res: Response) => {
 }));
 
 // PUT /api/requests/:id - Update request
-router.put('/:id', asyncHandler(async (req: Request, res: Response) => {
+router.put('/:id', validateRequest({ params: idParams, body: updateMeetingRequestBody }), asyncHandler(async (req: Request, res: Response) => {
   const { id } = req.params;
   const updates = req.body;
   
@@ -145,7 +150,7 @@ router.put('/:id', asyncHandler(async (req: Request, res: Response) => {
 }));
 
 // DELETE /api/requests/:id - Delete request
-router.delete('/:id', asyncHandler(async (req: Request, res: Response) => {
+router.delete('/:id', validateRequest({ params: idParams }), asyncHandler(async (req: Request, res: Response) => {
   const { id } = req.params;
   
   const request = await MeetingRequestModel.findByIdAndDelete(id);
@@ -171,12 +176,10 @@ router.delete('/:id', asyncHandler(async (req: Request, res: Response) => {
 }));
 
 // POST /api/requests/bulk - Bulk create requests (for data import)
-router.post('/bulk', asyncHandler(async (req: Request, res: Response) => {
+router.post('/bulk', validateRequest({ body: bulkCreateRequestsBody }), asyncHandler(async (req: Request, res: Response) => {
   const requests = req.body;
   
-  if (!Array.isArray(requests)) {
-    throw new ValidationError('Request body must be an array');
-  }
+  // Already validated by middleware
   
   const createdRequests = await MeetingRequestModel.insertMany(requests);
   

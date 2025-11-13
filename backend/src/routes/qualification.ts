@@ -9,12 +9,13 @@ import { asyncHandler, NotFoundError } from '../middleware/errorHandler';
 import { QualificationService } from '../services/genai/QualificationService';
 import { RequestStatus, HTTP_STATUS } from '@agenda-manager/shared';
 import { logger } from '../utils/logger';
+import { timeouts } from '../middleware/timeout';
 
 const router = Router();
 const qualificationService = new QualificationService();
 
 // POST /api/qualification/qualify/:id - Qualify a single request
-router.post('/qualify/:id', genAIRateLimiter, asyncHandler(async (req: Request, res: Response) => {
+router.post('/qualify/:id', genAIRateLimiter, timeouts.ai, asyncHandler(async (req: Request, res: Response) => {
   const { id } = req.params;
   
   const request = await MeetingRequestModel.findById(id);
@@ -73,7 +74,7 @@ router.post('/qualify/:id', genAIRateLimiter, asyncHandler(async (req: Request, 
 }));
 
 // POST /api/qualification/qualify-batch - Qualify multiple requests
-router.post('/qualify-batch', genAIRateLimiter, asyncHandler(async (req: Request, res: Response) => {
+router.post('/qualify-batch', genAIRateLimiter, timeouts.long, asyncHandler(async (req: Request, res: Response) => {
   const { requestIds } = req.body;
   
   if (!Array.isArray(requestIds)) {

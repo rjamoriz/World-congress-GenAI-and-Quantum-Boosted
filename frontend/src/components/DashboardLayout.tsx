@@ -1,9 +1,10 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { Calendar, Users, Settings, BarChart3, Sparkles, Menu } from 'lucide-react'
+import { Calendar, Users, Settings, BarChart3, Sparkles, Menu, Mail, LayoutGrid } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import NotificationCenter from './NotificationCenter'
 
 interface Props {
   children: ReactNode
@@ -15,8 +16,10 @@ export default function DashboardLayout({ children }: Props) {
   const navItems = [
     { href: '/', icon: BarChart3, label: 'Dashboard' },
     { href: '/requests', icon: Calendar, label: 'Requests' },
+    { href: '/kanban', icon: LayoutGrid, label: 'Kanban' },
     { href: '/hosts', icon: Users, label: 'Hosts' },
     { href: '/schedule', icon: Sparkles, label: 'Schedule' },
+    { href: '/outlook', icon: Mail, label: 'Outlook' },
     { href: '/settings', icon: Settings, label: 'Settings' },
   ]
   
@@ -43,6 +46,25 @@ export default function DashboardLayout({ children }: Props) {
             {navItems.map((item) => {
               const isActive = pathname === item.href
               const Icon = item.icon
+              
+              // Open Outlook in new tab
+              if (item.href === '/outlook') {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`
+                      flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
+                      text-gray-400 hover:text-gray-200 hover:bg-dark-700
+                    `}
+                  >
+                    <Icon size={20} />
+                    <span className="font-medium">{item.label}</span>
+                  </a>
+                )
+              }
               
               return (
                 <Link
@@ -77,8 +99,16 @@ export default function DashboardLayout({ children }: Props) {
       </aside>
       
       {/* Main Content */}
-      <main className="flex-1 p-8 overflow-y-auto">
-        {children}
+      <main className="flex-1 flex flex-col">
+        {/* Top bar with notifications */}
+        <div className="flex items-center justify-end p-4 border-b border-white/10">
+          <NotificationCenter />
+        </div>
+        
+        {/* Page content */}
+        <div className="flex-1 p-8 overflow-y-auto">
+          {children}
+        </div>
       </main>
     </div>
   )

@@ -14,7 +14,7 @@ export const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 30000,
+  timeout: 360000, // 6 minutes for quantum optimization
 })
 
 // Request interceptor

@@ -97,8 +97,17 @@ export interface ScheduledMeeting {
   materialsGenerated: boolean;
   followUpSent: boolean;
   notes?: string;
+  metadata?: Record<string, any>;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface OutlookIntegration {
+  isConnected: boolean;
+  lastSyncAt?: Date;
+  calendarId?: string;
+  syncEnabled: boolean;
+  syncErrors?: string[];
 }
 
 export interface Host {
@@ -112,6 +121,7 @@ export interface Host {
   maxMeetingsPerDay: number;
   preferredMeetingTypes: MeetingType[];
   isActive: boolean;
+  outlookIntegration?: OutlookIntegration;
   metadata?: Record<string, any>;
 }
 
@@ -343,4 +353,63 @@ export interface SalesforceAccount {
   NumberOfEmployees?: number;
   BillingCountry?: string;
   Type?: string;
+}
+
+// ==================== Notifications ====================
+
+exporRuben_MACPRO@MACPRO ~/Desktop/IA DevOps/WORLD CONGRESS DESIGN/World-congress-GenAI-and-Quantum-Boosted/backend $ brew services restart mongodb-community
+Stopping `mongodb-community`... (might take a while)
+==> Successfully stopped `mongodb-community` (label: homebrew.mxcl.mongodb-communit
+==> Successfully started `mongodb-community` (label: homebrew.mxcl.mongodb-communit
+Ruben_MACPRO@MACPRO ~/Desktop/IA DevOps/WORLD CONGRESS DESIGN/World-congress-GenAI-and-Quantum-Boosted/backend $ brew services  start redis
+Service `redis` already started, use `brew services restart redis` to restart.
+Ruben_MACPRO@MACPRO ~/Desktop/IA DevOps/WORLD CONGRESS DESIGN/World-congress-GenAI-and-Quantum-Boosted/backend $ brew services  restart redis
+Stopping `redis`... (might take a while)
+==> Successfully stopped `redis` (label: homebrew.mxcl.redis)
+==> Successfully started `redis` (label: homebrew.mxcl.redis)
+Ruben_MACPRO@MACPRO ~/Desktop/IA DevOps/WORLD CONGRESS DESIGN/World-congress-GenAI-and-Quantum-Boosted/backend $ t enum NotificationType {
+  SUCCESS = 'success',
+  ERROR = 'error',
+  WARNING = 'warning',
+  INFO = 'info'
+}
+
+export enum NotificationAction {
+  REQUEST_CREATED = 'request_created',
+  REQUEST_QUALIFIED = 'request_qualified',
+  REQUEST_REJECTED = 'request_rejected',
+  REQUEST_SCHEDULED = 'request_scheduled',
+  REQUEST_COMPLETED = 'request_completed',
+  REQUEST_UPDATED = 'request_updated',
+  HOST_ASSIGNED = 'host_assigned',
+  SCHEDULE_OPTIMIZED = 'schedule_optimized',
+  MATERIALS_GENERATED = 'materials_generated',
+  EMAIL_SENT = 'email_sent',
+  SYSTEM_ERROR = 'system_error',
+  QUANTUM_COMPLETE = 'quantum_complete',
+  AI_COMPLETE = 'ai_complete'
+}
+
+export interface Notification {
+  id: string;
+  type: NotificationType;
+  action: NotificationAction;
+  title: string;
+  message: string;
+  timestamp: Date;
+  read: boolean;
+  data?: Record<string, any>;
+  link?: string;
+}
+
+export interface ToastNotification {
+  id: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  duration?: number; // milliseconds, default 5000
+  action?: {
+    label: string;
+    onClick: () => void;
+  };
 }

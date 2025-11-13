@@ -1,0 +1,19 @@
+# Python Virtual Environment for Quantum Optimization
+
+# Qiskit - IBM Quantum Computing Framework
+qiskit>=2.0.0
+qiskit-aer>=0.13.0
+qiskit-algorithms>=0.4.0
+
+# Qiskit Optimization
+qiskit-optimization>=0.6.0
+
+# Numerical computing
+numpy>=1.24.0
+
+# Scientific Python stack (optional but useful)
+scipy>=1.10.0
+
+# For better performance
+setuptools>=68.0.0
+wheel>=0.41.0

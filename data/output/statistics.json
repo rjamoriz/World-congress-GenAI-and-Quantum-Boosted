@@ -2,36 +2,36 @@
   "requests": {
     "total": 120,
     "byStatus": {
-      "pending": 85,
-      "qualified": 35
+      "pending": 83,
+      "qualified": 37
     },
     "byType": {
-      "keynote": 18,
+      "keynote": 12,
+      "technical": 11,
+      "sales": 20,
+      "operational": 16,
       "strategic": 19,
-      "partnership": 19,
-      "technical": 13,
-      "operational": 10,
-      "sales": 13,
-      "demo": 13,
-      "other": 15
+      "partnership": 18,
+      "other": 14,
+      "demo": 10
     },
     "byTier": {
-      "tier_2": 26,
-      "tier_4": 19,
-      "tier_3": 28,
-      "tier_1": 22,
-      "unknown": 25
+      "tier_3": 24,
+      "tier_4": 24,
+      "tier_2": 23,
+      "unknown": 31,
+      "tier_1": 18
     },
-    "avgImportanceScore": 62.9,
-    "duplicates": 5
+    "avgImportanceScore": 63.7,
+    "duplicates": 4
   },
   "hosts": {
     "total": 15,
     "active": 15,
-    "totalAvailableSlots": 216
+    "totalAvailableSlots": 184
   },
   "metadata": {
-    "generatedAt": "2025-10-06T09:52:40.402Z",
+    "generatedAt": "2025-10-20T09:29:49.369Z",
     "eventDates": [
       "2025-11-15",
       "2025-11-16",

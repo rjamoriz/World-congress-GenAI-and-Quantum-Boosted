@@ -3,8 +3,13 @@
 import { useEffect, useState } from 'react'
 import { Building2, Mail, Calendar, TrendingUp, Filter, Plus } from 'lucide-react'
 import DashboardLayout from '@/components/DashboardLayout'
+import QuickActions from '@/components/QuickActions'
+import BulkActions, { useBulkSelection } from '@/components/BulkActions'
+import { SkeletonCard } from '@/components/Skeleton'
+import PageTransition, { FadeIn } from '@/components/PageTransition'
 import { apiClient } from '@/lib/api'
-import { MeetingRequest } from '@agenda-manager/shared'
+import { MeetingRequest, RequestStatus } from '@agenda-manager/shared'
+import { useNotify } from '@/contexts/NotificationContext'
 
 export default function RequestsPage() {
   const [requests, setRequests] = useState<MeetingRequest[]>([])
@@ -12,6 +17,8 @@ export default function RequestsPage() {
   const [filter, setFilter] = useState('all')
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  const notify = useNotify()
+  const { selectedIds, isSelected, toggleSelection, clearSelection } = useBulkSelection(requests)
   
   useEffect(() => {
     fetchRequests()
@@ -49,14 +56,126 @@ export default function RequestsPage() {
       default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30'
     }
   }
+
+  const handleQuickAction = async (action: string, request: MeetingRequest) => {
+    try {
+      let endpoint = ''
+      let method = 'POST'
+      let body: any = {}
+
+      switch (action) {
+        case 'qualify':
+          endpoint = `/api/qualification/${request.id}/qualify`
+          break
+        case 'reject':
+          endpoint = `/api/requests/${request.id}`
+          method = 'PUT'
+          body = { status: RequestStatus.REJECTED, rejectionReason: 'AI Quick Reject' }
+          break
+        case 'auto-schedule':
+          endpoint = `/api/schedule/optimize`
+          body = { requestIds: [request.id] }
+          break
+        case 'assign-host':
+          notify.info('Coming Soon', 'Host assignment UI will be added')
+          return
+        case 'generate-materials':
+          notify.info('Coming Soon', 'Material generation will be added')
+          return
+        case 'send-confirmation':
+          notify.info('Coming Soon', 'Email confirmation will be added')
+          return
+        case 'send-followup':
+          notify.info('Coming Soon', 'Follow-up email will be added')
+          return
+        case 'view-details':
+          notify.info('View Details', `Request ID: ${request.id}`)
+          return
+        default:
+          return
+      }
+
+      const res = await fetch(endpoint, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+
+      if (!res.ok) throw new Error(`Action ${action} failed`)
+
+      notify.success('Action Complete', `Successfully performed ${action}`)
+      fetchRequests()
+    } catch (error) {
+      notify.error('Action Failed', `Could not perform ${action}`)
+    }
+  }
+
+  const handleBulkAction = async (action: string, requestIds: string[]) => {
+    try {
+      let endpoint = ''
+      let method = 'POST'
+      let body: any = {}
+
+      switch (action) {
+        case 'qualify':
+          // Qualify each request
+          await Promise.all(
+            requestIds.map(id => 
+              fetch(`/api/qualification/${id}/qualify`, { method: 'POST' })
+            )
+          )
+          break
+        case 'reject':
+          // Reject each request
+          await Promise.all(
+            requestIds.map(id =>
+              fetch(`/api/requests/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: RequestStatus.REJECTED, rejectionReason: 'Bulk reject' })
+              })
+            )
+          )
+          break
+        case 'schedule':
+          endpoint = `/api/schedule/optimize`
+          body = { requestIds }
+          await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          })
+          break
+        case 'delete':
+          // Delete each request
+          await Promise.all(
+            requestIds.map(id =>
+              fetch(`/api/requests/${id}`, { method: 'DELETE' })
+            )
+          )
+          break
+        default:
+          throw new Error('Unknown action')
+      }
+
+      notify.success('Bulk Action Complete', `Applied ${action} to ${requestIds.length} requests`)
+      fetchRequests()
+      clearSelection()
+    } catch (error) {
+      notify.error('Bulk Action Failed', 'Could not complete bulk action')
+      throw error
+    }
+  }
   
   return (
     <DashboardLayout>
+      <PageTransition>
       <div className="space-y-6">
         {/* Header */}
+        <FadeIn>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold gradient-text">
               Meeting Requests
             </h1>
             <p className="text-gray-400 mt-2">
@@ -64,13 +183,14 @@ export default function RequestsPage() {
             </p>
           </div>
           
-          <button className="neumorphic-button text-primary-400 font-semibold">
+          <button className="neumorphic-button ripple text-primary-400 font-semibold hover-lift">
             <span className="flex items-center gap-2">
               <Plus size={20} />
               New Request
             </span>
           </button>
         </div>
+        </FadeIn>
         
         {/* Filters */}
         <div className="neumorphic-card p-6">
@@ -94,14 +214,20 @@ export default function RequestsPage() {
           </div>
         </div>
         
+        {/* Bulk Actions */}
+        {!loading && requests.length > 0 && (
+          <BulkActions 
+            requests={requests}
+            onBulkAction={handleBulkAction}
+          />
+        )}
+        
         {/* Requests List */}
         <div className="space-y-4">
           {loading ? (
             // Loading skeleton
             [...Array(5)].map((_, i) => (
-              <div key={i} className="neumorphic-card p-6 animate-pulse">
-                <div className="h-20 bg-dark-700 rounded-xl" />
-              </div>
+              <SkeletonCard key={i} />
             ))
           ) : requests.length === 0 ? (
             // Empty state
@@ -120,12 +246,22 @@ export default function RequestsPage() {
             </div>
           ) : (
             // Request cards
-            requests.map((request) => (
+            requests.map((request, index) => (
+              <FadeIn key={request.id} delay={index * 50}>
               <div
-                key={request.id}
-                className="neumorphic-card p-6 hover:scale-[1.01] transition-transform cursor-pointer"
+                className="neumorphic-card card-glow p-6 hover-lift transition-all duration-300"
               >
-                <div className="flex items-start justify-between">
+                <div className="flex items-start justify-between gap-4">
+                  {/* Checkbox for bulk selection */}
+                  <div className="flex items-start pt-1">
+                    <input
+                      type="checkbox"
+                      checked={isSelected(request.id)}
+                      onChange={() => toggleSelection(request.id)}
+                      className="w-4 h-4 rounded border-gray-600 bg-dark-700 text-primary-500 focus:ring-primary-500 cursor-pointer"
+                    />
+                  </div>
+
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3">
                       <Building2 className="text-primary-400" size={24} />
@@ -171,23 +307,17 @@ export default function RequestsPage() {
                     </div>
                   </div>
                   
-                  <div className="flex flex-col gap-2">
-                    {request.status === 'pending' && (
-                      <button className="neumorphic-button text-sm py-2 px-4 text-primary-400">
-                        Qualify
-                      </button>
-                    )}
-                    {request.status === 'qualified' && (
-                      <button className="neumorphic-button text-sm py-2 px-4 text-green-400">
-                        Schedule
-                      </button>
-                    )}
-                    <button className="neumorphic-button text-sm py-2 px-4 text-gray-400">
-                      Details
-                    </button>
+                  {/* Quick Actions */}
+                  <div className="flex-shrink-0">
+                    <QuickActions 
+                      request={request}
+                      onAction={(action) => handleQuickAction(action, request)}
+                      compact={false}
+                    />
                   </div>
                 </div>
               </div>
+              </FadeIn>
             ))
           )}
         </div>
@@ -215,6 +345,7 @@ export default function RequestsPage() {
           </div>
         )}
       </div>
+      </PageTransition>
     </DashboardLayout>
   )
 }

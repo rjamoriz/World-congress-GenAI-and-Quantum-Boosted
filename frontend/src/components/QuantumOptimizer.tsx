@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Sparkles, Cpu, Zap, Play, Pause, BarChart3, Atom, Settings, Info } from 'lucide-react'
+import { Sparkles, Cpu, Zap, Play, Pause, BarChart3, Atom, Settings, Info, Image as ImageIcon } from 'lucide-react'
 import { apiClient } from '@/lib/api'
 
 interface QuantumState {
@@ -13,6 +13,18 @@ interface QuantumState {
   qubits: number
   backend: string
   results?: any
+  schedule?: any[]
+  metrics?: any
+  circuitStats?: any
+}
+
+interface ScheduledMeeting {
+  requestId: string
+  hostName: string
+  topic: string
+  timeSlot: string
+  importance: number
+  expertise: string[]
 }
 
 export default function QuantumOptimizer() {
@@ -20,75 +32,117 @@ export default function QuantumOptimizer() {
     isRunning: false,
     progress: 0,
     currentLayer: 0,
-    totalLayers: 3,
+    totalLayers: 1,
     shots: 1024,
     qubits: 0,
-    backend: 'aer_simulator'
+    backend: 'StatevectorSampler'
   })
   
   const [config, setConfig] = useState({
     algorithm: 'qaoa',
     backend: 'aer_simulator',
     shots: 1024,
-    layers: 3,
+    layers: 1,
     optimizer: 'COBYLA',
-    maxIterations: 200
+    maxIterations: 25
   })
   
   const [showConfig, setShowConfig] = useState(false)
+  const [showCircuit, setShowCircuit] = useState(false)
+  const [circuitImage, setCircuitImage] = useState<string | null>(null)
+  const [statsImage, setStatsImage] = useState<string | null>(null)
   const [notification, setNotification] = useState<{type: 'success' | 'error' | 'info', message: string} | null>(null)
+  const [systemStatus, setSystemStatus] = useState<{available: boolean, ready: boolean, qiskitVersion?: string} | null>(null)
 
   const showNotification = (type: 'success' | 'error' | 'info', message: string) => {
     setNotification({ type, message })
     setTimeout(() => setNotification(null), 5000)
   }
 
+  // Check quantum system status on mount
+  useEffect(() => {
+    checkQuantumStatus()
+  }, [])
+
+  const checkQuantumStatus = async () => {
+    try {
+      const response = await apiClient.get('/quantum/status')
+      setSystemStatus(response.data)
+      if (response.data.available) {
+        showNotification('success', `✅ Quantum system ready (Qiskit ${response.data.qiskitVersion})`)
+      }
+    } catch (error) {
+      setSystemStatus({ available: false, ready: false })
+      showNotification('error', '❌ Quantum system not available')
+    }
+  }
+
   const runQuantumOptimization = async () => {
     setQuantumState(prev => ({ ...prev, isRunning: true, progress: 0 }))
     
     try {
-      // Simulate quantum circuit preparation
-      showNotification('info', '🌊 Initializing quantum superposition...')
-      await simulateProgress(20)
+      // Get hosts and requests from API
+      showNotification('info', '📊 Loading meeting data...')
+      const hostsResponse = await apiClient.get('/hosts')
+      const requestsResponse = await apiClient.get('/requests')
       
-      // Simulate QAOA layers
-      for (let layer = 1; layer <= config.layers; layer++) {
-        setQuantumState(prev => ({ ...prev, currentLayer: layer }))
-        showNotification('info', `🔄 Executing QAOA Layer ${layer}/${config.layers}...`)
-        await simulateProgress(20 + (layer * 20))
+      const hosts = hostsResponse.data.data || []
+      const allRequests = requestsResponse.data.data || []
+      
+      // Use first 4 requests regardless of status for demo
+      const requests = allRequests.slice(0, 4)
+      
+      if (requests.length === 0) {
+        showNotification('error', '❌ No meeting requests found. Create some requests first.')
+        setQuantumState(prev => ({ ...prev, isRunning: false }))
+        return
       }
       
-      // Simulate quantum measurement
-      showNotification('info', '📏 Performing quantum measurement...')
-      await simulateProgress(90)
+      showNotification('info', `🎯 Using ${requests.length} meeting requests for optimization`)
       
-      // Call actual quantum optimization API
-      const response = await apiClient.post('/schedule/optimize', {
-        algorithm: 'quantum',
-        quantumConfig: config,
-        constraints: {
-          eventStartDate: new Date().toISOString().split('T')[0],
-          eventEndDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-          workingHoursStart: '09:00',
-          workingHoursEnd: '18:00',
-          meetingDurationMinutes: 30,
-          maxMeetingsPerDay: 8,
-          bufferMinutes: 15
-        }
+      // Simulate quantum circuit preparation
+      showNotification('info', '🌊 Initializing quantum superposition...')
+      setQuantumState(prev => ({ ...prev, progress: 20 }))
+      
+      // Execute QAOA
+      showNotification('info', `⚛ Running QAOA optimization (${requests.length} meetings)...`)
+      setQuantumState(prev => ({ ...prev, progress: 40, currentLayer: 1 }))
+      
+      console.log('Sending optimize request to backend...');
+      console.log('Hosts:', hosts.length);
+      console.log('Requests:', requests.length);
+      
+      // Call quantum optimization API
+      const response = await apiClient.post('/quantum/optimize', {
+        hosts: hosts.map((h: any) => ({
+          id: h._id,
+          name: h.name,
+          expertise: h.expertise || []
+        })),
+        requests: requests.map((r: any) => ({
+          id: r._id,
+          hostName: r.companyName || r.contactName || 'Attendee',
+          topic: (r.requestedTopics && r.requestedTopics[0]) || r.meetingType || 'Meeting',
+          importance: r.urgency === 'HIGH' ? 90 : r.urgency === 'MEDIUM' ? 70 : 50,
+          expertise: r.requestedTopics || []
+        }))
       })
+      
+      setQuantumState(prev => ({ ...prev, progress: 100 }))
       
       setQuantumState(prev => ({ 
         ...prev, 
-        results: response.data.data,
-        progress: 100,
-        qubits: response.data.data.qubits || 12
+        schedule: response.data.schedule,
+        metrics: response.data.metrics,
+        circuitStats: response.data.circuitStats,
+        qubits: response.data.circuitStats?.qubits || 0
       }))
       
-      showNotification('success', `✨ Quantum optimization complete! Scheduled ${response.data.data.assignments?.length || 0} meetings using ${config.backend}`)
+      showNotification('success', `✨ Quantum optimization complete! Scheduled ${response.data.schedule?.length || 0} meetings`)
       
     } catch (error: any) {
       console.error('Quantum optimization failed:', error)
-      showNotification('error', `❌ Quantum optimization failed: ${error.response?.data?.error || error.message}`)
+      showNotification('error', `❌ Optimization failed: ${error.response?.data?.error || error.message}`)
     } finally {
       setQuantumState(prev => ({ ...prev, isRunning: false }))
     }
@@ -112,6 +166,26 @@ export default function QuantumOptimizer() {
   const stopOptimization = () => {
     setQuantumState(prev => ({ ...prev, isRunning: false, progress: 0 }))
     showNotification('info', '⏹️ Quantum optimization stopped')
+  }
+
+  const loadCircuitImages = async () => {
+    try {
+      // Load circuit image
+      const circuitUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/quantum/circuit-image?t=${Date.now()}`
+      console.log('Loading circuit from:', circuitUrl);
+      setCircuitImage(circuitUrl)
+      
+      // Load stats image
+      const statsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/quantum/stats-image?t=${Date.now()}`
+      console.log('Loading stats from:', statsUrl);
+      setStatsImage(statsUrl)
+      
+      setShowCircuit(true)
+      showNotification('info', '📊 Loading circuit visualizations...')
+    } catch (error) {
+      console.error('Error loading circuit images:', error);
+      showNotification('error', '❌ Circuit images not available')
+    }
   }
 
   return (
@@ -285,7 +359,172 @@ export default function QuantumOptimizer() {
       )}
 
       {/* Results */}
-      {quantumState.results && (
+      {quantumState.schedule && (
+        <div className="bg-dark-700 p-4 rounded-xl mb-4">
+          <div className="flex items-center justify-between mb-4">
+            <h4 className="font-semibold flex items-center gap-2">
+              <BarChart3 size={20} />
+              Quantum Optimization Results
+            </h4>
+            {quantumState.circuitStats && (
+              <button
+                onClick={loadCircuitImages}
+                className="neumorphic-button text-purple-400 text-sm px-3 py-1 flex items-center gap-2"
+              >
+                <ImageIcon size={16} />
+                View Circuit
+              </button>
+            )}
+          </div>
+          
+          {/* Metrics */}
+          {quantumState.metrics && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+              <div className="text-center">
+                <div className="text-xl font-bold text-green-400">
+                  {quantumState.metrics.scheduled || 0}
+                </div>
+                <div className="text-xs text-gray-400">Scheduled</div>
+              </div>
+              
+              <div className="text-center">
+                <div className="text-xl font-bold text-yellow-400">
+                  {quantumState.metrics.totalRequests - quantumState.metrics.scheduled || 0}
+                </div>
+                <div className="text-xs text-gray-400">Unscheduled</div>
+              </div>
+              
+              <div className="text-center">
+                <div className="text-xl font-bold text-blue-400">
+                  {(quantumState.metrics.successRate * 100).toFixed(1)}%
+                </div>
+                <div className="text-xs text-gray-400">Success Rate</div>
+              </div>
+              
+              <div className="text-center">
+                <div className="text-xl font-bold text-purple-400">
+                  {quantumState.metrics.avgImportance?.toFixed(0) || 0}
+                </div>
+                <div className="text-xs text-gray-400">Avg Importance</div>
+              </div>
+            </div>
+          )}
+
+          {/* Circuit Stats */}
+          {quantumState.circuitStats && (
+            <div className="grid grid-cols-4 gap-3 mb-4 p-3 bg-dark-600 rounded-lg">
+              <div className="text-center">
+                <div className="text-lg font-bold text-purple-400">
+                  {quantumState.circuitStats.qubits}
+                </div>
+                <div className="text-xs text-gray-400">Qubits</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-bold text-blue-400">
+                  {quantumState.circuitStats.gates}
+                </div>
+                <div className="text-xs text-gray-400">Gates</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-bold text-green-400">
+                  {quantumState.circuitStats.depth}
+                </div>
+                <div className="text-xs text-gray-400">Depth</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-bold text-yellow-400">
+                  {quantumState.circuitStats.parameters}
+                </div>
+                <div className="text-xs text-gray-400">Parameters</div>
+              </div>
+            </div>
+          )}
+
+          {/* Scheduled Meetings */}
+          {quantumState.schedule && quantumState.schedule.length > 0 && (
+            <div className="space-y-2">
+              <h5 className="text-sm font-semibold text-gray-300 mb-2">Scheduled Meetings:</h5>
+              {quantumState.schedule.map((meeting: ScheduledMeeting, idx: number) => (
+                <div key={idx} className="bg-dark-600 p-3 rounded-lg">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="font-medium">{meeting.topic}</div>
+                      <div className="text-sm text-gray-400">Host: {meeting.hostName}</div>
+                      {meeting.expertise && meeting.expertise.length > 0 && (
+                        <div className="flex gap-1 mt-1">
+                          {meeting.expertise.map((exp, i) => (
+                            <span key={i} className="text-xs px-2 py-0.5 bg-purple-500/20 text-purple-300 rounded">
+                              {exp}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div className="text-right">
+                      <div className="text-sm font-semibold text-blue-400">{meeting.timeSlot}</div>
+                      <div className="text-xs text-gray-400">Importance: {meeting.importance}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Circuit Visualization Modal */}
+      {showCircuit && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={() => setShowCircuit(false)}>
+          <div className="bg-dark-800 rounded-xl p-6 max-w-6xl max-h-[90vh] overflow-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold">Quantum Circuit Visualization</h3>
+              <button
+                onClick={() => setShowCircuit(false)}
+                className="neumorphic-button text-gray-400 px-3 py-1"
+              >
+                Close
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              {circuitImage && (
+                <div>
+                  <h4 className="text-sm font-semibold mb-2 text-gray-300">Circuit Diagram</h4>
+                  <img 
+                    src={circuitImage} 
+                    alt="Quantum Circuit" 
+                    className="w-full rounded-lg bg-white p-2" 
+                    onError={(e) => {
+                      console.error('Failed to load circuit image:', circuitImage);
+                      showNotification('error', '❌ Failed to load circuit diagram');
+                    }}
+                    onLoad={() => console.log('Circuit image loaded successfully')}
+                  />
+                </div>
+              )}
+              
+              {statsImage && (
+                <div>
+                  <h4 className="text-sm font-semibold mb-2 text-gray-300">Circuit Statistics</h4>
+                  <img 
+                    src={statsImage} 
+                    alt="Circuit Statistics" 
+                    className="w-full rounded-lg bg-white p-2"
+                    onError={(e) => {
+                      console.error('Failed to load stats image:', statsImage);
+                      showNotification('error', '❌ Failed to load statistics diagram');
+                    }}
+                    onLoad={() => console.log('Stats image loaded successfully')}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Original Results (for backward compatibility) */}
+      {quantumState.results && !quantumState.schedule && (
         <div className="bg-dark-700 p-4 rounded-xl">
           <h4 className="font-semibold mb-4 flex items-center gap-2">
             <BarChart3 size={20} />

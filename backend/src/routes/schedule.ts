@@ -11,12 +11,19 @@ import { asyncHandler, NotFoundError } from '../middleware/errorHandler';
 import { SchedulerService } from '../services/scheduler/SchedulerService';
 import { RequestStatus, HTTP_STATUS } from '@agenda-manager/shared';
 import { logger } from '../utils/logger';
+import {
+  validateRequest,
+  optimizeScheduleBody,
+  manualAssignBody,
+  idParams
+} from '../middleware/validation';
+import { timeouts } from '../middleware/timeout';
 
 const router = Router();
 const schedulerService = new SchedulerService();
 
 // POST /api/schedule/optimize - Run optimization
-router.post('/optimize', schedulerRateLimiter, asyncHandler(async (req: Request, res: Response) => {
+router.post('/optimize', schedulerRateLimiter, timeouts.quantum, validateRequest({ body: optimizeScheduleBody }), asyncHandler(async (req: Request, res: Response) => {
   const { requestIds, constraints, algorithm, quantumConfig } = req.body;
   
   logger.info('Starting schedule optimization');
@@ -107,7 +114,7 @@ router.post('/optimize', schedulerRateLimiter, asyncHandler(async (req: Request,
 }));
 
 // POST /api/schedule/assign - Manually assign a meeting
-router.post('/assign', asyncHandler(async (req: Request, res: Response) => {
+router.post('/assign', timeouts.standard, validateRequest({ body: manualAssignBody }), asyncHandler(async (req: Request, res: Response) => {
   const { requestId, hostId, timeSlot, location, meetingLink } = req.body;
   
   // Check if request exists and is qualified
@@ -175,7 +182,7 @@ router.get('/', asyncHandler(async (req: Request, res: Response) => {
 }));
 
 // GET /api/schedule/:id - Get single scheduled meeting
-router.get('/:id', asyncHandler(async (req: Request, res: Response) => {
+router.get('/:id', validateRequest({ params: idParams }), asyncHandler(async (req: Request, res: Response) => {
   const meeting = await ScheduledMeetingModel.findById(req.params.id).lean();
   
   if (!meeting) {

@@ -10,27 +10,43 @@
   body {
     @apply bg-dark-900 text-gray-100;
   }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer components {
+  /* Enhanced Neumorphic Card with animations */
   .neumorphic-card {
-    @apply bg-dark-800 rounded-2xl;
+    @apply bg-dark-800 rounded-2xl transition-all duration-300 ease-in-out;
     box-shadow: 8px 8px 16px #0a0a0a, -8px -8px 16px #1e1e1e;
   }
+
+  .neumorphic-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 10px 10px 20px #0a0a0a, -10px -10px 20px #1e1e1e;
+  }
   
+  /* Enhanced Neumorphic Button */
   .neumorphic-button {
-    @apply bg-dark-800 rounded-xl px-6 py-3 transition-all duration-200;
+    @apply bg-dark-800 rounded-xl px-6 py-3 transition-all duration-200 ease-out;
     box-shadow: 6px 6px 12px #0a0a0a, -6px -6px 12px #1e1e1e;
+    transform: translateY(0);
   }
   
   .neumorphic-button:hover {
+    transform: translateY(-1px);
     box-shadow: 4px 4px 8px #0a0a0a, -4px -4px 8px #1e1e1e;
   }
   
   .neumorphic-button:active {
+    transform: translateY(1px);
     box-shadow: inset 4px 4px 8px #0a0a0a, inset -4px -4px 8px #1e1e1e;
   }
   
+  /* Enhanced Input */
   .neumorphic-input {
     @apply bg-dark-800 rounded-xl px-4 py-2 w-full outline-none transition-all duration-200;
     box-shadow: inset 4px 4px 8px #0a0a0a, inset -4px -4px 8px #1e1e1e;
@@ -38,9 +54,211 @@
   
   .neumorphic-input:focus {
     @apply ring-2 ring-primary-500 ring-opacity-50;
+    box-shadow: inset 4px 4px 8px #0a0a0a, inset -4px -4px 8px #1e1e1e, 0 0 0 3px rgba(99, 102, 241, 0.1);
   }
   
+  /* Glass Panel */
   .glass-panel {
-    @apply backdrop-blur-lg bg-dark-800/50 border border-gray-700/50 rounded-2xl;
+    @apply backdrop-blur-lg bg-dark-800/50 border border-gray-700/50 rounded-2xl transition-all duration-300;
   }
+
+  .glass-panel:hover {
+    @apply bg-dark-800/70 border-gray-600/50;
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply bg-dark-700 rounded-lg animate-pulse;
+    background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Fade In Animation */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Slide In Animation */
+  .slide-in {
+    animation: slideIn 0.4s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Scale In Animation */
+  .scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Pulse Glow Effect */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(99, 102, 241, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+    }
+  }
+
+  /* Smooth Hover Lift */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Ripple Effect */
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .ripple:active::after {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Loading Spinner */
+  .spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #6366f1;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Smooth Transitions for Page Changes */
+  .page-transition {
+    animation: pageTransition 0.4s ease-out;
+  }
+
+  @keyframes pageTransition {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Focus Ring Enhancement */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-800 transition-all duration-200;
+  }
+
+  /* Card Glow on Hover */
+  .card-glow:hover {
+    box-shadow: 
+      8px 8px 16px #0a0a0a, 
+      -8px -8px 16px #1e1e1e,
+      0 0 30px rgba(99, 102, 241, 0.15);
+  }
+
+  /* Stagger Animation for Lists */
+  .stagger-item {
+    opacity: 0;
+    animation: staggerFadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes staggerFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-item:nth-child(1) { animation-delay: 0.05s; }
+  .stagger-item:nth-child(2) { animation-delay: 0.1s; }
+  .stagger-item:nth-child(3) { animation-delay: 0.15s; }
+  .stagger-item:nth-child(4) { animation-delay: 0.2s; }
+  .stagger-item:nth-child(5) { animation-delay: 0.25s; }
+  .stagger-item:nth-child(6) { animation-delay: 0.3s; }
+  .stagger-item:nth-child(7) { animation-delay: 0.35s; }
+  .stagger-item:nth-child(8) { animation-delay: 0.4s; }
+  .stagger-item:nth-child(9) { animation-delay: 0.45s; }
+  .stagger-item:nth-child(10) { animation-delay: 0.5s; }
 }

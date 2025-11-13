@@ -39,12 +39,21 @@ async function importData() {
     
     console.log('✅ API is healthy\n');
     
-    // Import hosts first
-    console.log('📤 Importing hosts...');
-    const hostsResponse = await axios.post(`${API_URL}/hosts/bulk`, hosts);
-    console.log(`✅ Imported ${hostsResponse.data.data.length} hosts\n`);
+    // Check if hosts already exist
+    console.log('🔍 Checking existing data...');
+    const existingHostsResponse = await axios.get(`${API_URL}/hosts`);
+    const existingHosts = existingHostsResponse.data.data || [];
     
-    // Import requests
+    // Import hosts if needed
+    if (existingHosts.length === 0) {
+      console.log('📤 Importing hosts...');
+      const hostsResponse = await axios.post(`${API_URL}/hosts/bulk`, hosts);
+      console.log(`✅ Imported ${hostsResponse.data.data.length} hosts\n`);
+    } else {
+      console.log(`⏭️  Skipping hosts (${existingHosts.length} already exist)\n`);
+    }
+    
+    // Import requests (meetingType is already lowercase in the data)
     console.log('📤 Importing requests...');
     const requestsResponse = await axios.post(`${API_URL}/requests/bulk`, requests);
     console.log(`✅ Imported ${requestsResponse.data.data.length} requests\n`);
@@ -57,6 +66,10 @@ async function importData() {
     
   } catch (error) {
     console.error('❌ Import failed:', error.message);
+    
+    if (error.response && error.response.data) {
+      console.error('Error details:', JSON.stringify(error.response.data, null, 2));
+    }
     
     if (error.code === 'ECONNREFUSED') {
       console.error('\n💡 Make sure the backend is running:');

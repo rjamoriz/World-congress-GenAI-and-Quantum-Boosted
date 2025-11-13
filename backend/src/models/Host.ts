@@ -33,6 +33,14 @@ const HostSchema = new Schema<HostDocument>({
     enum: Object.values(MeetingType)
   }],
   isActive: { type: Boolean, default: true, index: true },
+  // Outlook integration fields
+  outlookIntegration: {
+    isConnected: { type: Boolean, default: false },
+    lastSyncAt: { type: Date },
+    calendarId: { type: String },
+    syncEnabled: { type: Boolean, default: false },
+    syncErrors: [{ type: String }]
+  },
   metadata: { type: Schema.Types.Mixed }
 }, {
   timestamps: true,

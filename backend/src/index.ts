@@ -16,6 +16,7 @@ import { logger } from './utils/logger';
 import { errorHandler } from './middleware/errorHandler';
 import { rateLimiter } from './middleware/rateLimiter';
 import { initializeTelemetry } from './config/telemetry';
+import { validateAndLoadEnv } from './config/env';
 
 // Routes
 import requestRoutes from './routes/requests';
@@ -26,30 +27,46 @@ import workflowRoutes from './routes/workflow';
 import healthRoutes from './routes/health';
 import voiceRoutes from './routes/voice';
 import assistantRoutes from './routes/assistant';
+import quantumRoutes from './routes/quantum';
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 const httpServer = createServer(app);
+// Support multiple allowed origins via FRONTEND_URLS (comma-separated) or fallback to FRONTEND_URL
+const allowedOrigins = (process.env.FRONTEND_URLS || process.env.FRONTEND_URL || 'http://localhost:3000')
+  .split(',')
+  .map(o => o.trim())
+  .filter(Boolean);
+
 const io = new SocketServer(httpServer, {
   cors: {
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-    methods: ['GET', 'POST']
+    origin: allowedOrigins,
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 });
 
 // Middleware
 app.use(helmet());
+// CORS: allow configured origins and handle null origins (e.g., curl, mobile apps)
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
+
 app.use(morgan('combined', { stream: { write: (message) => logger.info(message.trim()) } }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Rate limiting
+// Rate limiting for all API routes
+app.use('/api', rateLimiter);
+
 // Make io accessible to routes
 app.set('io', io);
 
@@ -62,6 +79,8 @@ app.use('/api/workflow', workflowRoutes);
 app.use('/api/health', healthRoutes);
 app.use('/api/voice', voiceRoutes);
 app.use('/api/assistant', assistantRoutes);
+app.use('/api/quantum', quantumRoutes);
+app.use('/api/outlook', require('./routes/outlook').default);
 app.get('/', (req, res) => {
   res.json({
     name: 'Agenda Manager API',
@@ -117,6 +136,11 @@ async function startServer() {
   try {
     console.log('Starting server initialization...');
     
+    // Validate environment configuration first (fail-fast)
+    console.log('Validating environment configuration...');
+    validateAndLoadEnv();
+    console.log('Environment configuration validated!');
+    
     // Connect to databases
     console.log('Connecting to MongoDB...');
     await connectDatabase();
@@ -137,11 +161,19 @@ async function startServer() {
     
     // Start HTTP server
     console.log(`Starting HTTP server on port ${PORT}...`);
-    httpServer.listen(PORT, () => {
-      logger.info(`🚀 Server running on port ${PORT}`);
-      logger.info(`📡 WebSocket server ready`);
-      logger.info(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`✅ Server is ready at http://localhost:${PORT}`);
+    await new Promise<void>((resolve, reject) => {
+      httpServer.listen(PORT, () => {
+        logger.info(`🚀 Server running on port ${PORT}`);
+        logger.info(`📡 WebSocket server ready`);
+        logger.info(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+        console.log(`✅ Server is ready at http://localhost:${PORT}`);
+        resolve();
+      });
+      
+      httpServer.on('error', (error) => {
+        logger.error('Server error:', error);
+        reject(error);
+      });
     });
   } catch (error) {
     console.error('Failed to start server:', error);
@@ -152,6 +184,33 @@ async function startServer() {
 
 console.log('Initializing application...');
 
+// Handle process termination
+process.on('SIGTERM', () => {
+  logger.info('SIGTERM signal received: closing HTTP server');
+  httpServer.close(() => {
+    logger.info('HTTP server closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  logger.info('SIGINT signal received: closing HTTP server');
+  httpServer.close(() => {
+    logger.info('HTTP server closed');
+    process.exit(0);
+  });
+});
+
+process.on('uncaughtException', (error) => {
+  logger.error('Uncaught exception:', error);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  logger.error('Unhandled rejection at:', promise, 'reason:', reason);
+  process.exit(1);
+});
+
 // Add timeout to prevent hanging
 const startupTimeout = setTimeout(() => {
   console.error('❌ Server startup timeout after 30 seconds');
@@ -161,6 +220,7 @@ const startupTimeout = setTimeout(() => {
 startServer().then(() => {
   clearTimeout(startupTimeout);
   console.log('✅ Server startup completed successfully');
+  // Don't exit - keep server running
 }).catch(err => {
   clearTimeout(startupTimeout);
   console.error('Startup error:', err);

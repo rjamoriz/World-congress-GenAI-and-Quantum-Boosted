@@ -1,0 +1,25 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="64" fill="#3b82f6"/>
+  
+  <!-- Calendar Icon -->
+  <rect x="128" y="96" width="256" height="288" rx="16" fill="white"/>
+  <rect x="128" y="96" width="256" height="64" rx="16" fill="#1e40af"/>
+  <rect x="128" y="144" width="256" height="16" fill="#1e40af"/>
+  
+  <!-- Calendar Grid -->
+  <circle cx="192" cy="224" r="8" fill="#3b82f6"/>
+  <circle cx="256" cy="224" r="8" fill="#3b82f6"/>
+  <circle cx="320" cy="224" r="8" fill="#3b82f6"/>
+  <circle cx="192" cy="272" r="8" fill="#3b82f6"/>
+  <circle cx="256" cy="272" r="8" fill="#3b82f6"/>
+  <circle cx="320" cy="272" r="8" fill="#3b82f6"/>
+  <circle cx="192" cy="320" r="8" fill="#3b82f6"/>
+  <circle cx="256" cy="320" r="12" fill="#ef4444"/>
+  <circle cx="320" cy="320" r="8" fill="#3b82f6"/>
+  
+  <!-- Quantum Accent -->
+  <circle cx="400" cy="128" r="32" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="400" cy="128" r="24" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="400" cy="128" r="16" fill="#d97706" opacity="0.4"/>
+</svg>

@@ -7,6 +7,7 @@ import { Router, Request, Response } from 'express';
 import { asyncHandler } from '../middleware/errorHandler';
 import { EventAssistantService, EventQuestion, AttendeeProfile } from '../services/ai/EventAssistantService';
 import { logger } from '../utils/logger';
+import { timeouts } from '../middleware/timeout';
 
 const router = Router();
 const eventAssistant = new EventAssistantService();
@@ -15,7 +16,7 @@ const eventAssistant = new EventAssistantService();
  * POST /api/assistant/ask
  * Ask a question about the event
  */
-router.post('/ask', asyncHandler(async (req: Request, res: Response): Promise<void> => {
+router.post('/ask', timeouts.ai, asyncHandler(async (req: Request, res: Response): Promise<void> => {
   const { question, context, attendee_profile, session_id } = req.body;
 
   if (!question) {
@@ -62,7 +63,7 @@ router.post('/ask', asyncHandler(async (req: Request, res: Response): Promise<vo
  * POST /api/assistant/workshops/recommend
  * Get personalized workshop recommendations
  */
-router.post('/workshops/recommend', asyncHandler(async (req: Request, res: Response): Promise<void> => {
+router.post('/workshops/recommend', timeouts.ai, asyncHandler(async (req: Request, res: Response): Promise<void> => {
   const attendeeProfile: AttendeeProfile = req.body;
 
   if (!attendeeProfile || Object.keys(attendeeProfile).length === 0) {
@@ -107,7 +108,7 @@ router.post('/workshops/recommend', asyncHandler(async (req: Request, res: Respo
  * POST /api/assistant/agenda/personalized
  * Get personalized event agenda
  */
-router.post('/agenda/personalized', asyncHandler(async (req: Request, res: Response): Promise<void> => {
+router.post('/agenda/personalized', timeouts.ai, asyncHandler(async (req: Request, res: Response): Promise<void> => {
   const { attendee_profile, preferences } = req.body;
 
   if (!attendee_profile) {
