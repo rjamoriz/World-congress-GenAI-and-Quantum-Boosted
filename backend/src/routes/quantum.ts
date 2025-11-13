@@ -16,7 +16,7 @@ router.use((req, res, next) => {
  */
 router.post('/optimize', async (req: Request, res: Response): Promise<void> => {
   console.log('🟢 [QUANTUM OPTIMIZE HANDLER CALLED]', new Date().toISOString());
-  const { hosts, requests, algorithm = 'qaoa' } = req.body;
+  const { hosts, requests } = req.body;
 
   // Create temporary input file
   const inputData = JSON.stringify({ hosts, requests }, null, 2);
@@ -42,33 +42,13 @@ router.post('/optimize', async (req: Request, res: Response): Promise<void> => {
 
     // Resolve paths and validate they exist before spawning
     const pythonPath = path.join(__dirname, '../../../quantum-env/bin/python3');
-    
-    // Select script based on algorithm
-    let scriptPath: string;
-    switch (algorithm) {
-      case 'dwave':
-      case 'dwave-annealing':
-        scriptPath = path.join(__dirname, '../../../backend/dwave_backend.py');
-        console.log('🌊 Using D-Wave Ocean SDK backend');
-        break;
-      case 'dwave-hybrid':
-        scriptPath = path.join(__dirname, '../../../backend/dwave_hybrid_backend.py');
-        console.log('🔀 Using D-Wave Hybrid solver');
-        break;
-      case 'qaoa':
-      default:
-        scriptPath = path.join(__dirname, '../../../quantum/qaoa_scheduler.py');
-        console.log('⚛️ Using QAOA quantum optimizer');
-        break;
-    }
-    
+      const scriptPath = path.join(__dirname, '../../../quantum/qaoa_scheduler.py');
     try {
       await fs.access(pythonPath);
     } catch {
       res.status(500).json({ success: false, error: `Python not found at ${pythonPath}` });
       return;
     }
-    
     try {
       await fs.access(scriptPath);
     } catch {
