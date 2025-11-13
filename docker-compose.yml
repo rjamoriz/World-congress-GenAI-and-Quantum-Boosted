@@ -125,12 +125,37 @@ services:
     networks:
       - agenda-manager-network
 
+  loki:
+    image: grafana/loki:latest
+    container_name: agenda-manager-loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./monitoring/loki:/etc/loki
+      - loki_data:/loki
+    command: -config.file=/etc/loki/loki-config.yml
+    networks:
+      - agenda-manager-network
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: agenda-manager-promtail
+    volumes:
+      - ./backend/logs:/logs/backend:ro
+      - ./monitoring/promtail:/etc/promtail
+    command: -config.file=/etc/promtail/promtail-config.yml
+    depends_on:
+      - loki
+    networks:
+      - agenda-manager-network
+
 volumes:
   mongodb_data:
   redis_data:
   redisinsight_data:
   prometheus_data:
   grafana_data:
+  loki_data:
 
 networks:
   agenda-manager-network:

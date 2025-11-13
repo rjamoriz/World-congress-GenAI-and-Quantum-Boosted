@@ -13,6 +13,7 @@ import {
   TimeSlot
 } from '@agenda-manager/shared';
 import { logger } from '../../utils/logger';
+import { qaoaOptimizationDuration, scheduledMeetingsTotal, schedulingSuccessRate } from '../../middleware/metrics';
 
 export class QiskitQuantumScheduler {
   private maxQubits = 16; // Limit for NISQ devices
@@ -22,12 +23,29 @@ export class QiskitQuantumScheduler {
   async schedule(request: SchedulerRequest): Promise<SchedulerResult> {
     logger.info('Running Qiskit quantum scheduler (QAOA)');
     
+    const startTime = Date.now();
+    
     try {
       // Run quantum optimization using Python backend
       const quantumResult = await this.runQAOA(request);
       
+      // Record optimization duration
+      const duration = (Date.now() - startTime) / 1000;
+      qaoaOptimizationDuration.observe(duration);
+      logger.info(`QAOA optimization took ${duration.toFixed(2)}s`);
+      
       // Convert quantum result to schedule
-      return this.quantumResultToSchedule(quantumResult, request);
+      const result = this.quantumResultToSchedule(quantumResult, request);
+      
+      // Record scheduled meetings
+      scheduledMeetingsTotal.inc({ algorithm: 'qaoa' }, result.assignments.length);
+      
+      // Calculate and record success rate
+      const successRate = (result.assignments.length / request.requests.length) * 100;
+      schedulingSuccessRate.set({ algorithm: 'qaoa' }, successRate);
+      logger.info(`QAOA scheduling success rate: ${successRate.toFixed(1)}%`);
+      
+      return result;
       
     } catch (error) {
       logger.error('Quantum optimization failed, falling back to classical:', error);

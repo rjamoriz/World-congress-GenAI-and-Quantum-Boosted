@@ -14,6 +14,7 @@ import {
   TimeSlot
 } from '@agenda-manager/shared';
 import { logger } from '../../utils/logger';
+import { dwaveOptimizationDuration, scheduledMeetingsTotal, schedulingSuccessRate } from '../../middleware/metrics';
 
 export class DWaveQuantumScheduler {
   private maxQubits = 5000; // D-Wave Advantage has 5000+ qubits
@@ -23,6 +24,8 @@ export class DWaveQuantumScheduler {
   
   async schedule(request: SchedulerRequest): Promise<SchedulerResult> {
     logger.info('Running D-Wave quantum annealing scheduler');
+    
+    const startTime = Date.now();
     
     try {
       // Check if problem size is suitable for quantum annealing
@@ -35,8 +38,23 @@ export class DWaveQuantumScheduler {
       // Run pure quantum annealing
       const quantumResult = await this.runDWaveAnnealing(request);
       
+      // Record optimization duration
+      const duration = (Date.now() - startTime) / 1000;
+      dwaveOptimizationDuration.observe(duration);
+      logger.info(`D-Wave optimization took ${duration.toFixed(2)}s`);
+      
       // Convert quantum result to schedule
-      return this.quantumResultToSchedule(quantumResult, request);
+      const result = this.quantumResultToSchedule(quantumResult, request);
+      
+      // Record scheduled meetings
+      scheduledMeetingsTotal.inc({ algorithm: 'dwave' }, result.assignments.length);
+      
+      // Calculate and record success rate
+      const successRate = (result.assignments.length / request.requests.length) * 100;
+      schedulingSuccessRate.set({ algorithm: 'dwave' }, successRate);
+      logger.info(`D-Wave scheduling success rate: ${successRate.toFixed(1)}%`);
+      
+      return result;
       
     } catch (error) {
       logger.error('D-Wave quantum annealing failed, falling back to classical:', error);

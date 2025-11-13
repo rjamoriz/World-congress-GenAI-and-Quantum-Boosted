@@ -17,16 +17,15 @@ interface DWaveState {
   progress: number
   schedule?: any[]
   metrics?: {
-    scheduled: number
-    unscheduled: number
-    energy: number
+    scheduledMeetings: number
+    totalRequests: number
     successRate: number
-    samplesetSize: number
   }
   quboStats?: {
-    variables: number
-    quadraticTerms: number
+    totalVariables: number
     linearTerms: number
+    quadraticTerms: number
+    energy: number
   }
   computationTimeMs?: number
 }
@@ -349,7 +348,7 @@ export default function DWaveOptimizer() {
             <div className="text-xs text-green-300 font-semibold">VARIABLES</div>
           </div>
           <div className="text-xl font-bold text-green-400">
-            {dwaveState.quboStats?.variables || 0}
+            {dwaveState.quboStats?.totalVariables || 0}
           </div>
         </div>
       </div>
@@ -385,28 +384,28 @@ export default function DWaveOptimizer() {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-5">
               <div className="p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/30">
                 <div className="text-2xl font-bold text-green-400">
-                  {dwaveState.metrics.scheduled || 0}
+                  {dwaveState.metrics.scheduledMeetings || 0}
                 </div>
                 <div className="text-xs text-gray-400 font-semibold">Scheduled</div>
               </div>
               
               <div className="p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/30">
                 <div className="text-2xl font-bold text-yellow-400">
-                  {dwaveState.metrics.unscheduled || 0}
+                  {(dwaveState.metrics.totalRequests || 0) - (dwaveState.metrics.scheduledMeetings || 0)}
                 </div>
                 <div className="text-xs text-gray-400 font-semibold">Unscheduled</div>
               </div>
               
               <div className="p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/30">
                 <div className="text-2xl font-bold text-cyan-400">
-                  {(dwaveState.metrics.successRate * 100).toFixed(1)}%
+                  {dwaveState.metrics.successRate?.toFixed(1) || 0}%
                 </div>
                 <div className="text-xs text-gray-400 font-semibold">Success Rate</div>
               </div>
               
               <div className="p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/30">
                 <div className="text-2xl font-bold text-purple-400">
-                  {dwaveState.metrics.energy?.toFixed(2) || 0}
+                  {dwaveState.quboStats?.energy?.toFixed(0) || 0}
                 </div>
                 <div className="text-xs text-gray-400 font-semibold">QUBO Energy</div>
               </div>
@@ -425,7 +424,7 @@ export default function DWaveOptimizer() {
             <div className="grid grid-cols-3 gap-3 mb-5 p-4 bg-cyan-900/20 rounded-lg border border-cyan-500/20">
               <div className="text-center">
                 <div className="text-lg font-bold text-cyan-400">
-                  {dwaveState.quboStats.variables}
+                  {dwaveState.quboStats.totalVariables}
                 </div>
                 <div className="text-xs text-gray-400">Variables</div>
               </div>

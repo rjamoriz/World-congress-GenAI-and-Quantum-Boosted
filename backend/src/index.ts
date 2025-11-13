@@ -29,6 +29,8 @@ import voiceRoutes from './routes/voice';
 import assistantRoutes from './routes/assistant';
 import quantumRoutes from './routes/quantum';
 import dwaveRoutes from './routes/dwave';
+import metricsRoutes from './routes/metrics';
+import { metricsMiddleware } from './middleware/metrics';
 
 // Load environment variables
 dotenv.config();
@@ -65,6 +67,9 @@ app.use(morgan('combined', { stream: { write: (message) => logger.info(message.t
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Metrics middleware (before routes)
+app.use(metricsMiddleware);
+
 // Rate limiting for all API routes
 app.use('/api', rateLimiter);
 
@@ -83,6 +88,7 @@ app.use('/api/assistant', assistantRoutes);
 app.use('/api/quantum', quantumRoutes);
 app.use('/api/dwave', dwaveRoutes);
 app.use('/api/outlook', require('./routes/outlook').default);
+app.use('/metrics', metricsRoutes);
 app.get('/', (req, res) => {
   res.json({
     name: 'Agenda Manager API',

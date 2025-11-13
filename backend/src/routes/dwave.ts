@@ -14,8 +14,11 @@ router.post('/optimize', async (req: Request, res: Response): Promise<void> => {
   console.log('🌊 [D-WAVE OPTIMIZE HANDLER CALLED]', new Date().toISOString());
   const { hosts, requests, config } = req.body;
 
-  // Create temporary input file
-  const inputData = JSON.stringify({ hosts, requests, config }, null, 2);
+  // Create temporary input file with proper structure for Python
+  const inputData = JSON.stringify({ 
+    dwaveConfig: config,
+    problemData: { hosts, requests }
+  }, null, 2);
   const inputFile = path.join(__dirname, '../../temp/dwave_input.json');
   
   try {

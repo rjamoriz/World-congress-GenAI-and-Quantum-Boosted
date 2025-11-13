@@ -43,6 +43,14 @@ scrape_configs:
           service: 'redis'
           cache: 'agenda-manager'
 
+  # Node.js backend metrics
+  - job_name: 'backend'
+    static_configs:
+      - targets: ['host.docker.internal:3001']
+        labels:
+          service: 'backend'
+          app: 'agenda-manager'
+
   # Node.js backend metrics (if you add prom-client)
   # - job_name: 'backend'
   #   static_configs:

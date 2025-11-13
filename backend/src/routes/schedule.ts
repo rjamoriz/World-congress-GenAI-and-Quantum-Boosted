@@ -18,6 +18,7 @@ import {
   idParams
 } from '../middleware/validation';
 import { timeouts } from '../middleware/timeout';
+import { meetingRequestsTotal, scheduledMeetingsTotal, hostUtilization } from '../middleware/metrics';
 
 const router = Router();
 const schedulerService = new SchedulerService();
@@ -57,6 +58,9 @@ router.post('/optimize', schedulerRateLimiter, timeouts.quantum, validateRequest
     algorithm,
     quantumConfig
   });
+  
+  // Record meeting requests metric
+  meetingRequestsTotal.inc({ status: 'scheduled' }, result.assignments.length);
   
   // Save scheduled meetings to database
   const savedMeetings = [];
